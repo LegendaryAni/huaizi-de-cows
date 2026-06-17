@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>花子放猫素材预览</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10120d;
+      --panel: #1b2016;
+      --panel-2: #252a1d;
+      --ink: #050504;
+      --line: #54472e;
+      --text: #f3dfb8;
+      --muted: #b79d73;
+      --hot: #ff672f;
+      --hot-2: #f5b247;
+      --green: #6d8a47;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --radius: 8px;
+      --font: "Tsukushi A Round Gothic", "Hiragino Sans GB", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 16% 8%, rgba(255, 103, 47, 0.14), transparent 30rem),
+        radial-gradient(circle at 84% 24%, rgba(109, 138, 71, 0.16), transparent 30rem),
+        linear-gradient(135deg, #0b0d09 0%, var(--bg) 45%, #17180f 100%);
+      color: var(--text);
+      font-family: var(--font);
+      letter-spacing: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(circle at center, black, transparent 82%);
+    }
+
+    main {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      padding: 18px 0 20px;
+      border-bottom: 2px solid rgba(245, 178, 71, 0.28);
+    }
+
+    h1 {
+      margin: 0;
+      color: #ffe5b2;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.05;
+      font-weight: 900;
+      text-shadow: 0 4px 0 var(--ink), 0 0 22px rgba(255, 103, 47, 0.2);
+    }
+
+    .count {
+      justify-self: end;
+      min-width: 126px;
+      padding: 10px 14px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #272617, #15170f);
+      color: var(--hot-2);
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 8px 0 var(--ink), 0 12px 28px var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 22px 0 24px;
+    }
+
+    button {
+      min-height: 42px;
+      padding: 0 16px;
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: #181b12;
+      color: var(--text);
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 5px 0 var(--ink);
+      transition: transform 120ms ease, background 120ms ease, color 120ms ease;
+    }
+
+    button:hover,
+    button[aria-pressed="true"] {
+      background: linear-gradient(180deg, #7b2a16, #2b1510);
+      color: #fff2cc;
+      border-color: var(--hot);
+      transform: translateY(-1px);
+    }
+
+    .section { margin: 0 0 30px; }
+    .section[hidden] { display: none; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 14px;
+      color: #ffe2a5;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 14px;
+      height: 22px;
+      background: linear-gradient(180deg, var(--hot), var(--hot-2));
+      clip-path: polygon(0 0, 100% 18%, 50% 100%);
+      filter: drop-shadow(2px 2px 0 var(--ink));
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 16px;
+    }
+
+    .grid.wide {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .asset {
+      position: relative;
+      overflow: hidden;
+      min-height: 258px;
+      border: 2px solid rgba(245, 178, 71, 0.35);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255, 103, 47, 0.09), transparent 46%),
+        linear-gradient(180deg, var(--panel-2), var(--panel));
+      box-shadow: 0 9px 0 var(--ink), 0 16px 30px var(--shadow);
+    }
+
+    .asset::after {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(255, 226, 165, 0.09);
+      pointer-events: none;
+    }
+
+    .stage {
+      display: grid;
+      place-items: center;
+      min-height: 176px;
+      padding: 12px;
+      background:
+        radial-gradient(circle at 50% 72%, rgba(0, 0, 0, 0.45), transparent 36%),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 9px);
+    }
+
+    .wide .stage { min-height: 360px; }
+
+    .stage img {
+      display: block;
+      max-width: min(100%, 960px);
+      max-height: 340px;
+      image-rendering: auto;
+      filter: drop-shadow(0 10px 0 rgba(0, 0, 0, 0.38));
+    }
+
+    .grid:not(.wide) .stage img {
+      max-width: min(100%, 190px);
+      max-height: 150px;
+    }
+
+    .meta {
+      position: relative;
+      z-index: 1;
+      padding: 14px 14px 16px;
+      border-top: 2px solid rgba(0, 0, 0, 0.45);
+    }
+
+    .name {
+      margin: 0 0 7px;
+      color: #fff0ca;
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .file {
+      display: inline-block;
+      max-width: 100%;
+      color: var(--muted);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      padding: 5px 8px;
+      border: 1px solid rgba(255, 226, 165, 0.35);
+      border-radius: 999px;
+      background: rgba(8, 9, 7, 0.76);
+      color: #ffd585;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .direction-panel {
+      overflow: hidden;
+      border: 2px solid rgba(245, 178, 71, 0.35);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #202318, #15180f);
+      box-shadow: 0 9px 0 var(--ink), 0 16px 30px var(--shadow);
+    }
+
+    .direction-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 14px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.45);
+      background: linear-gradient(180deg, #2a2a19, #191b11);
+    }
+
+    .direction-name {
+      color: #fff0ca;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .direction-file {
+      color: var(--muted);
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .direction-rows {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+    }
+
+    .direction-row {
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid rgba(255, 226, 165, 0.12);
+      background:
+        radial-gradient(circle at 12% 50%, rgba(255, 103, 47, 0.08), transparent 16rem),
+        rgba(5, 6, 4, 0.24);
+    }
+
+    .direction-label {
+      display: grid;
+      gap: 2px;
+      color: #ffd585;
+      font-size: 16px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .direction-code {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .direction-frames {
+      display: grid;
+      grid-template-columns: repeat(4, max-content);
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .direction-frame {
+      width: var(--thumb-w);
+      height: var(--thumb-h);
+      border: 1px solid rgba(255, 226, 165, 0.16);
+      background-color: rgba(0, 0, 0, 0.24);
+      background-image: var(--sheet);
+      background-repeat: no-repeat;
+      background-size: var(--bg-w) var(--bg-h);
+      background-position: var(--bg-x) var(--bg-y);
+      image-rendering: auto;
+      filter: drop-shadow(0 6px 0 rgba(0, 0, 0, 0.28));
+    }
+
+    @media (max-width: 720px) {
+      main { width: min(100% - 20px, 1440px); padding-top: 16px; }
+      header { grid-template-columns: 1fr; align-items: start; }
+      .count { justify-self: start; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .grid.wide { grid-template-columns: 1fr; }
+      .asset { min-height: 228px; }
+      .stage { min-height: 148px; }
+      .wide .stage { min-height: 240px; }
+      .grid:not(.wide) .stage img { max-height: 124px; }
+      .stage img { max-height: 170px; }
+      .direction-row { grid-template-columns: 54px minmax(0, 1fr); gap: 8px; padding: 8px; }
+      .direction-label { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>花子放猫素材预览</h1>
+      <div class="count" id="count">0 个素材</div>
+    </header>
+    <nav aria-label="素材分类" id="filters"></nav>
+    <div id="sections"></div>
+  </main>
+
+  <script>
+    const filters = [
+      ["all", "全部"],
+      ["map", "地图"],
+      ["ui", "UI"],
+      ["battle", "战斗"]
+    ];
+
+    const sections = [
+      {
+        key: "map",
+        title: "地图",
+        layout: "wide",
+        items: [
+          ["完整", "固定户外大地图", "previews/full_outdoor_map.png"],
+          ["素材表", "泥地、草地、深浅地块、草丛、石头、土堆、落叶、围栏、树墙、石墙、水面", "previews/environment_assets_painted.png"]
+        ]
+      },
+      {
+        key: "ui",
+        title: "UI 与图标",
+        layout: "wide",
+        items: [
+          ["素材表", "血量条、升级三选一卡片、胜利/失败结算页、暂停界面、升级图标、武器图标、波次/新猫提示", "previews/ui_assets_painted.png"]
+        ]
+      },
+      {
+        key: "battle",
+        title: "战斗",
+        layout: "wide",
+        items: [
+          ["素材表", "花子、橘猫、黑猫、奶牛猫、普通奶牛、小牛、大奶牛、远程牛、命中、爆炸、经验、粒子", "previews/combat_assets_painted.png"],
+          ["8向", "花子待机 / 行走", "previews/huazi_8dir.png"],
+          ["8向", "普通奶牛行走", "previews/cow_normal_8dir_256x192.png"],
+          ["8向", "疯跑小牛奔跑", "previews/cow_calf_8dir_192x144.png"],
+          ["8向", "厚皮大奶牛行走", "previews/cow_tank_8dir_320x224.png"],
+          ["8向", "吐奶远程牛行走（不含奶滴）", "previews/cow_ranged_8dir_288x192.png"],
+          ["8向", "橘猫整猫直线扑击", "previews/orange_cat_projectile_8dir_192x128.png"],
+          ["8向", "黑猫整猫范围扑击", "previews/black_cat_projectile_8dir_192x128.png"],
+          ["8向", "奶牛猫回旋扫场弹", "previews/cow_cat_spin_8dir_192x128.png"],
+          ["8向", "奶滴远程弹", "previews/milk_drop_8dir_192x128.png"]
+        ]
+      }
+    ];
+
+    const directions = [
+      ["e", "东"],
+      ["se", "东南"],
+      ["s", "南"],
+      ["sw", "西南"],
+      ["w", "西"],
+      ["nw", "西北"],
+      ["n", "北"],
+      ["ne", "东北"]
+    ];
+
+    const directionalAssets = [
+      ["花子 8 向", "huazi_8dir_192x192.png", 192, 192, 768, 1536, 0.42],
+      ["普通奶牛 8 向", "cow_normal_8dir_256x192.png", 256, 192, 1024, 1536, 0.46],
+      ["疯跑小牛 8 向", "cow_calf_8dir_192x144.png", 192, 144, 768, 1152, 0.54],
+      ["厚皮大奶牛 8 向", "cow_tank_8dir_320x224.png", 320, 224, 1280, 1792, 0.4],
+      ["吐奶远程牛 8 向（不含奶滴）", "cow_ranged_8dir_288x192.png", 288, 192, 1152, 1536, 0.42],
+      ["橘猫扑击 8 向", "orange_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["黑猫扑击 8 向", "black_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["奶牛猫回旋弹 8 向", "cow_cat_spin_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["奶滴弹 8 向", "milk_drop_8dir_192x128.png", 192, 128, 768, 1024, 0.58]
+    ];
+
+    const filterRoot = document.getElementById("filters");
+    const sectionRoot = document.getElementById("sections");
+    const count = document.getElementById("count");
+
+    function fileName(path) {
+      return path.split("/").pop();
+    }
+
+    function frameStyle(file, frameWidth, frameHeight, sheetWidth, sheetHeight, scale, row, column) {
+      return [
+        `--sheet: url("${file}")`,
+        `--thumb-w: ${frameWidth * scale}px`,
+        `--thumb-h: ${frameHeight * scale}px`,
+        `--bg-w: ${sheetWidth * scale}px`,
+        `--bg-h: ${sheetHeight * scale}px`,
+        `--bg-x: ${-column * frameWidth * scale}px`,
+        `--bg-y: ${-row * frameHeight * scale}px`
+      ].join("; ");
+    }
+
+    function renderDirectionalAsset([name, file, frameWidth, frameHeight, sheetWidth, sheetHeight, scale]) {
+      return `
+        <section class="section" data-section="battle">
+          <h2 class="section-title">${name}</h2>
+          <div class="direction-panel">
+            <div class="direction-head">
+              <div class="direction-name">${name}</div>
+              <div class="direction-file">${file}</div>
+            </div>
+            <div class="direction-rows">
+              ${directions.map(([code, label], row) => `
+                <div class="direction-row">
+                  <div class="direction-label">
+                    <span>${label}</span>
+                    <span class="direction-code">${code}</span>
+                  </div>
+                  <div class="direction-frames">
+                    ${[0, 1, 2, 3].map((column) => `
+                      <div class="direction-frame" style='${frameStyle(file, frameWidth, frameHeight, sheetWidth, sheetHeight, scale, row, column)}'></div>
+                    `).join("")}
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function render() {
+      filterRoot.innerHTML = filters.map(([key, label], index) =>
+        `<button type="button" data-filter="${key}" aria-pressed="${index === 0}">${label}</button>`
+      ).join("");
+
+      const overview = sections.map((section) => `
+        <section class="section" data-section="${section.key}">
+          <h2 class="section-title">${section.title}</h2>
+          <div class="grid ${section.layout === "wide" ? "wide" : ""}">
+            ${section.items.map(([tag, name, src]) => `
+              <article class="asset">
+                <span class="tag">${tag}</span>
+                <div class="stage"><img src="${src}" alt="${name}"></div>
+                <div class="meta">
+                  <p class="name">${name}</p>
+                  <span class="file">${fileName(src)}</span>
+                </div>
+              </article>
+            `).join("")}
+          </div>
+        </section>
+      `).join("");
+
+      sectionRoot.innerHTML = overview + directionalAssets.map(renderDirectionalAsset).join("");
+
+      const total = sections.reduce((sum, section) => sum + section.items.length, 0) + directionalAssets.length;
+      count.textContent = `${total} 个预览`;
+    }
+
+    function setFilter(filter) {
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.filter === filter));
+      });
+      document.querySelectorAll("[data-section]").forEach((section) => {
+        section.hidden = filter !== "all" && section.dataset.section !== filter;
+      });
+    }
+
+    render();
+    filterRoot.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-filter]");
+      if (button) setFilter(button.dataset.filter);
+    });
+  </script>
+</body>
+</html>

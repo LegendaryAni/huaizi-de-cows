@@ -1,0 +1,344 @@
+{
+  "source": "res://assets/sprites/ui_assets_painted.png",
+  "purpose": "Reference crops cut from the UI style sheet. They pin down visual targets for runtime UI asset generation; implementation should not treat the full sheet as a runtime control atlas.",
+  "runtime_asset_dir": "res://assets/sprites/ui/runtime/",
+  "reference_crop_dir": "res://assets/sprites/ui/reference_crops/",
+  "items": [
+    {
+      "id": "hud_avatar_huazi",
+      "file": "hud_avatar_huazi_ref.png",
+      "bbox": [
+        30,
+        34,
+        212,
+        219
+      ],
+      "role": "左上 HUD 头像圆框参考",
+      "runtime_target": "assets/sprites/ui/runtime/hud_avatar_frame.png",
+      "godot_hint": "TextureRect 或 Texture2D 头像框；花子头像可独立叠加",
+      "required": true
+    },
+    {
+      "id": "hud_health_bar",
+      "file": "hud_health_bar_ref.png",
+      "bbox": [
+        239,
+        78,
+        790,
+        169
+      ],
+      "role": "HUD 血条/经验条长条边框和填充质感参考",
+      "runtime_target": "assets/sprites/ui/runtime/hud_bar_frame.9.png",
+      "godot_hint": "NinePatchRect 背板 + 独立填充 TextureRect",
+      "required": true
+    },
+    {
+      "id": "panel_result_warm",
+      "file": "panel_result_warm_ref.png",
+      "bbox": [
+        37,
+        230,
+        406,
+        525
+      ],
+      "role": "胜利/结算面板暖色边框参考",
+      "runtime_target": "assets/sprites/ui/runtime/panel_result_warm.9.png",
+      "godot_hint": "NinePatchRect 结算背板，文字和按钮另叠",
+      "required": true
+    },
+    {
+      "id": "panel_result_dark",
+      "file": "panel_result_dark_ref.png",
+      "bbox": [
+        443,
+        234,
+        803,
+        525
+      ],
+      "role": "失败/暂停面板暗紫边框参考",
+      "runtime_target": "assets/sprites/ui/runtime/panel_result_dark.9.png",
+      "godot_hint": "NinePatchRect 失败或暂停背板，文字和按钮另叠",
+      "required": true
+    },
+    {
+      "id": "upgrade_card_normal",
+      "file": "upgrade_card_normal_ref.png",
+      "bbox": [
+        851,
+        36,
+        1037,
+        328
+      ],
+      "role": "升级三选一普通卡片参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_card_normal.9.png",
+      "godot_hint": "NinePatchRect 卡片背板 + TextureRect 图标 + Label 文案",
+      "required": true
+    },
+    {
+      "id": "upgrade_card_gold",
+      "file": "upgrade_card_gold_ref.png",
+      "bbox": [
+        1057,
+        22,
+        1263,
+        331
+      ],
+      "role": "升级三选一高亮/悬停卡片参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_card_gold.9.png",
+      "godot_hint": "NinePatchRect hover/推荐态卡片背板",
+      "required": true
+    },
+    {
+      "id": "upgrade_card_red",
+      "file": "upgrade_card_red_ref.png",
+      "bbox": [
+        1274,
+        21,
+        1486,
+        350
+      ],
+      "role": "升级三选一攻击/危险强调卡片参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_card_red.9.png",
+      "godot_hint": "NinePatchRect 攻击类或危险强调态卡片背板",
+      "required": false
+    },
+    {
+      "id": "notice_panel_wide",
+      "file": "notice_panel_wide_ref.png",
+      "bbox": [
+        838,
+        342,
+        1461,
+        538
+      ],
+      "role": "顶部波次/新猫提示横幅参考",
+      "runtime_target": "assets/sprites/ui/runtime/notice_panel_wide.9.png",
+      "godot_hint": "NinePatchRect 横幅背板 + Label",
+      "required": true
+    },
+    {
+      "id": "weapon_banner_black_cat",
+      "file": "weapon_banner_black_cat_ref.png",
+      "bbox": [
+        37,
+        545,
+        644,
+        683
+      ],
+      "role": "黑猫解锁/武器横幅参考",
+      "runtime_target": "assets/sprites/ui/runtime/weapon_banner_black_cat.9.png",
+      "godot_hint": "TextureRect 或 NinePatchRect 解锁提示",
+      "required": false
+    },
+    {
+      "id": "weapon_banner_cow_cat",
+      "file": "weapon_banner_cow_cat_ref.png",
+      "bbox": [
+        694,
+        551,
+        1260,
+        678
+      ],
+      "role": "奶牛猫解锁/武器横幅参考",
+      "runtime_target": "assets/sprites/ui/runtime/weapon_banner_cow_cat.9.png",
+      "godot_hint": "TextureRect 或 NinePatchRect 解锁提示",
+      "required": false
+    },
+    {
+      "id": "upgrade_icon_cat_swarm",
+      "file": "upgrade_icon_cat_swarm_ref.png",
+      "bbox": [
+        36,
+        701,
+        168,
+        837
+      ],
+      "role": "U01 猫猫连发图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_icon_cat_swarm.png",
+      "godot_hint": "TextureRect，放入升级卡主图标区",
+      "required": true
+    },
+    {
+      "id": "upgrade_icon_damage",
+      "file": "upgrade_icon_damage_ref.png",
+      "bbox": [
+        199,
+        701,
+        333,
+        837
+      ],
+      "role": "U02 猫爪变锋利图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_icon_damage.png",
+      "godot_hint": "TextureRect，放入升级卡主图标区",
+      "required": true
+    },
+    {
+      "id": "upgrade_icon_black_burst",
+      "file": "upgrade_icon_black_burst_ref.png",
+      "bbox": [
+        362,
+        701,
+        498,
+        837
+      ],
+      "role": "爆发/黑猫相关图标参考，可作攻击类视觉参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_icon_black_burst.png",
+      "godot_hint": "TextureRect，可用于攻击类升级或黑猫提示",
+      "required": false
+    },
+    {
+      "id": "upgrade_icon_player_speed",
+      "file": "upgrade_icon_player_speed_ref.png",
+      "bbox": [
+        519,
+        701,
+        652,
+        837
+      ],
+      "role": "U04 跑快一点图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/upgrade_icon_player_speed.png",
+      "godot_hint": "TextureRect，放入升级卡主图标区",
+      "required": true
+    },
+    {
+      "id": "weapon_icon_orange_cat",
+      "file": "weapon_icon_orange_cat_ref.png",
+      "bbox": [
+        689,
+        713,
+        823,
+        852
+      ],
+      "role": "橘猫武器槽图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/weapon_icon_orange_cat.png",
+      "godot_hint": "TextureRect，放入 HUD 已解锁猫图标槽",
+      "required": true
+    },
+    {
+      "id": "weapon_icon_black_cat",
+      "file": "weapon_icon_black_cat_ref.png",
+      "bbox": [
+        836,
+        713,
+        971,
+        852
+      ],
+      "role": "黑猫武器槽图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/weapon_icon_black_cat.png",
+      "godot_hint": "TextureRect，放入 HUD 已解锁猫图标槽",
+      "required": true
+    },
+    {
+      "id": "weapon_icon_cow_cat",
+      "file": "weapon_icon_cow_cat_ref.png",
+      "bbox": [
+        982,
+        713,
+        1117,
+        852
+      ],
+      "role": "奶牛猫武器槽图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/weapon_icon_cow_cat.png",
+      "godot_hint": "TextureRect，放入 HUD 已解锁猫图标槽",
+      "required": true
+    },
+    {
+      "id": "medal_orange_cat",
+      "file": "medal_orange_cat_ref.png",
+      "bbox": [
+        1156,
+        699,
+        1334,
+        872
+      ],
+      "role": "橘猫大型徽章/结算最常用猫参考",
+      "runtime_target": "assets/sprites/ui/runtime/medal_orange_cat.png",
+      "godot_hint": "TextureRect，结算或奖励展示",
+      "required": false
+    },
+    {
+      "id": "medal_cow_cat",
+      "file": "medal_cow_cat_ref.png",
+      "bbox": [
+        1346,
+        705,
+        1497,
+        864
+      ],
+      "role": "奶牛猫大型徽章/结算最常用猫参考",
+      "runtime_target": "assets/sprites/ui/runtime/medal_cow_cat.png",
+      "godot_hint": "TextureRect，结算或奖励展示",
+      "required": false
+    },
+    {
+      "id": "small_icon_orange_cat",
+      "file": "small_icon_orange_cat_ref.png",
+      "bbox": [
+        33,
+        853,
+        166,
+        994
+      ],
+      "role": "橘猫小圆图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/small_icon_orange_cat.png",
+      "godot_hint": "TextureRect，小尺寸武器槽或图标按钮",
+      "required": false
+    },
+    {
+      "id": "small_icon_black_cat",
+      "file": "small_icon_black_cat_ref.png",
+      "bbox": [
+        193,
+        853,
+        328,
+        994
+      ],
+      "role": "黑猫小圆图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/small_icon_black_cat.png",
+      "godot_hint": "TextureRect，小尺寸武器槽或图标按钮",
+      "required": false
+    },
+    {
+      "id": "small_icon_cow_cat",
+      "file": "small_icon_cow_cat_ref.png",
+      "bbox": [
+        353,
+        853,
+        487,
+        994
+      ],
+      "role": "奶牛猫小圆图标参考",
+      "runtime_target": "assets/sprites/ui/runtime/small_icon_cow_cat.png",
+      "godot_hint": "TextureRect，小尺寸武器槽或图标按钮",
+      "required": false
+    },
+    {
+      "id": "badge_black_cat",
+      "file": "badge_black_cat_ref.png",
+      "bbox": [
+        684,
+        860,
+        819,
+        992
+      ],
+      "role": "黑猫圆形徽章参考",
+      "runtime_target": "assets/sprites/ui/runtime/badge_black_cat.png",
+      "godot_hint": "TextureRect，解锁提示或结算徽章",
+      "required": false
+    },
+    {
+      "id": "badge_cow_cat",
+      "file": "badge_cow_cat_ref.png",
+      "bbox": [
+        835,
+        861,
+        966,
+        992
+      ],
+      "role": "奶牛猫圆形徽章参考",
+      "runtime_target": "assets/sprites/ui/runtime/badge_cow_cat.png",
+      "godot_hint": "TextureRect，解锁提示或结算徽章",
+      "required": false
+    }
+  ]
+}

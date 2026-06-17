@@ -1,0 +1,75 @@
+{
+  "file": "full_outdoor_map_painted_4096x2305.png",
+  "source": "../source/style_reference_full_map_painted.png",
+  "description": "清晰户外底图，全图正常亮度且不预烘焙暗角/角色光照；环境层和隔挡由 Godot 叠加",
+  "size": [
+    4096,
+    2305
+  ],
+  "player_start": [
+    2048,
+    1152
+  ],
+  "enemy_spawn_zones": [
+    {
+      "name": "northwest",
+      "center": [
+        520,
+        520
+      ],
+      "radius": 360
+    },
+    {
+      "name": "northeast",
+      "center": [
+        3576,
+        520
+      ],
+      "radius": 360
+    },
+    {
+      "name": "west",
+      "center": [
+        520,
+        1152
+      ],
+      "radius": 380
+    },
+    {
+      "name": "east",
+      "center": [
+        3576,
+        1152
+      ],
+      "radius": 380
+    },
+    {
+      "name": "southwest",
+      "center": [
+        760,
+        1785
+      ],
+      "radius": 420
+    },
+    {
+      "name": "southeast",
+      "center": [
+        3336,
+        1785
+      ],
+      "radius": 420
+    }
+  ],
+  "visual_boundaries": {
+    "left": 120,
+    "top": 120,
+    "right": 3976,
+    "bottom": 2185
+  },
+  "source_type": "clean_continuous_hand_painted_base_background",
+  "tile_size": null,
+  "grid_size": null,
+  "source_atlases": [
+    "environment_assets_painted.png"
+  ]
+}

@@ -1,0 +1,291 @@
+{
+  "generated_at": "2026-06-10",
+  "source": "combat_assets_painted.png",
+  "style": "directional Godot supplements derived from the painted combat sheet and corrected directional cow sources",
+  "row_order": [
+    "e",
+    "se",
+    "s",
+    "sw",
+    "w",
+    "nw",
+    "n",
+    "ne"
+  ],
+  "notes": [
+    "Each file has 8 direction rows and 4 frame columns.",
+    "Huazi uses hand-painted front, side, diagonal and back source poses plus mirroring.",
+    "The normal cow uses a corrected 8-direction supplied sheet with stabilized frame anchors so it reads as an ordinary dairy cow instead of a rotated source-frame artifact.",
+    "The tank cow uses a corrected 8-direction source derived from the normal cow poses, enlarged and re-outlined so it reads as a heavier enemy without rotated side-view artifacts.",
+    "Remaining side-view cow enemies use mirroring for left/right and limited rotation for diagonal/cardinal rows to avoid upside-down frames.",
+    "Orange and black cat attacks are full-cat pounce sprites mirrored for left-facing directions so the body stays upright.",
+    "Milk and spin projectiles use mirroring for left-facing directions so perspective details stay upright.",
+    "The ranged cow sheet contains only the cow body. Milk projectiles must be spawned separately with milk_drop_8dir_192x128.png."
+  ],
+  "ranged_cow_projectile": {
+    "projectile_sheet": "milk_drop_8dir_192x128.png",
+    "projectile_spriteframes": "milk_drop_8dir_192x128.spriteframes.tres",
+    "muzzle_offsets_from_cell_center_px": {
+      "e": [
+        72,
+        8
+      ],
+      "se": [
+        52,
+        44
+      ],
+      "s": [
+        8,
+        60
+      ],
+      "sw": [
+        -52,
+        44
+      ],
+      "w": [
+        -72,
+        8
+      ],
+      "nw": [
+        -52,
+        -38
+      ],
+      "n": [
+        8,
+        -58
+      ],
+      "ne": [
+        52,
+        -38
+      ]
+    }
+  },
+  "assets": [
+    {
+      "file": "huazi_8dir_192x192.png",
+      "spriteframes_resource": "huazi_8dir_192x192.spriteframes.tres",
+      "frame_size": [
+        192,
+        192
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "animations": [
+        "walk_*",
+        "idle_*"
+      ]
+    },
+    {
+      "file": "cow_normal_8dir_256x192.png",
+      "source": "../source/cow_normal_8dir_256x192_redesign.png",
+      "spriteframes_resource": "cow_normal_8dir_256x192.spriteframes.tres",
+      "frame_size": [
+        256,
+        192
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "anchor_model": "cell_center_bbox_stabilized",
+      "animations": [
+        "walk_*"
+      ]
+    },
+    {
+      "file": "cow_calf_8dir_192x144.png",
+      "spriteframes_resource": "cow_calf_8dir_192x144.spriteframes.tres",
+      "frame_size": [
+        192,
+        144
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "e",
+      "orientation_model": "side_view_mirrored",
+      "animations": [
+        "run_*"
+      ]
+    },
+    {
+      "file": "cow_tank_8dir_320x224.png",
+      "source": "../source/cow_tank_8dir_320x224_redesign.png",
+      "spriteframes_resource": "cow_tank_8dir_320x224.spriteframes.tres",
+      "frame_size": [
+        320,
+        224
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "anchor_model": "cell_center_bbox_stabilized",
+      "animations": [
+        "walk_*"
+      ]
+    },
+    {
+      "file": "cow_ranged_8dir_288x192.png",
+      "spriteframes_resource": "cow_ranged_8dir_288x192.spriteframes.tres",
+      "frame_size": [
+        288,
+        192
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "w",
+      "orientation_model": "side_view_mirrored",
+      "animations": [
+        "walk_*"
+      ]
+    },
+    {
+      "file": "orange_cat_projectile_8dir_192x128.png",
+      "source": "../source/orange_cat_pounce_source.png",
+      "spriteframes_resource": "orange_cat_projectile_8dir_192x128.spriteframes.tres",
+      "frame_size": [
+        192,
+        128
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "e",
+      "orientation_model": "mirrored_side_view_cat_pounce",
+      "animations": [
+        "fly_*"
+      ]
+    },
+    {
+      "file": "black_cat_projectile_8dir_192x128.png",
+      "source": "../source/black_cat_pounce_source.png",
+      "spriteframes_resource": "black_cat_projectile_8dir_192x128.spriteframes.tres",
+      "frame_size": [
+        192,
+        128
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "e",
+      "orientation_model": "mirrored_side_view_cat_pounce",
+      "animations": [
+        "fly_*"
+      ]
+    },
+    {
+      "file": "cow_cat_spin_8dir_192x128.png",
+      "spriteframes_resource": "cow_cat_spin_8dir_192x128.spriteframes.tres",
+      "frame_size": [
+        192,
+        128
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "e",
+      "orientation_model": "side_view_mirrored",
+      "animations": [
+        "spin_*"
+      ]
+    },
+    {
+      "file": "milk_drop_8dir_192x128.png",
+      "spriteframes_resource": "milk_drop_8dir_192x128.spriteframes.tres",
+      "frame_size": [
+        192,
+        128
+      ],
+      "columns": 4,
+      "rows": 8,
+      "directions": [
+        "e",
+        "se",
+        "s",
+        "sw",
+        "w",
+        "nw",
+        "n",
+        "ne"
+      ],
+      "source_direction": "w",
+      "orientation_model": "side_view_mirrored",
+      "animations": [
+        "fly_*"
+      ]
+    }
+  ]
+}

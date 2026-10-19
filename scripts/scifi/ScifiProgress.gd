@@ -124,7 +124,7 @@ func settle(run_id:String,reward:Dictionary) -> bool:
 	if data.settled_ids.has(run_id):
 		return true
 	if not pending.is_empty() and pending.run_id != run_id:
-		error = "上一局尚待保存，請先重試。"
+		error = "上一局尚待儲存，請先重試。"
 		return false
 	pending = {"version":1,"run_id":run_id,"reward":reward.duplicate(true)}
 	return retry()
@@ -145,7 +145,7 @@ func retry() -> bool:
 		return true
 	DirAccess.make_dir_recursive_absolute(root)
 	if fault == "journal_write":
-		error = "無法保存待結算記錄；請保留視窗並重試。"
+		error = "無法儲存待結算記錄；請保留視窗並重試。"
 		return false
 	if not _write(journal_path + ".tmp",pending):
 		return false

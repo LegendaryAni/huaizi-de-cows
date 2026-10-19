@@ -1,7 +1,7 @@
-# 运行时 UI 资产目录
+# 執行時 UI 資產目錄
 
-这里放 Godot 代码实际引用的 UI 资产。
+這裡放 Godot 程式碼實際引用的 UI 資產。
 
-当前目录先保留为目标目录；如果实现需要 HUD、升级卡、结算面板、暂停面板或提示横幅，必须先从 `../reference_crops/` 生成适合运行尺寸的 PNG、`.9.png` 或 `.tres` 放到这里，再由代码引用。
+當前目錄先保留為目標目錄；如果實現需要 HUD、升級卡、結算面板、暫停面板或提示橫幅，必須先從 `../reference_crops/` 生成適合執行尺寸的 PNG、`.9.png` 或 `.tres` 放到這裡，再由程式碼引用。
 
-不要把 `../ui_assets_painted.png` 或 `../reference_crops/*_ref.png` 直接当作最终控件接入，除非 spec 或用户明确把某个 crop 提升为运行时资产。
+不要把 `../ui_assets_painted.png` 或 `../reference_crops/*_ref.png` 直接當作最終控制元件接入，除非 spec 或使用者明確把某個 crop 提升為執行時資產。

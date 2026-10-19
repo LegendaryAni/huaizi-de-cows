@@ -95,7 +95,7 @@ static func _write_scores(scores: Array, path: String) -> void:
 		DirAccess.make_dir_recursive_absolute(global_dir)
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
-		push_warning("无法写入成绩：%s" % path)
+		push_warning("無法寫入成績：%s" % path)
 		return
 	file.store_string(JSON.stringify({
 		"version": 1,

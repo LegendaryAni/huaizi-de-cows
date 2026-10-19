@@ -190,7 +190,7 @@ func _rebuild() -> void:
 	# Short machine identification, no generic stand-alone hero status card.
 	_strip(self,Vector2(1478,697),Vector2(65,2),AMBER)
 	_label(self,"壁壘  /  1103",Vector2(1463,706),Vector2(405,48),30,WHITE)
-	_label(self,"重裝型 · 前線機體",Vector2(1465,755),Vector2(405,31),18,DUST)
+	_label(self,"重灌型 · 前線機體",Vector2(1465,755),Vector2(405,31),18,DUST)
 
 	# One integrated footer, made of real battle terminology instead of faux news.
 	_strip(self,Vector2(0,917),Vector2(1920,163),Color("0b1318cc"))
@@ -209,4 +209,4 @@ func _rebuild() -> void:
 	if not progress.get("pending",{}).is_empty():
 		var save_button := _interactive("retry_save",Vector2(1026,839),Vector2(320,58),2)
 		save_button.set_meta("home_x",1026.0)
-		_label(save_button,"重試待保存結算",Vector2(25,7),Vector2(285,44),23,AMBER)
+		_label(save_button,"重試待儲存結算",Vector2(25,7),Vector2(285,44),23,AMBER)

@@ -645,7 +645,7 @@ func retry_save() -> bool:
 
 func return_to_loadout() -> bool:
 	if not progress.pending.is_empty():
-		if ui != null: ui.show_notice("本局收益尚未保存，請先重試保存。" + progress.error)
+		if ui != null: ui.show_notice("本局收益尚未儲存，請先重試儲存。" + progress.error)
 		return false
 	if state in ["playing","upgrade","paused"]: return false
 	clear_arena()
@@ -655,7 +655,7 @@ func return_to_loadout() -> bool:
 
 func _request_menu() -> void:
 	if not progress.pending.is_empty():
-		if ui != null: ui.show_notice("收益待保存，請先重試，避免遺失。" + progress.error)
+		if ui != null: ui.show_notice("收益待儲存，請先重試，避免遺失。" + progress.error)
 		return
 	if state in ["playing","upgrade","paused"]:
 		var old = state
@@ -673,7 +673,7 @@ func _request_menu() -> void:
 
 func _request_quit() -> void:
 	if not progress.pending.is_empty():
-		if ui != null: ui.show_notice("收益保存失敗，請保留視窗並重試。"+progress.error)
+		if ui != null: ui.show_notice("收益儲存失敗，請保留視窗並重試。"+progress.error)
 		return
 	if state in ["playing","upgrade","paused"] and ui != null:
 		confirmation_previous = state

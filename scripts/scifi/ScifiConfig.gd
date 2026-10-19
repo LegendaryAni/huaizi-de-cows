@@ -7,7 +7,7 @@ const PLAYER = {"hp":120.0,"speed":340.0,"radius":30.0,"iframe":0.65}
 const CAPS = {"enemies":180,"projectiles":160,"enemy_projectiles":100,"xp":400,"vfx":80}
 const WEAPONS = {
 	"rail":{"name":"磁軌步槍","evolution":"穿甲磁軌","damage":28.0,"cooldown":0.55,"mod":"firecontrol","speed":900.0,"life":1.3,"hits":1,"evolved_hits":4},
-	"grenade":{"name":"智能榴彈","evolution":"集束榴彈","damage":42.0,"cooldown":1.65,"mod":"blast","speed":450.0,"life":1.5,"radius":140.0,"children":6,"child_damage":0.35,"child_offset":48.0,"child_speed":650.0,"child_life":0.6},
+	"grenade":{"name":"智慧榴彈","evolution":"集束榴彈","damage":42.0,"cooldown":1.65,"mod":"blast","speed":450.0,"life":1.5,"radius":140.0,"children":6,"child_damage":0.35,"child_offset":48.0,"child_speed":650.0,"child_life":0.6},
 	"blade":{"name":"迴旋刃","evolution":"雙重迴旋刃","damage":22.0,"cooldown":1.1,"mod":"propulsion","speed":520.0,"life":1.5,"range":330.0,"curve_samples":64,"curve_width":0.08,"repeat_cd":0.35,"hits":6},
 	"arc":{"name":"電弧放射器","evolution":"連鎖電網","damage":20.0,"cooldown":1.0,"mod":"capacitor","range":620.0,"jump":220.0,"chains":3,"evolved_chains":3},
 	"thermal":{"name":"熱能噴射器","evolution":"熔穿噴流","damage":12.0,"cooldown":0.25,"mod":"heat","range":320.0,"evolved_range":500.0,"angle":55.0,"duration":0.35,"targets":3},

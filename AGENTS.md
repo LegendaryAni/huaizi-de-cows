@@ -1,50 +1,50 @@
 # AGENTS.md
 
-## 目标
+## 目標
 
-用Godot 4.x + GDScript 开发2D 小游戏《花子的奶牛关》。
+用Godot 4.x + GDScript 開發2D 小遊戲《花子的奶牛關》。
 
-## 仓库结构
+## 倉庫結構
 
-- `spec/`：当前版本目标、产品范围和交付规格。
-- `assets/`：游戏资源文件。说明见`assets/README.md`
-- `docs/`: 记录和项目有关的文档。如果有新增的文档，必须更新 `docs/index.md`
-- `docs/experience-library/`：开发经验，已解决问题、复发规则和开发经验。
-- `scenes/`：Godot 场景文件。
-- `scripts/`：GDScript 游戏逻辑、调试入口和测试脚本。
+- `spec/`：當前版本目標、產品範圍和交付規格。
+- `assets/`：遊戲資源檔案。說明見`assets/README.md`
+- `docs/`: 記錄和專案有關的檔案。如果有新增的檔案，必須更新 `docs/index.md`
+- `docs/experience-library/`：開發經驗，已解決問題、復發規則和開發經驗。
+- `scenes/`：Godot 場景檔案。
+- `scripts/`：GDScript 遊戲邏輯、除錯入口和測試指令碼。
 
-## 实现约束
+## 實現約束
 
-- 不替换 Godot 作为游戏主体。
-- 外部脚本只用于资源处理、检查和辅助验证，不承载核心游戏逻辑
-- 实现视觉可读性时，优先使用正式美术、动画、粒子、短暂反馈和运行时 UI 资产；不要用常驻几何圈、矩形框、文字标签或辅助线替代美术表达。
-- 如果为了测试需要显示碰撞、攻击范围、激活范围、敌人类型、地图边界、刷怪区、坐标或对象池信息，必须做成默认关闭的调试辅助层，并通过显式调试参数或验证入口开启。
-- 正常运行、正式视觉验收截图和交付说明默认不显示调试辅助层；带调试辅助层的截图必须在文件名或报告里明确标注。
+- 不替換 Godot 作為遊戲主體。
+- 外部指令碼只用於資源處理、檢查和輔助驗證，不承載核心遊戲邏輯
+- 實現視覺可讀性時，優先使用正式美術、動畫、粒子、短暫反饋和執行時 UI 資產；不要用常駐幾何圈、矩形框、文字標籤或輔助線替代美術表達。
+- 如果為了測試需要顯示碰撞、攻擊範圍、啟用範圍、敵人型別、地圖邊界、刷怪區、座標或物件池資訊，必須做成預設關閉的除錯輔助層，並透過顯式除錯引數或驗證入口開啟。
+- 正常執行、正式視覺驗收截圖和交付說明預設不顯示除錯輔助層；帶除錯輔助層的截圖必須在檔名或報告裡明確標註。
 
-## 子 Agent 协作
+## 子 Agent 協作
 
-- 子 Agent 使用规则见 `docs/subagent-guide.md`；写代码的 AI 和挑毛病的 AI 分离规则见 `docs/builder-reviewer-separation.md`。
-- 本项目默认使用 `.codex/agents/` 下的固定角色：
-  - `builder`：根据主 Agent 指定范围写游戏实现，可改代码、场景和必要资源，不改验收标准，不做复核。
-  - `test-author`：根据验收标准写或维护测试，不写实现代码。
-  - `acceptance-checker`：只核对每条验收标准是否都有真实测试覆盖，不写代码、不写测试。
-  - `visual-reviewer`：对照画面基准和真实运行截图做只读视觉验收，不写代码、不修 UI。
-  - `reviewer`：开发完成后只读复核，先核对验收标准，再看代码质量。
-- 同一轮任务里，写实现的 Agent 不能担任 `visual-reviewer` 或 `reviewer`；写实现的 Agent 也不能为了让测试通过而降低验收标准或测试要求。
-- 涉及 HUD、升级弹窗、结算面板、VFX、场景观感或画面基准的任务，测试通过后必须先交给 `visual-reviewer` 只读复核；视觉复核通过后再交给 `reviewer` 做综合复核。
-- 派发子 Agent 前，主 Agent 必须给出 spec、验收标准、测试入口、允许读写范围和返回要求。
-- 最终结论由主 Agent 负责，但不能只照搬子 Agent 的结论；必须统一复核改动并运行必要验证。
+- 子 Agent 使用規則見 `docs/subagent-guide.md`；寫程式碼的 AI 和挑毛病的 AI 分離規則見 `docs/builder-reviewer-separation.md`。
+- 本專案預設使用 `.codex/agents/` 下的固定角色：
+  - `builder`：根據主 Agent 指定範圍寫遊戲實現，可改程式碼、場景和必要資源，不改驗收標準，不做複核。
+  - `test-author`：根據驗收標準寫或維護測試，不寫實現程式碼。
+  - `acceptance-checker`：只核對每條驗收標準是否都有真實測試覆蓋，不寫程式碼、不寫測試。
+  - `visual-reviewer`：對照畫面基準和真實執行截圖做只讀視覺驗收，不寫程式碼、不修 UI。
+  - `reviewer`：開發完成後只讀複核，先核對驗收標準，再看程式碼質量。
+- 同一輪任務裡，寫實現的 Agent 不能擔任 `visual-reviewer` 或 `reviewer`；寫實現的 Agent 也不能為了讓測試透過而降低驗收標準或測試要求。
+- 涉及 HUD、升級彈窗、結算面板、VFX、場景觀感或畫面基準的任務，測試透過後必須先交給 `visual-reviewer` 只讀複核；視覺複核透過後再交給 `reviewer` 做綜合複核。
+- 派發子 Agent 前，主 Agent 必須給出 spec、驗收標準、測試入口、允許讀寫範圍和返回要求。
+- 最終結論由主 Agent 負責，但不能只照搬子 Agent 的結論；必須統一複核改動並執行必要驗證。
 
-## 必须严格遵守的开发流程
+## 必須嚴格遵守的開發流程
 
-- step 1: 主 Agent 先读取 `docs/development/acceptance-standard.md`，并把它作为本项目当前验收标准；验收标准是外部合格线，AI 不得自行新增、改写或降低。如果发现标准缺失、冲突或有待定项，必须先停下来请用户确认。
-- step 2: 由 `test-author` 根据 `docs/development/acceptance-standard.md` 设计详细测试用例，同样输出到 `docs/` 目录。
-- step 3: 由 `acceptance-checker` 核对每条验收标准是否都有真实测试覆盖；如果没有覆盖完整，回到 step 2。
-- step 4: 设计和开发测试所必须依赖的工具，建立充足的观测手段，包括但不限于日志、测试接口、截图、帧序列或可复现运行步骤。
-- step 5: 根据 spec 开发游戏实现；可由 `builder` 承担实现任务。实现 Agent 不修改验收标准和测试口径，除非用户明确要求。
-- step 6: 运行测试和检查。如果测试不通过，汇报失败，把失败经验更新到 `docs/experience-library/`，修复后重新回到 step 6。
-- step 7: 如果改动涉及 HUD、升级弹窗、结算面板、VFX、场景观感或画面基准，测试通过后必须交给独立 `visual-reviewer` 只读复核；`visual-reviewer` 与写实现的 Agent 不是同一个上下文。
-- step 8: 如果 `visual-reviewer` 不通过，汇报失败并修复，必要时更新 `docs/experience-library/`，然后重新回到 step 6。
-- step 9: 测试通过且必要的视觉复核通过后，必须交给独立 `reviewer` 复核；`reviewer` 与写实现的 Agent 不是同一个上下文，并且默认只读。
-- step 10: 如果 `reviewer` 不通过，汇报失败并修复，必要时更新 `docs/experience-library/`，然后重新回到 step 6。
-- step 11: 只有测试通过、必要的 `visual-reviewer` 通过、`reviewer` 通过、主 Agent 复核通过，才视为开发完成。
+- step 1: 主 Agent 先讀取 `docs/development/acceptance-standard.md`，並把它作為本專案當前驗收標準；驗收標準是外部合格線，AI 不得自行新增、改寫或降低。如果發現標準缺失、衝突或有待定項，必須先停下來請使用者確認。
+- step 2: 由 `test-author` 根據 `docs/development/acceptance-standard.md` 設計詳細測試用例，同樣輸出到 `docs/` 目錄。
+- step 3: 由 `acceptance-checker` 核對每條驗收標準是否都有真實測試覆蓋；如果沒有覆蓋完整，回到 step 2。
+- step 4: 設計和開發測試所必須依賴的工具，建立充足的觀測手段，包括但不限於日誌、測試介面、截圖、幀序列或可復現執行步驟。
+- step 5: 根據 spec 開發遊戲實現；可由 `builder` 承擔實現任務。實現 Agent 不修改驗收標準和測試口徑，除非使用者明確要求。
+- step 6: 執行測試和檢查。如果測試不透過，彙報失敗，把失敗經驗更新到 `docs/experience-library/`，修復後重新回到 step 6。
+- step 7: 如果改動涉及 HUD、升級彈窗、結算面板、VFX、場景觀感或畫面基準，測試透過後必須交給獨立 `visual-reviewer` 只讀複核；`visual-reviewer` 與寫實現的 Agent 不是同一個上下文。
+- step 8: 如果 `visual-reviewer` 不透過，彙報失敗並修復，必要時更新 `docs/experience-library/`，然後重新回到 step 6。
+- step 9: 測試透過且必要的視覺複核透過後，必須交給獨立 `reviewer` 複核；`reviewer` 與寫實現的 Agent 不是同一個上下文，並且預設只讀。
+- step 10: 如果 `reviewer` 不透過，彙報失敗並修復，必要時更新 `docs/experience-library/`，然後重新回到 step 6。
+- step 11: 只有測試透過、必要的 `visual-reviewer` 透過、`reviewer` 透過、主 Agent 複核透過，才視為開發完成。

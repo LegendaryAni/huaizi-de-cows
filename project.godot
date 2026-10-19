@@ -17,10 +17,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="傳奇倖存者 | Legendary Survivor"
 run/main_scene="res://scenes/Main.tscn"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="Godot/app_userdata/花子的奶牛关"
+config/custom_user_dir_name="Godot/app_userdata/花子的奶牛關"
 config/features=PackedStringArray("4.7")
 config/icon="res://assets/sprites/scifi/units/1103/portrait.png"
-config/custom_user_dir_name.linux="godot/app_userdata/花子的奶牛关"
+config/custom_user_dir_name.linux="godot/app_userdata/花子的奶牛關"
 
 [display]
 

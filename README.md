@@ -2,7 +2,7 @@
 
 **科幻機甲生存動作遊戲 / Sci-Fi Mecha Survival Action**
 
-《傳奇倖存者》是以 Godot 4.7.2 和 GDScript 開發的俯視角生存動作遊戲。駕駛重裝機甲「壁壘 1103」，探索工業廢墟，搭配武器、主動技能與局內改裝，抵禦敵軍並迎戰首領。
+《傳奇倖存者》是以 Godot 4.7.2 和 GDScript 開發的俯視角生存動作遊戲。駕駛重灌機甲「壁壘 1103」，探索工業廢墟，搭配武器、主動技能與局內改裝，抵禦敵軍並迎戰首領。
 
 Legendary Survivor is a top-down mecha survival action game made with Godot 4.7.2 and GDScript. Pilot Bulwark 1103 through industrial ruins, combine weapons and active abilities, and survive escalating enemy waves.
 
@@ -63,7 +63,7 @@ The current build includes mecha combat, six weapons, four skills, enemy AI, col
 - **主場景 / Main Scene:** `scenes/Main.tscn`
 - **v3 機甲動畫 / Mech Rig:** `scripts/scifi/MechIdleController.gd`
 - **玩法規格 / Gameplay Specification:** [v0.2 科幻玩法](spec/20261017_LegendarySurvivor_Scifi_v0.2.md)
-- **開發文件 / Documentation:** [文件索引 / Documentation Index](docs/index.md)
+- **開發檔案 / Documentation:** [檔案索引 / Documentation Index](docs/index.md)
 
 ## 測試 / Testing
 
@@ -71,7 +71,7 @@ The current build includes mecha combat, six weapons, four skills, enemy AI, col
 ./tools/run_scifi_tests.ps1 -Scenario all -Headless -GodotPath "<Godot Console Executable>"
 ```
 
-測試涵蓋固定重播及功能回歸。Headless 測試不代表畫面驗收通過；SF-16／SF-17 仍有待驗項目。
+測試涵蓋固定重播及功能回歸。Headless 測試不代表畫面驗收透過；SF-16／SF-17 仍有待驗專案。
 
 Tests include deterministic replay and functional regression. Headless tests do not replace visual acceptance; SF-16 and SF-17 remain pending.
 

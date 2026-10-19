@@ -1,115 +1,115 @@
-# 写代码的 AI 与挑毛病的 AI 要分开
+# 寫程式碼的 AI 與挑毛病的 AI 要分開
 
-## 这份文档要解决什么
+## 這份檔案要解決什麼
 
-在本项目上一轮开发里，验收标准、测试用例、检查脚本和"判定通过"全都出自同一个 AI——也就是写游戏代码的那一个。结果是它给自己定了一条最容易过的线，验收自然粗糙。
+在本專案上一輪開發裡，驗收標準、測試用例、檢查指令碼和"判定透過"全都出自同一個 AI——也就是寫遊戲程式碼的那一個。結果是它給自己定了一條最容易過的線，驗收自然粗糙。
 
-要根治这件事，只靠"换个更聪明的模型"或"让它再认真一点"没用。真正起作用的是两件事配套：
+要根治這件事，只靠"換個更聰明的模型"或"讓它再認真一點"沒用。真正起作用的是兩件事配套：
 
-1. **角色分开**：写代码的 AI，不许同时给自己定标准、写测试、审自己、判自己过。
-2. **标准钉在外面**：合格线由人维护（见 [`docs/development/acceptance-standard.md`](./development/acceptance-standard.md)），写代码的 AI 改不动，审查时也不能降低它。
+1. **角色分開**：寫程式碼的 AI，不許同時給自己定標準、寫測試、審自己、判自己過。
+2. **標準釘在外面**：合格線由人維護（見 [`docs/development/acceptance-standard.md`](./development/acceptance-standard.md)），寫程式碼的 AI 改不動，審查時也不能降低它。
 
-本文档讲第 1 件在 Codex 框架下具体怎么落地，并说明它为什么有效。
+本檔案講第 1 件在 Codex 框架下具體怎麼落地，並說明它為什麼有效。
 
-## 原理：为什么"分一个 AI"还不够
+## 原理：為什麼"分一個 AI"還不夠
 
-参考开源框架 [superpowers](https://github.com/obra/superpowers) 的做法，"写代码的"和"挑毛病的"分开之所以有效，是三件事叠在一起，缺一不可：
+參考開源框架 [superpowers](https://github.com/obra/superpowers) 的做法，"寫程式碼的"和"挑毛病的"分開之所以有效，是三件事疊在一起，缺一不可：
 
-1. **审查的那个是全新的**——不带写代码那个的记忆，所以没有"这是我写的、应该没问题"的自我袒护，也不会被前面的实现思路带着走。
-2. **立场是对立的**——它的任务被定义成"挑错、找没做到的地方"，不是"确认没问题"。
-3. **标准是事先写好、独立的**——审查第一步就是"对照规范逐条核对"，规范是提前定好的，不是临场编的。
+1. **審查的那個是全新的**——不帶寫程式碼那個的記憶，所以沒有"這是我寫的、應該沒問題"的自我袒護，也不會被前面的實現思路帶著走。
+2. **立場是對立的**——它的任務被定義成"挑錯、找沒做到的地方"，不是"確認沒問題"。
+3. **標準是事先寫好、獨立的**——審查第一步就是"對照規範逐條核對"，規範是提前定好的，不是臨場編的。
 
-第 3 件就是本项目那份验收标准。换句话说：**角色分离要能生效，必须有一份独立标准喂给审查的 AI。两件事是配套的，单独做任何一件都会落空。**
+第 3 件就是本專案那份驗收標準。換句話說：**角色分離要能生效，必須有一份獨立標準餵給審查的 AI。兩件事是配套的，單獨做任何一件都會落空。**
 
-只开两个 AI、却让挑毛病那个自己临场决定什么算合格，等于没分。
+只開兩個 AI、卻讓挑毛病那個自己臨場決定什麼算合格，等於沒分。
 
-## superpowers 是怎么做的
+## superpowers 是怎麼做的
 
-superpowers 是一套跨平台（Claude Code、Codex、Gemini 等都能用）的流程框架，本质是一堆 markdown 技能文件，强制 AI 走固定的工程流程。关于角色分离，它靠两个技能：
+superpowers 是一套跨平臺（Claude Code、Codex、Gemini 等都能用）的流程框架，本質是一堆 markdown 技能檔案，強制 AI 走固定的工程流程。關於角色分離，它靠兩個技能：
 
-- **subagent-driven-development**：计划里每个任务，派一个全新的 subagent 去做，原来那个 AI 退到协调者位置。
-- **requesting-code-review**：任务做完后，由另一个全新的 AI 审查，分两步——先查**是否符合规范**，再查**代码质量**；严重问题直接拦住，不许继续。
+- **subagent-driven-development**：計劃裡每個任務，派一個全新的 subagent 去做，原來那個 AI 退到協調者位置。
+- **requesting-code-review**：任務做完後，由另一個全新的 AI 審查，分兩步——先查**是否符合規範**，再查**程式碼質量**；嚴重問題直接攔住，不許繼續。
 
-配合它还强制 TDD（先写测试、跑失败、再最小实现）、用 git worktree 隔离、把计划拆到 2～5 分钟一个任务。
+配合它還強制 TDD（先寫測試、跑失敗、再最小實現）、用 git worktree 隔離、把計劃拆到 2～5 分鐘一個任務。
 
-## Codex 框架下的三条落地路线
+## Codex 框架下的三條落地路線
 
-Codex 自带两个机制，不装任何东西就能用。从省事到完整排列：
+Codex 自帶兩個機制，不裝任何東西就能用。從省事到完整排列：
 
-### 路线 A：直接用 `/review`（现在就能用）
+### 路線 A：直接用 `/review`（現在就能用）
 
-Codex CLI 里输入 `/review`，它会**另起一个专门的审查 AI**，读你选的改动，只报问题、**完全不碰工作树**。菜单四个选项：对比分支、审查未提交改动、审查某个提交、**自定义审查指令**。
+Codex CLI 裡輸入 `/review`，它會**另起一個專門的審查 AI**，讀你選的改動，只報問題、**完全不碰工作樹**。選單四個選項：對比分支、審查未提交改動、審查某個提交、**自定義審查指令**。
 
-对本项目最有用的是"自定义审查指令"，把它指向那份验收标准：
+對本專案最有用的是"自定義審查指令"，把它指向那份驗收標準：
 
 ```
-对照 docs/development/acceptance-standard.md 逐条核对当前改动。
-默认立场是“不通过”：每条标准必须有证据证明做到了，否则记为未通过。
-按严重程度排序报告，严重问题必须拦住合入。
+對照 docs/development/acceptance-standard.md 逐條核對當前改動。
+預設立場是“不透過”：每條標準必須有證據證明做到了，否則記為未透過。
+按嚴重程度排序報告，嚴重問題必須攔住合入。
 ```
 
-这一步就实现了"挑毛病的是另一个 AI，而且照着独立标准挑"。还能在配置里用 `review_model` 给审查换一个模型。
+這一步就實現了"挑毛病的是另一個 AI，而且照著獨立標準挑"。還能在配置裡用 `review_model` 給審查換一個模型。
 
-### 路线 B：固定一个 reviewer 角色（可复用、更稳定）
+### 路線 B：固定一個 reviewer 角色（可複用、更穩定）
 
-在项目里建 `.codex/agents/reviewer.toml`，把审查 AI 的职责写死，每次都一致：
+在專案裡建 `.codex/agents/reviewer.toml`，把審查 AI 的職責寫死，每次都一致：
 
 ```toml
 # .codex/agents/reviewer.toml
 name = "reviewer"
-description = "对照验收标准挑错的独立审查 agent"
-model = "gpt-5.4"              # 可与写代码那个用不同模型或档位
+description = "對照驗收標準挑錯的獨立審查 agent"
+model = "gpt-5.4"              # 可與寫程式碼那個用不同模型或檔位
 model_reasoning_effort = "high"
-sandbox_mode = "read-only"     # 只读，碰不到代码
+sandbox_mode = "read-only"     # 只讀，碰不到程式碼
 developer_instructions = """
-你的职责是挑错，不是夸。
-对照 docs/development/acceptance-standard.md 逐条核对当前改动。
-默认立场是“不通过”：每条标准必须有证据，否则记为未通过。
-按严重程度排序输出，严重问题必须拦住合入。不修改任何文件。
+你的職責是挑錯，不是誇。
+對照 docs/development/acceptance-standard.md 逐條核對當前改動。
+預設立場是“不透過”：每條標準必須有證據，否則記為未透過。
+按嚴重程度排序輸出，嚴重問題必須攔住合入。不修改任何檔案。
 """
 ```
 
-（模型名按实际在用的填。）同样的办法，可以再建更多固定角色，把"写实现"、"写测试"、"核对覆盖率"和"视觉校对"都拆开：
+（模型名按實際在用的填。）同樣的辦法，可以再建更多固定角色，把"寫實現"、"寫測試"、"核對覆蓋率"和"視覺校對"都拆開：
 
-- `builder`：只按主 Agent 指定范围写实现，不改验收标准，不做复核。
-- `test-author`：照验收标准生成测试用例，只写测试。
-- `acceptance-checker`：只核对"每条标准是否都有测试在管"，不写代码也不写测试。
-- `visual-reviewer`：只读对照画面基准和真实运行截图，不写代码、不修 UI。
+- `builder`：只按主 Agent 指定範圍寫實現，不改驗收標準，不做複核。
+- `test-author`：照驗收標準生成測試用例，只寫測試。
+- `acceptance-checker`：只核對"每條標準是否都有測試在管"，不寫程式碼也不寫測試。
+- `visual-reviewer`：只讀對照畫面基準和真實執行截圖，不寫程式碼、不修 UI。
 
-Codex 的 subagent 支持每个角色用不同模型、不同推理档位、不同读写权限。自定义 agent 文件放在 `~/.codex/agents/`（全局）或 `.codex/agents/`（项目内），主要字段：
+Codex 的 subagent 支援每個角色用不同模型、不同推理檔位、不同讀寫許可權。自定義 agent 檔案放在 `~/.codex/agents/`（全域性）或 `.codex/agents/`（專案內），主要欄位：
 
-| 字段 | 作用 |
+| 欄位 | 作用 |
 | --- | --- |
 | `name` | 角色名 |
-| `description` | 用途说明 |
-| `developer_instructions` | 角色的核心职责指令 |
-| `model` | 指定模型（可与主 AI 不同） |
-| `model_reasoning_effort` | 推理档位 `low/medium/high` |
+| `description` | 用途說明 |
+| `developer_instructions` | 角色的核心職責指令 |
+| `model` | 指定模型（可與主 AI 不同） |
+| `model_reasoning_effort` | 推理檔位 `low/medium/high` |
 | `sandbox_mode` | `read-only` 或 `workspace-write` |
 
-并发和深度在主 `config.toml` 的 `[agents]` 段控制（`max_threads`、`max_depth`、`job_max_runtime_seconds`）。
+併發和深度在主 `config.toml` 的 `[agents]` 段控制（`max_threads`、`max_depth`、`job_max_runtime_seconds`）。
 
-另外 Codex 有 **auto-review**：AI 要做越界操作（改文件、跑命令）时，由一个独立 reviewer 决定批不批，而不是每次都问人，可进一步降低盯着它的成本。
+另外 Codex 有 **auto-review**：AI 要做越界操作（改檔案、跑命令）時，由一個獨立 reviewer 決定批不批，而不是每次都問人，可進一步降低盯著它的成本。
 
-### 路线 C：直接上 superpowers（要整套流程时）
+### 路線 C：直接上 superpowers（要整套流程時）
 
-想要完整的 brainstorm → 计划 → 每任务派新 AI 做 → 两阶段审查 → 收尾这一整套，在 Codex CLI 里用 `/plugins` 装 superpowers。注意：**它给的是通用工程流程，不含本游戏的验收标准**——标准那块仍要用本项目那份文档喂给它的审查环节。
+想要完整的 brainstorm → 計劃 → 每任務派新 AI 做 → 兩階段審查 → 收尾這一整套，在 Codex CLI 裡用 `/plugins` 裝 superpowers。注意：**它給的是通用工程流程，不含本遊戲的驗收標準**——標準那塊仍要用本專案那份檔案餵給它的審查環節。
 
-## 一个要说清楚的点
+## 一個要說清楚的點
 
-Codex 的"分离"分的是**记忆和立场**，底座可能还是同一个模型。这已经够用——关键是全新的上下文、对立的立场、独立的标准，不是非得换一家模型。要更彻底，就在 `reviewer.toml` 里给审查角色配一个和写代码那个不同的 model，或更高的推理档位，独立性更强。
+Codex 的"分離"分的是**記憶和立場**，底座可能還是同一個模型。這已經夠用——關鍵是全新的上下文、對立的立場、獨立的標準，不是非得換一家模型。要更徹底，就在 `reviewer.toml` 裡給審查角色配一個和寫程式碼那個不同的 model，或更高的推理檔位，獨立性更強。
 
-## 在本项目的落地顺序
+## 在本專案的落地順序
 
-1. 先用**路线 A** 跑一次：拿 [`docs/development/acceptance-standard.md`](./development/acceptance-standard.md) 当审查指令，对当前改动跑一遍 `/review`，看"独立 AI 照标准挑错"的实际效果。
-2. 顺手了，用**路线 B** 把 reviewer 固化成项目里的角色，再视需要加 `builder`、`test-author`、`acceptance-checker`、`visual-reviewer`。
-3. 在 `AGENTS.md` 的开发流程里补一条：**测试通过之后，必须先过一遍独立 reviewer；如果涉及画面，还要先过 `visual-reviewer`。它们都不能和写代码的是同一个 AI**。
-4. 把这套和 [`docs/subagent-guide.md`](./subagent-guide.md) 对齐，避免两份文档讲法不一致。
+1. 先用**路線 A** 跑一次：拿 [`docs/development/acceptance-standard.md`](./development/acceptance-standard.md) 當審查指令，對當前改動跑一遍 `/review`，看"獨立 AI 照標準挑錯"的實際效果。
+2. 順手了，用**路線 B** 把 reviewer 固化成專案裡的角色，再視需要加 `builder`、`test-author`、`acceptance-checker`、`visual-reviewer`。
+3. 在 `AGENTS.md` 的開發流程裡補一條：**測試透過之後，必須先過一遍獨立 reviewer；如果涉及畫面，還要先過 `visual-reviewer`。它們都不能和寫程式碼的是同一個 AI**。
+4. 把這套和 [`docs/subagent-guide.md`](./subagent-guide.md) 對齊，避免兩份檔案講法不一致。
 
-## 来源
+## 來源
 
 - [obra/superpowers（GitHub）](https://github.com/obra/superpowers)
-- [Codex — Subagents 官方文档](https://developers.openai.com/codex/subagents)
+- [Codex — Subagents 官方檔案](https://developers.openai.com/codex/subagents)
 - [Codex CLI — Features（含 /review）](https://developers.openai.com/codex/cli/features)
 - [Codex — Auto-review](https://alignment.openai.com/auto-review/)
 - [Superpowers: The Claude Code Skills Framework（Marc Nuri）](https://blog.marcnuri.com/superpowers-claude-code-skills-framework)

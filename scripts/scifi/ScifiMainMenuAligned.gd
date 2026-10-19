@@ -188,7 +188,7 @@ func _rebuild() -> void:
 
 	_bar(self, Vector2(1475, 702), Vector2(65, 2), AMBER)
 	_label(self, "壁壘 / 1103", Vector2(1460, 711), Vector2(375, 46), 29)
-	_label(self, "重裝型・前線機體", Vector2(1460, 758), Vector2(375, 31), 19, MUTED)
+	_label(self, "重灌型・前線機體", Vector2(1460, 758), Vector2(375, 31), 19, MUTED)
 
 	# Baseline-aligned footer columns, with no live-service or placeholder news.
 	_bar(self, Vector2(0, FOOTER_TOP), Vector2(1920, 160), Color(0.043, 0.071, 0.083, 0.94))
@@ -209,7 +209,7 @@ func _rebuild() -> void:
 		save.name = "Command_retry_save"
 		save.position = Vector2(1075, 840)
 		save.size = Vector2(320, 61)
-		save.text = "重試待保存結算"
+		save.text = "重試待儲存結算"
 		save.add_theme_font_size_override("font_size", 22)
 		save.set_meta("scifi_action", "retry_save")
 		save.add_to_group("scifi_buttons")

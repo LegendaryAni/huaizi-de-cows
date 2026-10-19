@@ -1,7 +1,7 @@
 {
   "file": "full_outdoor_map_painted_4096x2305.png",
   "source": "../source/style_reference_full_map_painted.png",
-  "description": "清晰户外底图，全图正常亮度且不预烘焙暗角/角色光照；环境层和隔挡由 Godot 叠加",
+  "description": "清晰戶外底圖，全圖正常亮度且不預烘焙暗角/角色光照；環境層和隔擋由 Godot 疊加",
   "size": [
     4096,
     2305

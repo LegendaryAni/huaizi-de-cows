@@ -415,7 +415,7 @@ func _update_wave_and_unlocks() -> void:
 			unlocked_weapons.append(unlock)
 			sfx.play_event("weapon_unlock")
 			_record_event("weapon_unlocked", {"weapon": unlock, "wave": current_wave})
-			_spawn_notice_vfx(player.global_position + Vector2(0, -120), "解锁%s" % GameConfig.CAT_STATS[unlock]["name"])
+			_spawn_notice_vfx(player.global_position + Vector2(0, -120), "解鎖%s" % GameConfig.CAT_STATS[unlock]["name"])
 		previous_wave = current_wave
 		spawn_timer = 0.0
 		sfx.play_event("wave_start")
@@ -860,7 +860,7 @@ func _run_menu_probe() -> void:
 			"names": GameUIScene.DEVELOPER_NAMES.duplicate(),
 			"original_project_credit": GameUIScene.ORIGINAL_PROJECT_CREDIT,
 			"display_mode": "developer_team_screen",
-			"button": "开发团队",
+			"button": "開發團隊",
 			"names_layout": "one_per_line",
 			"visible": false
 		}

@@ -32,9 +32,9 @@ var pause_panel: Control
 var current_screen := ""
 var hud_visible := true
 
-const START_BUTTONS := ["开始游戏", "成绩", "开发团队"]
+const START_BUTTONS := ["開始遊戲", "成績", "開發團隊"]
 const DEVELOPER_NAMES := ["LegendaryAni"]
-const ORIGINAL_PROJECT_CREDIT := "原始项目：mewamew/huaizi-de-cows\n原作者：HexBlank"
+const ORIGINAL_PROJECT_CREDIT := "原始專案：mewamew/huaizi-de-cows\n原作者：HexBlank"
 const SCORES_EMPTY_PLACEHOLDER := "？？?"
 const POPUP_CONTENT_TOP := 265.0
 const POPUP_SIDE_PAD := 84.0
@@ -196,7 +196,7 @@ func _build_hud() -> void:
 	kills_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	kills_label.position = Vector2(1530, 48)
 	kills_label.size = Vector2(112, 40)
-	kills_label.text = "击败"
+	kills_label.text = "擊敗"
 	kills_label.add_theme_font_size_override("font_size", 28)
 	root.add_child(kills_label)
 	kills_value_label = Label.new()
@@ -209,7 +209,7 @@ func _build_hud() -> void:
 	time_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	time_label.position = Vector2(1530, 94)
 	time_label.size = Vector2(112, 40)
-	time_label.text = "时间"
+	time_label.text = "時間"
 	time_label.add_theme_font_size_override("font_size", 28)
 	root.add_child(time_label)
 	time_value_label = Label.new()
@@ -276,9 +276,9 @@ func show_main_menu() -> void:
 	menu_panel.add_child(title)
 	var button_size := Vector2(320, 76)
 	var button_x := content.position.x + (content.size.x - button_size.x) * 0.5
-	_add_textured_button(menu_panel, "开始游戏", Vector2(button_x, content.position.y + 78), button_size, func() -> void: start_game_requested.emit())
-	_add_textured_button(menu_panel, "成绩", Vector2(button_x, content.position.y + 172), button_size, func() -> void: scores_requested.emit())
-	_add_textured_button(menu_panel, "开发团队", Vector2(button_x, content.position.y + 266), button_size, func() -> void: show_developers())
+	_add_textured_button(menu_panel, "開始遊戲", Vector2(button_x, content.position.y + 78), button_size, func() -> void: start_game_requested.emit())
+	_add_textured_button(menu_panel, "成績", Vector2(button_x, content.position.y + 172), button_size, func() -> void: scores_requested.emit())
+	_add_textured_button(menu_panel, "開發團隊", Vector2(button_x, content.position.y + 266), button_size, func() -> void: show_developers())
 
 func show_scores(scores: Array) -> void:
 	clear_popups()
@@ -293,7 +293,7 @@ func show_scores(scores: Array) -> void:
 	var content := _content_rect(panel_pos, panel_size)
 	_add_panel(scores_panel, panel_pos, panel_size, "warm")
 	var title := Label.new()
-	title.text = "成绩"
+	title.text = "成績"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.position = content.position
@@ -344,7 +344,7 @@ func show_developers() -> void:
 	var content := _content_rect(panel_pos, panel_size)
 	_add_panel(developer_panel, panel_pos, panel_size, "warm")
 	var title := Label.new()
-	title.text = "开发团队"
+	title.text = "開發團隊"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.position = content.position
@@ -477,7 +477,7 @@ func show_upgrade(options: Array, levels: Dictionary) -> void:
 	var group_height := 650.0
 	var top_y: float = round((view_size.y - group_height) * 0.5)
 	var title := Label.new()
-	title.text = "选择一次升级"
+	title.text = "選擇一次升級"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.position = Vector2(round((view_size.x - 700.0) * 0.5), top_y)
@@ -518,7 +518,7 @@ func _make_upgrade_card(id: String, data: Dictionary, level: int, pos: Vector2, 
 	name_label.add_theme_font_size_override("font_size", 32)
 	card.add_child(name_label)
 	var desc := Label.new()
-	desc.text = "%s\n当前 %d / %d\n倍率 %.2fx" % [data.desc, level, data.max, pow(float(data.factor), level)]
+	desc.text = "%s\n當前 %d / %d\n倍率 %.2fx" % [data.desc, level, data.max, pow(float(data.factor), level)]
 	desc.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	desc.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	desc.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -555,7 +555,7 @@ func show_result(result: String, snapshot: Dictionary) -> void:
 	var content := _content_rect_with_top(panel_pos, panel_size, 295.0)
 	_add_panel(result_panel, panel_pos, panel_size, "warm" if result == "victory" else "dark")
 	var title := Label.new()
-	title.text = "胜利" if result == "victory" else "失败"
+	title.text = "勝利" if result == "victory" else "失敗"
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.position = content.position
@@ -577,13 +577,13 @@ func show_result(result: String, snapshot: Dictionary) -> void:
 	stats.size = Vector2(content.size.x, 0)
 	stats.add_theme_constant_override("separation", 2)
 	stats_scroll.add_child(stats)
-	_add_result_stat_row(stats, "分数", str(int(snapshot.get("score", 0))))
-	_add_result_stat_row(stats, "破纪录", "是" if bool(snapshot.get("is_new_record", false)) else "否")
-	_add_result_stat_row(stats, "存活时间", format_time(snapshot.game_time))
-	_add_result_stat_row(stats, "击败敌人", str(snapshot.kills))
-	_add_result_stat_row(stats, "放出猫", str(snapshot.cats_fired))
-	_add_result_stat_row(stats, "最常用猫", snapshot.favorite_cat)
-	_add_result_stat_row(stats, "升级次数", str(snapshot.upgrade_count))
+	_add_result_stat_row(stats, "分數", str(int(snapshot.get("score", 0))))
+	_add_result_stat_row(stats, "破紀錄", "是" if bool(snapshot.get("is_new_record", false)) else "否")
+	_add_result_stat_row(stats, "存活時間", format_time(snapshot.game_time))
+	_add_result_stat_row(stats, "擊敗敵人", str(snapshot.kills))
+	_add_result_stat_row(stats, "放出貓", str(snapshot.cats_fired))
+	_add_result_stat_row(stats, "最常用貓", snapshot.favorite_cat)
+	_add_result_stat_row(stats, "升級次數", str(snapshot.upgrade_count))
 	_add_textured_button(result_panel, "退出", Vector2(content.position.x + 30, button_y), button_size, func() -> void: exit_requested.emit())
 	_add_textured_button(result_panel, "重玩", Vector2(content.end.x - button_size.x - 30, button_y), button_size, func() -> void: restart_requested.emit())
 
@@ -625,14 +625,14 @@ func show_pause() -> void:
 	panel.patch_margin_bottom = 32
 	pause_panel.add_child(panel)
 	var label := Label.new()
-	label.text = "已暂停"
+	label.text = "已暫停"
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	label.position = panel_pos + Vector2(80, 42)
 	label.size = Vector2(340, 60)
 	label.add_theme_font_size_override("font_size", 46)
 	pause_panel.add_child(label)
-	_add_textured_button(pause_panel, "继续", panel_pos + Vector2(125, 140), Vector2(250, 66), func() -> void: resume_requested.emit())
+	_add_textured_button(pause_panel, "繼續", panel_pos + Vector2(125, 140), Vector2(250, 66), func() -> void: resume_requested.emit())
 
 func clear_popups() -> void:
 	for node in [menu_panel, scores_panel, developer_panel, upgrade_panel, result_panel, pause_panel]:

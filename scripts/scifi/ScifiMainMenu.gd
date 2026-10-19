@@ -170,7 +170,7 @@ func _rebuild() -> void:
 	_rect(self,Vector2(0,0),Vector2(1920,4),CYAN.darkened(0.42))
 	_rect(self,Vector2(76,68),Vector2(7,132),GOLD)
 	_label(self,"傳奇倖存者",Vector2(96,55),Vector2(900,112),76,PAPER,true)
-	_label(self,"LEGENDARY SURVIVOR   //   工業廢墟行動 / 科幻像素生存戰",Vector2(98,160),Vector2(930,37),22,CYAN)
+	_label(self,"LEGENDARY SURVIVOR   //   工業廢墟行動 / 科幻畫素生存戰",Vector2(98,160),Vector2(930,37),22,CYAN)
 	_rect(self,Vector2(98,204),Vector2(555,2),GOLD.darkened(0.22))
 	for index in range(MENU.size()): _navigation_button(index)
 	# Profile strip uses only actual local data; no invented online account, inbox or level.
@@ -183,7 +183,7 @@ func _rebuild() -> void:
 	var unit_card := _panel(self,Vector2(1410,653),Vector2(435,175),Color(0.012,0.025,0.039,0.91),CYAN.darkened(0.45))
 	_rect(unit_card,Vector2(19,20),Vector2(4,130),GOLD)
 	_label(unit_card,"UNIT // 1103",Vector2(40,14),Vector2(368,27),19,GOLD)
-	_label(unit_card,"壁壘  ·  重裝型",Vector2(40,47),Vector2(365,52),29,PAPER,true)
+	_label(unit_card,"壁壘  ·  重灌型",Vector2(40,47),Vector2(365,52),29,PAPER,true)
 	_label(unit_card,"重型裝甲 / 現役機體",Vector2(40,109),Vector2(370,32),19,MUTED)
 	# Event card: actual currently available map, not a fictitious online promotion.
 	var event_card := _panel(self,Vector2(78,866),Vector2(660,144),Color(0.024,0.048,0.067,0.93),GOLD.darkened(0.25))
@@ -191,7 +191,7 @@ func _rebuild() -> void:
 	_label(event_card,"任務簡報",Vector2(14,0),Vector2(133,28),17,Color("0c1a24"),true)
 	_label(event_card,"工業廢墟  /  最終徵收者",Vector2(24,33),Vector2(600,48),29,PAPER,true)
 	_label(event_card,"五階段生存戰・準備好裝備後即可出擊",Vector2(27,91),Vector2(590,38),19,MUTED)
-	_small_action("open_loadout","查看任務 ›",Vector2(563,929),Vector2(160,53))
+	_small_action("open_loadout","檢視任務 ›",Vector2(563,929),Vector2(160,53))
 	# Updates panel contains only local milestone text. No external news or fake dates.
 	var news := _panel(self,Vector2(1192,865),Vector2(654,146),Color(0.018,0.038,0.058,0.91),CYAN.darkened(0.22))
 	_label(news,"本機更新  /  PROJECT STATUS",Vector2(18,7),Vector2(610,34),19,CYAN,true)
@@ -203,4 +203,4 @@ func _rebuild() -> void:
 	if not String(progress.get("save_error","")).is_empty():
 		_label(self,String(progress.save_error),Vector2(764,979),Vector2(394,45),20,Color("f19076"))
 	if not progress.get("pending",{}).is_empty():
-		_small_action("retry_save","重試待保存結算",Vector2(767,929),Vector2(380,54))
+		_small_action("retry_save","重試待儲存結算",Vector2(767,929),Vector2(380,54))

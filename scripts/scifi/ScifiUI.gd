@@ -22,11 +22,11 @@ const RED := Color("f19076")
 const WEAPON_ORDER := ["rail", "grenade", "blade", "arc", "thermal", "frost"]
 const SKILL_ORDER := ["dash", "pulse", "shield", "repair"]
 const META_ORDER := ["hp", "damage", "weapon_cd", "skill_cd"]
-const META_NAMES := {"hp":"結構補強 / ARMOR", "damage":"火控升級 / FIREPOWER", "weapon_cd":"供彈優化 / RELOAD", "skill_cd":"戰術運算 / TACTICS"}
+const META_NAMES := {"hp":"結構補強 / ARMOR", "damage":"火控升級 / FIREPOWER", "weapon_cd":"供彈最佳化 / RELOAD", "skill_cd":"戰術運算 / TACTICS"}
 const SCREEN_EN := {"loadout":"LOADOUT", "meta":"PERMANENT UPGRADES", "scores":"RECORDS", "credits":"CREDITS", "upgrade":"COMBAT UPGRADES", "pause":"PAUSED", "settings":"SETTINGS", "tutorial":"TUTORIAL", "result":"RUN RESULTS", "confirm":"CONFIRM"}
 const WEAPON_EN := {"rail":"RAILGUN","grenade":"GRENADE","blade":"BLADE","arc":"ARC","thermal":"THERMAL","frost":"FROST"}
 const SKILL_EN := {"dash":"DASH","pulse":"EMP","shield":"SHIELD","repair":"REPAIR"}
-const BUTTON_EN := {"返回":"BACK","返回整備":"BACK TO HANGAR","開始出擊":"DEPLOY","離開遊戲":"EXIT","繼續作戰":"RESUME","選擇改裝":"SELECT","下一步":"NEXT","開始整備":"LOADOUT","跳過引導":"SKIP","確認離開":"LEAVE","重試保存":"RETRY SAVE","關閉動態":"REDUCE MOTION","正常動態":"FULL MOTION","音效與畫面":"SETTINGS","已滿級":"MAXED"}
+const BUTTON_EN := {"返回":"BACK","返回整備":"BACK TO HANGAR","開始出擊":"DEPLOY","離開遊戲":"EXIT","繼續作戰":"RESUME","選擇改裝":"SELECT","下一步":"NEXT","開始整備":"LOADOUT","跳過引導":"SKIP","確認離開":"LEAVE","重試儲存":"RETRY SAVE","關閉動態":"REDUCE MOTION","正常動態":"FULL MOTION","音效與畫面":"SETTINGS","已滿級":"MAXED"}
 const META_EFFECTS := {"hp":"每級最大耐久 +12%", "damage":"每級武器傷害 +10%", "weapon_cd":"每級武器冷卻 −5%", "skill_cd":"每級技能冷卻 −5%"}
 const WEAPON_INFO := {"rail":"精準直射最近目標\n進化後可貫穿敵陣", "grenade":"自動轟擊密集敵群\n進化後散出集束子彈", "blade":"弧線迴旋，多次命中\n進化後以雙刃掃場", "arc":"連鎖打擊相鄰敵人\n進化後增加連鎖數", "thermal":"向近敵噴出短程火焰\n進化後延伸並熔穿敵陣", "frost":"光束命中並緩速\n進化後加寬並強化緩速"}
 const SKILL_INFO := {"dash":"短距衝刺，期間無敵", "pulse":"癱瘓附近敵人，緩速首領", "shield":"限時吸收傷害", "repair":"恢復 25% 最大耐久"}
@@ -212,7 +212,7 @@ func _bar(parent: Node, pos: Vector2, extent: Vector2, color: Color) -> TextureP
 func _build_hud() -> void:
 	_panel(hud, Vector2(28, 24), Vector2(590, 205))
 	_image(hud, "res://assets/sprites/scifi/units/1103/portrait.png", Vector2(48, 46), Vector2(138, 138))
-	_label(hud, "壁壘  /  重裝型", Vector2(205, 43), Vector2(365, 35), 27, GOLD)
+	_label(hud, "壁壘  /  重灌型", Vector2(205, 43), Vector2(365, 35), 27, GOLD)
 	hp_value = _label(hud, "耐久 / HP", Vector2(205, 82), Vector2(350, 27), 21)
 	hp_bar = _bar(hud, Vector2(205, 118), Vector2(350, 17), RED)
 	xp_value = _label(hud, "作戰經驗 / XP", Vector2(205, 142), Vector2(350, 28), 20, MUTED)
@@ -486,7 +486,7 @@ func show_settings(origin: String = "menu") -> void:
 		_button(panel,"＋",Vector2(785,y-4),Vector2(92,62),func() -> void: _adjust_option(key,0.1), "adjust_"+key+"_up")
 	_label(panel,"減少動態效果 / REDUCE MOTION",Vector2(65,533),Vector2(445,55),23,PAPER)
 	_button(panel,"關閉動態" if bool(audio_options.get("reduce_motion",false)) else "正常動態",Vector2(510,532),Vector2(367,61),func() -> void: _toggle_reduced_motion(),"toggle_reduce_motion")
-	_label(panel,"只影響主選單動畫，不改戰鬥判定或數值。",Vector2(65,613),Vector2(860,33),20,MUTED)
+	_label(panel,"隻影響主選單動畫，不改戰鬥判定或數值。",Vector2(65,613),Vector2(860,33),20,MUTED)
 	_button(panel,"返回",Vector2(65,654),Vector2(270,65),func() -> void:
 		if settings_return_screen == "pause": show_pause()
 		else: show_menu(cached_progress,cached_scores), "close_settings")
@@ -503,7 +503,7 @@ func _adjust_option(key: String, amount: float) -> void:
 
 func show_tutorial(page: int = 0) -> void:
 	tutorial_page = clampi(page,0,2)
-	var panel := _screen("行動指引 / TUTORIAL  %d / 3" % (tutorial_page+1), "每一步都可以重新從主選單查看。",Vector2(1060,790),"tutorial")
+	var panel := _screen("行動指引 / TUTORIAL  %d / 3" % (tutorial_page+1), "每一步都可以重新從主選單檢視。",Vector2(1060,790),"tutorial")
 	var title: String = ["01  出擊整備 / DEPLOY","02  自動交戰 / COMBAT","03  升級與成長 / UPGRADES"][tutorial_page]
 	var copy: String = ["選擇一把起始武器，再挑選兩個主動技能。\n六把武器有不同攻擊方式，出擊後仍會獲得新武器。","用 WASD 或方向鍵閃避敵人。武器自動尋找目標。\nSpace 和 E 是已選技能；下方按鈕會顯示冷卻時間。","收集藍色經驗晶體以提升等級。戰鬥暫停時選擇改裝卡。\n被擊敗也能保留信用點，再到「永久改裝」升級。"][tutorial_page]
 	var icon: String = ["rail","dash","shield"][tutorial_page]
@@ -526,23 +526,23 @@ func show_result(summary: Dictionary) -> void:
 	var won: bool = bool(summary.get("won",summary.get("victory",false))) or String(summary.get("result","")) in ["victory","win","won"]
 	var saved: bool = String(summary.get("save_error","")).is_empty() and summary.get("saved",true)!=false
 	if saved: show_notice("")
-	var panel:=_screen("任務完成" if won else "機體失聯","收益已帶回。調整配裝與永久改裝，再次出擊。" if saved else "收益尚未保存，請保留視窗並重試。",Vector2(1100,850),"result")
+	var panel:=_screen("任務完成" if won else "機體失聯","收益已帶回。調整配裝與永久改裝，再次出擊。" if saved else "收益尚未儲存，請保留視窗並重試。",Vector2(1100,850),"result")
 	var lines: Array = [
 		["存活時間 / SURVIVAL",format_time(float(summary.get("time",summary.get("game_time",0))))],
 		["擊破敵人 / KILLS",str(summary.get("kills",0))],
 		["作戰等級 / LEVEL",str(summary.get("level",1))],
 		["本局信用點 / CREDITS",str(summary.get("credits",summary.get("reward",summary.get("run_credits",0))))],
-		["保存狀態 / SAVED","等待重試" if not String(summary.get("save_error","")).is_empty() or summary.get("saved",true)==false else "已保存"]]
+		["儲存狀態 / SAVED","等待重試" if not String(summary.get("save_error","")).is_empty() or summary.get("saved",true)==false else "已儲存"]]
 	for index in range(lines.size()):
 		_label(panel,String(lines[index][0]),Vector2(75,205+index*77),Vector2(480,52),28,MUTED)
 		_label(panel,String(lines[index][1]),Vector2(560,205+index*77),Vector2(465,52),30,GOLD,HORIZONTAL_ALIGNMENT_RIGHT)
 	if not String(summary.get("save_error","")).is_empty() or summary.get("saved",true)==false:
-		_button(panel,"重試保存",Vector2(75,637),Vector2(950,70),func() -> void: retry_save_requested.emit(),"retry_save")
+		_button(panel,"重試儲存",Vector2(75,637),Vector2(950,70),func() -> void: retry_save_requested.emit(),"retry_save")
 	_button(panel,"返回整備",Vector2(75,745),Vector2(440,66),func() -> void: menu_requested.emit(),"menu")
 	_button(panel,"離開遊戲",Vector2(585,745),Vector2(440,66),func() -> void: quit_requested.emit(),"quit")
 
 func show_confirm(message: String, accept: Callable) -> void:
-	var panel:=_screen("離開本次出擊？", "本版不保存進行中的戰局。",Vector2(950,530),"confirm")
+	var panel:=_screen("離開本次出擊？", "本版不儲存進行中的戰局。",Vector2(950,530),"confirm")
 	var text:=_label(panel,message,Vector2(62,177),Vector2(826,140),28,PAPER)
 	text.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	_button(panel,"繼續作戰",Vector2(62,373),Vector2(385,77),func() -> void:

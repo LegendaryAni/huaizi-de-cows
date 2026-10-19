@@ -1,65 +1,65 @@
-# Godot 素材说明
+# Godot 素材說明
 
-> v0.2有效規格為 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md`。目前科幻角色/地圖用 `scifi/`、UI/VFX用對應runtime/scifi目錄，像素Nearest；舊手繪圖與Linear規則只適用v0.1。新UI參考在 `ui/reference_crops/scifi/`，保持HUD資訊、三卡結構與真實畫面證據要求。
+> v0.2有效規格為 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md`。目前科幻角色/地圖用 `scifi/`、UI/VFX用對應runtime/scifi目錄，畫素Nearest；舊手繪圖與Linear規則只適用v0.1。新UI參考在 `ui/reference_crops/scifi/`，保持HUD資訊、三卡結構與真實畫面證據要求。
 
-仓库保留原始的高对比暗色漫画街机素材作为基线；当前运行时已切换到 `legendaryani/` 的明亮手绘贴纸 / 绘本风主题。新版仍维持原有图集格数、地图尺寸、环境 atlas 版位与 UI 结构，因此玩法、碰撞与方向动画语义不变。固定户外大地图仍是全图正常亮度的连续手绘底图，不预烘焙暗角或角色中心光照；环境层由 Godot 叠加。
+倉庫保留原始的高對比暗色漫畫街機素材作為基線；當前執行時已切換到 `legendaryani/` 的明亮手繪貼紙 / 繪本風主題。新版仍維持原有圖集格數、地圖尺寸、環境 atlas 版位與 UI 結構，因此玩法、碰撞與方向動畫語義不變。固定戶外大地圖仍是全圖正常亮度的連續手繪底圖，不預烘焙暗角或角色中心光照；環境層由 Godot 疊加。
 
-## 主文件
+## 主檔案
 
-| 文件 | 用途 |
+| 檔案 | 用途 |
 | --- | --- |
-| `legendaryani/` | 当前运行时角色、猫、奶牛、奶滴、地图与环境主题；来源与生成方式见 `legendaryani/README.md` |
-| `ui/runtime/legendaryani/` | 当前运行时 HUD、按钮、升级卡、图标与结算面板主题 |
-| `vfx/runtime/legendaryani/` | 当前运行时命中、爆炸、死亡烟尘与经验视觉主题 |
-| `full_outdoor_map_painted_4096x2305.png` | 固定户外清晰底图，直接作为背景使用，全图正常亮度，不内置隔挡/环境装饰/暗角 |
-| `environment_assets_painted.png` | 地图素材表：泥地、草地、深浅地块、草丛、石头、小土堆、落叶、围栏、树墙、石墙、水面边界 |
-| `ui_assets_painted.png` | UI 与图标风格参考素材表：血量条、升级三选一卡片、胜利/失败结算页、暂停界面、4 个升级图标、HUD 武器图标、波次/新猫提示。控件级参考 crop 和运行时资产规则见 `ui/README.md` |
-| `ui/` | UI 控件拆分目录：`reference_crops/` 存放从总参考图裁出的控件级视觉锚点，`runtime/` 存放 Godot 代码实际引用的运行时 UI 资产，`ui_asset_manifest.json` 记录映射关系 |
-| `combat_assets_painted.png` | 战斗风格参考素材表：花子、三种猫弹、四种奶牛敌人、命中/爆炸/经验/死亡烟尘/碎屑/粒子。角色/猫/奶牛优先使用 8 向图集；命中、爆炸、粒子等 VFX 需要按实际效果重新生成 |
-| `huazi_8dir_192x192.png` | 花子 8 向待机 / 行走图集 |
-| `cow_normal_8dir_256x192.png` | 普通奶牛 8 向行走图集，使用校正后的普通荷斯坦奶牛源图 |
-| `cow_calf_8dir_192x144.png` | 疯跑小牛 8 向奔跑图集 |
-| `cow_tank_8dir_320x224.png` | 厚皮大奶牛 8 向行走图集，使用校正后的厚重 8 向源图 |
-| `cow_ranged_8dir_288x192.png` | 吐奶远程牛 8 向行走图集，不包含奶滴弹 |
-| `orange_cat_projectile_8dir_192x128.png` | 橘猫整猫直线扑击 8 向飞行动画 |
-| `black_cat_projectile_8dir_192x128.png` | 黑猫整猫范围扑击 8 向飞行动画 |
-| `cow_cat_spin_8dir_192x128.png` | 奶牛猫回旋扫场弹 8 向动画 |
-| `milk_drop_8dir_192x128.png` | 奶滴远程弹 8 向飞行动画 |
-| `painted_regen_manifest.json` | 新版素材总清单 |
-| `directional_asset_manifest.json` | 8 向补充素材清单 |
-| `cow_ranged_muzzle_offsets.json` | 吐奶远程牛各方向的建议奶滴生成偏移 |
-| `full_outdoor_map_manifest.json` | 新版完整地图尺寸、出生点、刷怪区和视觉边界 |
+| `legendaryani/` | 當前執行時角色、貓、奶牛、奶滴、地圖與環境主題；來源與生成方式見 `legendaryani/README.md` |
+| `ui/runtime/legendaryani/` | 當前執行時 HUD、按鈕、升級卡、圖示與結算面板主題 |
+| `vfx/runtime/legendaryani/` | 當前執行時命中、爆炸、死亡煙塵與經驗視覺主題 |
+| `full_outdoor_map_painted_4096x2305.png` | 固定戶外清晰底圖，直接作為背景使用，全圖正常亮度，不內建隔擋/環境裝飾/暗角 |
+| `environment_assets_painted.png` | 地圖素材表：泥地、草地、深淺地塊、草叢、石頭、小土堆、落葉、圍欄、樹牆、石牆、水面邊界 |
+| `ui_assets_painted.png` | UI 與圖示風格參考素材表：血量條、升級三選一卡片、勝利/失敗結算頁、暫停介面、4 個升級圖示、HUD 武器圖示、波次/新貓提示。控制元件級參考 crop 和執行時資產規則見 `ui/README.md` |
+| `ui/` | UI 控制元件拆分目錄：`reference_crops/` 存放從總參考圖裁出的控制元件級視覺錨點，`runtime/` 存放 Godot 程式碼實際引用的執行時 UI 資產，`ui_asset_manifest.json` 記錄對映關係 |
+| `combat_assets_painted.png` | 戰鬥風格參考素材表：花子、三種貓彈、四種奶牛敵人、命中/爆炸/經驗/死亡煙塵/碎屑/粒子。角色/貓/奶牛優先使用 8 向圖集；命中、爆炸、粒子等 VFX 需要按實際效果重新生成 |
+| `huazi_8dir_192x192.png` | 花子 8 向待機 / 行走圖集 |
+| `cow_normal_8dir_256x192.png` | 普通奶牛 8 向行走圖集，使用校正後的普通荷斯坦奶牛源圖 |
+| `cow_calf_8dir_192x144.png` | 瘋跑小牛 8 向奔跑圖集 |
+| `cow_tank_8dir_320x224.png` | 厚皮大奶牛 8 向行走圖集，使用校正後的厚重 8 向源圖 |
+| `cow_ranged_8dir_288x192.png` | 吐奶遠端牛 8 向行走圖集，不包含奶滴彈 |
+| `orange_cat_projectile_8dir_192x128.png` | 橘貓整貓直線撲擊 8 向飛行動畫 |
+| `black_cat_projectile_8dir_192x128.png` | 黑貓整貓範圍撲擊 8 向飛行動畫 |
+| `cow_cat_spin_8dir_192x128.png` | 奶牛貓迴旋掃場彈 8 向動畫 |
+| `milk_drop_8dir_192x128.png` | 奶滴遠端彈 8 向飛行動畫 |
+| `painted_regen_manifest.json` | 新版素材總清單 |
+| `directional_asset_manifest.json` | 8 向補充素材清單 |
+| `cow_ranged_muzzle_offsets.json` | 吐奶遠端牛各方向的建議奶滴生成偏移 |
+| `full_outdoor_map_manifest.json` | 新版完整地圖尺寸、出生點、刷怪區和視覺邊界 |
 
-## 音频文件
+## 音訊檔案
 
-音频素材放在 `assets/audio/sfx/`，授权和来源记录见 `assets/audio/LICENSES.md`。音频不是可选项；发猫、命中、黑猫爆炸、敌人死亡、玩家受击、XP、升级、升级选择、波次开始、武器解锁、胜利和失败都应接入对应 SFX。
+音訊素材放在 `assets/audio/sfx/`，授權和來源記錄見 `assets/audio/LICENSES.md`。音訊不是可選項；發貓、命中、黑貓爆炸、敵人死亡、玩家受擊、XP、升級、升級選擇、波次開始、武器解鎖、勝利和失敗都應接入對應 SFX。
 
 ## Godot 接入
 
-1. 把 `assets/sprites/` 放到 Godot 项目内。
-2. 完整地图用 `full_outdoor_map_painted_4096x2305.png` 创建 `Sprite2D` 或背景层，环境装饰和隔挡碰撞再由 Godot 叠加。
-3. `environment_assets_painted.png` 可按需要切成 `AtlasTexture`、`NinePatchRect`、`TextureRect` 或导入到 `SpriteFrames`。
-4. `ui_assets_painted.png` 和 `combat_assets_painted.png` 中的 UI、命中、爆炸、粒子等非角色元素只做风格参考。UI 控件先使用 `ui/reference_crops/` 锁定参考区域，再生成适合当前控件尺寸、缩放方式、透明边距和动效节奏的运行时 PNG/WebP/Atlas/NinePatch/粒子贴图，并记录生成资产、参考来源和用途。
-5. 不得直接把原 UI 素材或原爆炸/粒子素材文件切片后当作最终 HUD、弹窗、按钮、命中特效或爆炸特效；否则容易出现拉伸、裁切、漏边、层级错乱或语义错误。
-6. 只记录风格参考路径不够。生成 UI/VFX 前必须裁出或说明参考区域，拆解手绘描边、做旧材质、木牌/皮革/金属边框、暖色高对比、猫头像徽章、装饰性边角、战斗碎屑/烟尘节奏等特征；生成后必须保存参考 crop 与最终运行截图的并排对照和差异说明。
-7. HUD 外框、血量条、经验条、技能槽、升级卡片、升级图标、按钮、提示、暂停界面和结算界面等运行时 UI 控件必须逐项验收；每一次对比都要记录参考 crop、运行截图 crop、并排对照图、相似度、完成度和差异说明。所有 UI 控件的风格相似度和资产完成度都要达到 0.90 以上，任何单项不达标或缺少记录都必须退回重做。
-8. 生成 UI 强烈建议优先使用图像生成、局部重绘、NinePatch、AtlasTexture、TextureRect、脚本化位图生成或其他合适流程，再把生成结果调整为游戏需要的尺寸、透明边距、格式和导入方式；不要只依赖 Godot 原生 Control、ColorRect、StyleBox、Label 或代码绘制来模拟参考图效果，不能直接切 `ui_assets_painted.png` 原图当最终控件。
-9. Godot 代码不要引用 `.import` 文件。核心 UI 应引用 `res://assets/sprites/ui/runtime/` 下的运行时资产，或引用由这些资产建出的 `.tres`。如果 `runtime/` 下没有对应资产，先补资产，不允许退回纯代码画框。
-10. UI 完成前必须保存并亲自查看关键状态截图和运行中连续帧，检查控件、文字、图标、条形填充和点击区域没有重叠、裁切、遮挡、跳位或被战斗特效压住的问题；动态帧确认正常后才能标记完成。
-11. UI 默认使用中文文案，升级、波次、结算和按钮文字不要混入英文模板，除非任务明确要求。
-12. 角色、敌人和方向敏感弹体优先使用 `*_8dir_*.spriteframes.tres`。
-13. 8 向图集行顺序固定为 `e / se / s / sw / w / nw / n / ne`，每行 4 帧。
-14. 动画命名示例：花子 `walk_e`、`walk_se`、`idle_s`；牛 `walk_e` 或 `run_e`；弹体 `fly_e`。
-15. 吐奶远程牛只用 `cow_ranged_8dir_288x192.png` 播牛本体；奶滴用 `milk_drop_8dir_192x128.png` 单独生成，发射点偏移见 `cow_ranged_muzzle_offsets.json`。
-16. 普通牛和厚皮牛使用单独校正后的完整 8 向源图，运行时图集已稳定每帧 cell 锚点；小牛、吐奶远程牛仍是侧视源图补足八向：左右用镜像，斜向/上下用有限旋转。
-17. 这批图是手绘描边风，导入过滤建议先用 `Linear`；如果项目整体做像素缩放，再改为 `Nearest`。
-18. 地图碰撞边界建议用代码/碰撞形状沿画面边缘配置，不依赖环境装饰图本身。
-19. 音频新增或复制后，先运行 Godot editor headless 导入，再检查运行时加载数量和关键音效事件。
+1. 把 `assets/sprites/` 放到 Godot 專案內。
+2. 完整地圖用 `full_outdoor_map_painted_4096x2305.png` 建立 `Sprite2D` 或背景層，環境裝飾和隔擋碰撞再由 Godot 疊加。
+3. `environment_assets_painted.png` 可按需要切成 `AtlasTexture`、`NinePatchRect`、`TextureRect` 或匯入到 `SpriteFrames`。
+4. `ui_assets_painted.png` 和 `combat_assets_painted.png` 中的 UI、命中、爆炸、粒子等非角色元素只做風格參考。UI 控制元件先使用 `ui/reference_crops/` 鎖定參考區域，再生成適合當前控制元件尺寸、縮放方式、透明邊距和動效節奏的執行時 PNG/WebP/Atlas/NinePatch/粒子貼圖，並記錄生成資產、參考來源和用途。
+5. 不得直接把原 UI 素材或原爆炸/粒子素材檔案切片後當作最終 HUD、彈窗、按鈕、命中特效或爆炸特效；否則容易出現拉伸、裁切、漏邊、層級錯亂或語義錯誤。
+6. 只記錄風格參考路徑不夠。生成 UI/VFX 前必須裁出或說明參考區域，拆解手繪描邊、做舊材質、木牌/皮革/金屬邊框、暖色高對比、貓頭像徽章、裝飾性邊角、戰鬥碎屑/煙塵節奏等特徵；生成後必須儲存參考 crop 與最終執行截圖的並排對照和差異說明。
+7. HUD 外框、血量條、經驗條、技能槽、升級卡片、升級圖示、按鈕、提示、暫停介面和結算介面等執行時 UI 控制元件必須逐項驗收；每一次對比都要記錄參考 crop、執行截圖 crop、並排對照圖、相似度、完成度和差異說明。所有 UI 控制元件的風格相似度和資產完成度都要達到 0.90 以上，任何單項不達標或缺少記錄都必須退回重做。
+8. 生成 UI 強烈建議優先使用影象生成、區域性重繪、NinePatch、AtlasTexture、TextureRect、指令碼化點陣圖生成或其他合適流程，再把生成結果調整為遊戲需要的尺寸、透明邊距、格式和匯入方式；不要只依賴 Godot 原生 Control、ColorRect、StyleBox、Label 或程式碼繪製來模擬參考圖效果，不能直接切 `ui_assets_painted.png` 原圖當最終控制元件。
+9. Godot 程式碼不要引用 `.import` 檔案。核心 UI 應引用 `res://assets/sprites/ui/runtime/` 下的執行時資產，或引用由這些資產建出的 `.tres`。如果 `runtime/` 下沒有對應資產，先補資產，不允許退回純程式碼畫框。
+10. UI 完成前必須儲存並親自檢視關鍵狀態截圖和執行中連續幀，檢查控制元件、文字、圖示、條形填充和點選區域沒有重疊、裁切、遮擋、跳位或被戰鬥特效壓住的問題；動態幀確認正常後才能標記完成。
+11. UI 預設使用中文文案，升級、波次、結算和按鈕文字不要混入英文模板，除非任務明確要求。
+12. 角色、敵人和方向敏感彈體優先使用 `*_8dir_*.spriteframes.tres`。
+13. 8 向圖集行順序固定為 `e / se / s / sw / w / nw / n / ne`，每行 4 幀。
+14. 動畫命名示例：花子 `walk_e`、`walk_se`、`idle_s`；牛 `walk_e` 或 `run_e`；彈體 `fly_e`。
+15. 吐奶遠端牛隻用 `cow_ranged_8dir_288x192.png` 播牛本體；奶滴用 `milk_drop_8dir_192x128.png` 單獨生成，發射點偏移見 `cow_ranged_muzzle_offsets.json`。
+16. 普通牛和厚皮牛使用單獨校正後的完整 8 向源圖，執行時圖集已穩定每幀 cell 錨點；小牛、吐奶遠端牛仍是側視源圖補足八向：左右用映象，斜向/上下用有限旋轉。
+17. 這批圖是手繪描邊風，匯入過濾建議先用 `Linear`；如果專案整體做畫素縮放，再改為 `Nearest`。
+18. 地圖碰撞邊界建議用程式碼/碰撞形狀沿畫面邊緣配置，不依賴環境裝飾圖本身。
+19. 音訊新增或複製後，先執行 Godot editor headless 匯入，再檢查執行時載入數量和關鍵音效事件。
 
-## 预览
+## 預覽
 
-打开 `preview.html` 可以看新版素材总览。
+開啟 `preview.html` 可以看新版素材總覽。
 
-旧版方块地图、旧非 8 向图集、旧 UI 单图和调试预览已从基准目录清理掉。当前开发只按上面的主文件接入。
+舊版方塊地圖、舊非 8 向圖集、舊 UI 單圖和除錯預覽已從基準目錄清理掉。當前開發只按上面的主檔案接入。
 
-生成源图集中放在 `assets/source/`，不是 Godot 运行时优先接入目录。
+生成源圖集中放在 `assets/source/`，不是 Godot 執行時優先接入目錄。

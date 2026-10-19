@@ -1,45 +1,45 @@
 # Experience Library
 
-Experience Library 用于沉淀本仓库开发时真实踩过、修过、验证过的问题。它不是事后总结，也不是泛泛建议；只有遇到问题并解决之后，才写入经验库。
+Experience Library 用於沉澱本倉庫開發時真實踩過、修過、驗證過的問題。它不是事後總結，也不是泛泛建議；只有遇到問題並解決之後，才寫入經驗庫。
 
-## 文件
+## 檔案
 
-| 文件 | 用途 |
+| 檔案 | 用途 |
 | --- | --- |
-| `active-rules.md` | 每次开发前必须读的短规则，只放高频、关键、容易复犯的问题 |
-| `lessons.md` | 完整经验记录，按条目记录现象、原因、修复、验证和下次检查方式 |
+| `active-rules.md` | 每次開發前必須讀的短規則，只放高頻、關鍵、容易復犯的問題 |
+| `lessons.md` | 完整經驗記錄，按條目記錄現象、原因、修復、驗證和下次檢查方式 |
 
-## 使用规则
+## 使用規則
 
-每次执行新方案前：
+每次執行新方案前：
 
-1. 先读 `AGENTS.md`。
-2. 再读 `docs/experience-library/active-rules.md`。
-3. 如果当前任务涉及已记录问题，再读 `docs/experience-library/lessons.md` 中相关条目。
+1. 先讀 `AGENTS.md`。
+2. 再讀 `docs/experience-library/active-rules.md`。
+3. 如果當前任務涉及已記錄問題，再讀 `docs/experience-library/lessons.md` 中相關條目。
 
-遇到问题并解决后：
+遇到問題並解決後：
 
-1. 必须在 `docs/experience-library/lessons.md` 新增经验条目。
-2. 如果这个问题会高概率复发，必须把短规则补充到 `docs/experience-library/active-rules.md`。
+1. 必須在 `docs/experience-library/lessons.md` 新增經驗條目。
+2. 如果這個問題會高機率復發，必須把短規則補充到 `docs/experience-library/active-rules.md`。
 
-不要写入：
+不要寫入：
 
-- 没有复现过的问题。
-- 没有解决的问题，除非明确标为“未解决”并写清阻塞原因。
-- 泛泛而谈的建议，例如“注意测试”“代码要清晰”。
-- 为了显得完成而写的空洞总结。
+- 沒有復現過的問題。
+- 沒有解決的問題，除非明確標為“未解決”並寫清阻塞原因。
+- 泛泛而談的建議，例如“注意測試”“程式碼要清晰”。
+- 為了顯得完成而寫的空洞總結。
 
-## 经验条目格式
+## 經驗條目格式
 
 ```md
-### YYYY-MM-DD | 简短标题
+### YYYY-MM-DD | 簡短標題
 
-- 场景：
-- 现象：
-- 影响：
+- 場景：
+- 現象：
+- 影響：
 - 原因：
-- 修复：
-- 验证：
-- 下次规则：
-- 关联文件 / 提交：
+- 修復：
+- 驗證：
+- 下次規則：
+- 關聯檔案 / 提交：
 ```

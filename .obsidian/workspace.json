@@ -59,7 +59,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "文件列表"
+              "title": "檔案列表"
             }
           },
           {
@@ -76,7 +76,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-search",
-              "title": "搜索"
+              "title": "搜尋"
             }
           },
           {
@@ -86,7 +86,7 @@
               "type": "bookmarks",
               "state": {},
               "icon": "lucide-bookmark",
-              "title": "书签"
+              "title": "書籤"
             }
           }
         ]
@@ -119,7 +119,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "acceptance-standard 的反向链接列表"
+              "title": "acceptance-standard 的反向連結列表"
             }
           },
           {
@@ -133,7 +133,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "acceptance-standard 的出链列表"
+              "title": "acceptance-standard 的出鏈列表"
             }
           },
           {
@@ -148,7 +148,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-tags",
-              "title": "标签"
+              "title": "標籤"
             }
           },
           {
@@ -162,7 +162,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-archive",
-              "title": "添加笔记属性"
+              "title": "新增筆記屬性"
             }
           },
           {
@@ -177,7 +177,7 @@
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "acceptance-standard 的大纲"
+              "title": "acceptance-standard 的大綱"
             }
           }
         ]
@@ -189,13 +189,13 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:打开快速切换": false,
-      "graph:查看关系图谱": false,
+      "switcher:開啟快速切換": false,
+      "graph:檢視關係圖譜": false,
       "canvas:新建白板": false,
-      "daily-notes:打开/创建今天的日记": false,
+      "daily-notes:開啟/建立今天的日記": false,
       "templates:插入模板": false,
-      "command-palette:打开命令面板": false,
-      "bases:新建数据库": false
+      "command-palette:開啟命令面板": false,
+      "bases:新建資料庫": false
     }
   },
   "active": "a47416b2af808ed0",

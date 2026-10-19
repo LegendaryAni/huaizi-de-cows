@@ -1,68 +1,68 @@
-# UI 资源拆分说明
+# UI 資源拆分說明
 
-> v0.2使用科幻像素主題：`reference_crops/scifi/` 為處理後參考，`runtime/scifi/` 為正式資產，生成原圖保留 `assets/source/scifi/`。舊手繪crop不再是新版材質目標；三張並排大卡、字區與正式資產等原則保留。HUD/卡片/按鈕以生成panel裁切與ninepatch整理，不以預設單色控件代替。
+> v0.2使用科幻畫素主題：`reference_crops/scifi/` 為處理後參考，`runtime/scifi/` 為正式資產，生成原圖保留 `assets/source/scifi/`。舊手繪crop不再是新版材質目標；三張並排大卡、字區與正式資產等原則保留。HUD/卡片/按鈕以生成panel裁切與ninepatch整理，不以預設單色控制元件代替。
 
-本文说明 `ui_assets_painted.png` 被拆成哪些控件级参考图，以及后续运行时 UI 资产应该怎样生成和接入。
+本文說明 `ui_assets_painted.png` 被拆成哪些控制元件級參考圖，以及後續執行時 UI 資產應該怎樣生成和接入。
 
-## 目录职责
+## 目錄職責
 
-- `reference_crops/`：从 `../ui_assets_painted.png` 直接裁出的控件级参考图。它们用于锁定视觉目标、裁切范围和局部细节，不直接等同于最终运行时控件。
-- `runtime/`：Godot 实现应该引用的运行时 UI 资产目录。这里放按实际尺寸、透明边距、九宫格拉伸区和文字安全区整理后的 PNG、`.9.png` 或 `.tres`。
-- `ui_asset_manifest.json`：每个参考 crop 的来源 bbox、用途、建议运行时文件名和 Godot 接入方式。
+- `reference_crops/`：從 `../ui_assets_painted.png` 直接裁出的控制元件級參考圖。它們用於鎖定視覺目標、裁切範圍和區域性細節，不直接等同於最終執行時控制元件。
+- `runtime/`：Godot 實現應該引用的執行時 UI 資產目錄。這裡放按實際尺寸、透明邊距、九宮格拉伸區和文字安全區整理後的 PNG、`.9.png` 或 `.tres`。
+- `ui_asset_manifest.json`：每個參考 crop 的來源 bbox、用途、建議執行時檔名和 Godot 接入方式。
 
-代码里不要引用 `.import` 文件；`.import` 是 Godot 自动生成的导入元数据。运行时代码应引用 `res://assets/sprites/ui/runtime/...`，或引用由这些 PNG 建出的 `.tres`。
+程式碼裡不要引用 `.import` 檔案；`.import` 是 Godot 自動生成的匯入後設資料。執行時程式碼應引用 `res://assets/sprites/ui/runtime/...`，或引用由這些 PNG 建出的 `.tres`。
 
-## 使用原则
+## 使用原則
 
-1. 需要做 HUD、升级弹窗、结算、暂停、提示横幅或图标时，先查 `ui_asset_manifest.json`。
-2. 如果 `runtime/` 下缺少对应资产，先基于 `reference_crops/` 生成或整理运行时资产，再写 UI 实现。
-3. 不允许用纯 `draw_rect`、`draw_line`、`draw_circle`、默认 `Button`、默认 `Panel` 或单色 `StyleBoxFlat` 来模拟升级卡、HUD 主框、结算面板这类核心 UI 外观。
-4. 代码绘制可以用于文字、数值、填充条、轻量 hover 光效、短暂点击反馈和布局辅助，但核心边框、底纹、徽章、做旧材质和装饰性边角必须来自运行时 UI 资产。
-5. 不能直接把 `ui_assets_painted.png` 当作运行时 atlas 整张加载后随意裁用。需要先拆出 crop，明确用途，再生成适合实际尺寸的运行时资产。
-6. 每次实现或重做核心 UI，都要保留参考 crop、运行截图 crop 和并排对照图，证明边框材质、比例、视觉重心和文字安全区没有偏离。
+1. 需要做 HUD、升級彈窗、結算、暫停、提示橫幅或圖示時，先查 `ui_asset_manifest.json`。
+2. 如果 `runtime/` 下缺少對應資產，先基於 `reference_crops/` 生成或整理執行時資產，再寫 UI 實現。
+3. 不允許用純 `draw_rect`、`draw_line`、`draw_circle`、預設 `Button`、預設 `Panel` 或單色 `StyleBoxFlat` 來模擬升級卡、HUD 主框、結算面板這類核心 UI 外觀。
+4. 程式碼繪製可以用於文字、數值、填充條、輕量 hover 光效、短暫點選反饋和佈局輔助，但核心邊框、底紋、徽章、做舊材質和裝飾性邊角必須來自執行時 UI 資產。
+5. 不能直接把 `ui_assets_painted.png` 當作執行時 atlas 整張載入後隨意裁用。需要先拆出 crop，明確用途，再生成適合實際尺寸的執行時資產。
+6. 每次實現或重做核心 UI，都要保留參考 crop、執行截圖 crop 和並排對照圖，證明邊框材質、比例、視覺重心和文字安全區沒有偏離。
 
-## 升级三选一卡片
+## 升級三選一卡片
 
-升级弹窗使用三张并排竖向大卡片。卡片运行时建议显示尺寸为 `320x540`，可在不破坏比例的前提下小幅调整，但不能改成长条按钮、普通菜单列表或默认系统面板。
+升級彈窗使用三張並排豎向大卡片。卡片執行時建議顯示尺寸為 `320x540`，可在不破壞比例的前提下小幅調整，但不能改成長條按鈕、普通選單列表或預設系統面板。
 
-| 控件 | 参考 crop | 建议运行时资产 | 用法 |
+| 控制元件 | 參考 crop | 建議執行時資產 | 用法 |
 | --- | --- | --- | --- |
-| 普通升级卡 | `reference_crops/upgrade_card_normal_ref.png` | `runtime/upgrade_card_normal.9.png` | 普通可选卡片背板 |
-| 高亮升级卡 | `reference_crops/upgrade_card_gold_ref.png` | `runtime/upgrade_card_gold.9.png` | hover、推荐态或当前聚焦卡片 |
-| 攻击强调升级卡 | `reference_crops/upgrade_card_red_ref.png` | `runtime/upgrade_card_red.9.png` | 攻击类升级或危险强调态，可选 |
-| U01 图标 | `reference_crops/upgrade_icon_cat_swarm_ref.png` | `runtime/upgrade_icon_cat_swarm.png` | 猫猫连发 |
-| U02 图标 | `reference_crops/upgrade_icon_damage_ref.png` | `runtime/upgrade_icon_damage.png` | 猫爪变锋利 |
-| U04 图标 | `reference_crops/upgrade_icon_player_speed_ref.png` | `runtime/upgrade_icon_player_speed.png` | 跑快一点 |
+| 普通升級卡 | `reference_crops/upgrade_card_normal_ref.png` | `runtime/upgrade_card_normal.9.png` | 普通可選卡片背板 |
+| 高亮升級卡 | `reference_crops/upgrade_card_gold_ref.png` | `runtime/upgrade_card_gold.9.png` | hover、推薦態或當前聚焦卡片 |
+| 攻擊強調升級卡 | `reference_crops/upgrade_card_red_ref.png` | `runtime/upgrade_card_red.9.png` | 攻擊類升級或危險強調態，可選 |
+| U01 圖示 | `reference_crops/upgrade_icon_cat_swarm_ref.png` | `runtime/upgrade_icon_cat_swarm.png` | 貓貓連發 |
+| U02 圖示 | `reference_crops/upgrade_icon_damage_ref.png` | `runtime/upgrade_icon_damage.png` | 貓爪變鋒利 |
+| U04 圖示 | `reference_crops/upgrade_icon_player_speed_ref.png` | `runtime/upgrade_icon_player_speed.png` | 跑快一點 |
 
-建议文字安全区按 `320x540` 卡片尺寸记录：
+建議文字安全區按 `320x540` 卡片尺寸記錄：
 
-| 区域 | 建议范围 |
+| 區域 | 建議範圍 |
 | --- | --- |
-| 标题 | `x=36..284, y=42..96` |
-| 主图标 / 主内容区 | `x=44..276, y=112..310` |
-| 说明区 | `x=36..284, y=340..456` |
-| 底部徽章 | 中心约 `x=160, y=492`，半径约 `34` |
-| 九宫格边距 | `left=42, top=42, right=42, bottom=78` |
+| 標題 | `x=36..284, y=42..96` |
+| 主圖示 / 主內容區 | `x=44..276, y=112..310` |
+| 說明區 | `x=36..284, y=340..456` |
+| 底部徽章 | 中心約 `x=160, y=492`，半徑約 `34` |
+| 九宮格邊距 | `left=42, top=42, right=42, bottom=78` |
 
-## HUD、面板和图标
+## HUD、面板和圖示
 
-| 控件 | 参考 crop | 建议运行时资产 | 用法 |
+| 控制元件 | 參考 crop | 建議執行時資產 | 用法 |
 | --- | --- | --- | --- |
-| 花子头像框 | `reference_crops/hud_avatar_huazi_ref.png` | `runtime/hud_avatar_frame.png` | HUD 左上头像 |
-| 血条/经验条框 | `reference_crops/hud_health_bar_ref.png` | `runtime/hud_bar_frame.9.png` | HUD 条形背板，填充层另做 |
-| 暖色结算面板 | `reference_crops/panel_result_warm_ref.png` | `runtime/panel_result_warm.9.png` | 胜利/结算背板 |
-| 暗色结算面板 | `reference_crops/panel_result_dark_ref.png` | `runtime/panel_result_dark.9.png` | 失败/暂停背板 |
-| 顶部提示横幅 | `reference_crops/notice_panel_wide_ref.png` | `runtime/notice_panel_wide.9.png` | 波次、新猫提示 |
-| 三种猫武器槽图标 | `reference_crops/weapon_icon_*_ref.png` | `runtime/weapon_icon_*.png` | HUD 已解锁猫图标 |
+| 花子頭像框 | `reference_crops/hud_avatar_huazi_ref.png` | `runtime/hud_avatar_frame.png` | HUD 左上頭像 |
+| 血條/經驗條框 | `reference_crops/hud_health_bar_ref.png` | `runtime/hud_bar_frame.9.png` | HUD 條形背板，填充層另做 |
+| 暖色結算面板 | `reference_crops/panel_result_warm_ref.png` | `runtime/panel_result_warm.9.png` | 勝利/結算背板 |
+| 暗色結算面板 | `reference_crops/panel_result_dark_ref.png` | `runtime/panel_result_dark.9.png` | 失敗/暫停背板 |
+| 頂部提示橫幅 | `reference_crops/notice_panel_wide_ref.png` | `runtime/notice_panel_wide.9.png` | 波次、新貓提示 |
+| 三種貓武器槽圖示 | `reference_crops/weapon_icon_*_ref.png` | `runtime/weapon_icon_*.png` | HUD 已解鎖貓圖示 |
 
-## 生成和验收要求
+## 生成和驗收要求
 
-运行时 UI 资产生成后，至少补齐下面几类证据：
+執行時 UI 資產生成後，至少補齊下面幾類證據：
 
-- `ui_reference_crop_*.png`：使用到的参考 crop。
-- `ui_runtime_asset_*.png`：生成后的运行时资产。
-- `ui_runtime_screenshot_*.png`：真实运行截图 crop。
-- `ui_compare_*.png`：参考 crop 与运行截图并排对照。
-- 简短说明：哪些地方继承了参考图，哪些地方因为文字、尺寸或可交互状态做了调整。
+- `ui_reference_crop_*.png`：使用到的參考 crop。
+- `ui_runtime_asset_*.png`：生成後的執行時資產。
+- `ui_runtime_screenshot_*.png`：真實執行截圖 crop。
+- `ui_compare_*.png`：參考 crop 與執行截圖並排對照。
+- 簡短說明：哪些地方繼承了參考圖，哪些地方因為文字、尺寸或可互動狀態做了調整。
 
-如果核心 UI 仍主要由代码画矩形和圆形组成，即使布局接近，也不能视为符合素材接入要求。
+如果核心 UI 仍主要由程式碼畫矩形和圓形組成，即使佈局接近，也不能視為符合素材接入要求。

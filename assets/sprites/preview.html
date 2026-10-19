@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>花子放猫素材预览</title>
+  <title>花子放貓素材預覽</title>
   <style>
     :root {
       color-scheme: dark;
@@ -333,79 +333,79 @@
 <body>
   <main>
     <header>
-      <h1>花子放猫素材预览</h1>
-      <div class="count" id="count">0 个素材</div>
+      <h1>花子放貓素材預覽</h1>
+      <div class="count" id="count">0 個素材</div>
     </header>
-    <nav aria-label="素材分类" id="filters"></nav>
+    <nav aria-label="素材分類" id="filters"></nav>
     <div id="sections"></div>
   </main>
 
   <script>
     const filters = [
       ["all", "全部"],
-      ["map", "地图"],
+      ["map", "地圖"],
       ["ui", "UI"],
-      ["battle", "战斗"]
+      ["battle", "戰鬥"]
     ];
 
     const sections = [
       {
         key: "map",
-        title: "地图",
+        title: "地圖",
         layout: "wide",
         items: [
-          ["完整", "固定户外大地图", "previews/full_outdoor_map.png"],
-          ["素材表", "泥地、草地、深浅地块、草丛、石头、土堆、落叶、围栏、树墙、石墙、水面", "previews/environment_assets_painted.png"]
+          ["完整", "固定戶外大地圖", "previews/full_outdoor_map.png"],
+          ["素材表", "泥地、草地、深淺地塊、草叢、石頭、土堆、落葉、圍欄、樹牆、石牆、水面", "previews/environment_assets_painted.png"]
         ]
       },
       {
         key: "ui",
-        title: "UI 与图标",
+        title: "UI 與圖示",
         layout: "wide",
         items: [
-          ["素材表", "血量条、升级三选一卡片、胜利/失败结算页、暂停界面、升级图标、武器图标、波次/新猫提示", "previews/ui_assets_painted.png"]
+          ["素材表", "血量條、升級三選一卡片、勝利/失敗結算頁、暫停介面、升級圖示、武器圖示、波次/新貓提示", "previews/ui_assets_painted.png"]
         ]
       },
       {
         key: "battle",
-        title: "战斗",
+        title: "戰鬥",
         layout: "wide",
         items: [
-          ["素材表", "花子、橘猫、黑猫、奶牛猫、普通奶牛、小牛、大奶牛、远程牛、命中、爆炸、经验、粒子", "previews/combat_assets_painted.png"],
-          ["8向", "花子待机 / 行走", "previews/huazi_8dir.png"],
+          ["素材表", "花子、橘貓、黑貓、奶牛貓、普通奶牛、小牛、大奶牛、遠端牛、命中、爆炸、經驗、粒子", "previews/combat_assets_painted.png"],
+          ["8向", "花子待機 / 行走", "previews/huazi_8dir.png"],
           ["8向", "普通奶牛行走", "previews/cow_normal_8dir_256x192.png"],
-          ["8向", "疯跑小牛奔跑", "previews/cow_calf_8dir_192x144.png"],
+          ["8向", "瘋跑小牛奔跑", "previews/cow_calf_8dir_192x144.png"],
           ["8向", "厚皮大奶牛行走", "previews/cow_tank_8dir_320x224.png"],
-          ["8向", "吐奶远程牛行走（不含奶滴）", "previews/cow_ranged_8dir_288x192.png"],
-          ["8向", "橘猫整猫直线扑击", "previews/orange_cat_projectile_8dir_192x128.png"],
-          ["8向", "黑猫整猫范围扑击", "previews/black_cat_projectile_8dir_192x128.png"],
-          ["8向", "奶牛猫回旋扫场弹", "previews/cow_cat_spin_8dir_192x128.png"],
-          ["8向", "奶滴远程弹", "previews/milk_drop_8dir_192x128.png"]
+          ["8向", "吐奶遠端牛行走（不含奶滴）", "previews/cow_ranged_8dir_288x192.png"],
+          ["8向", "橘貓整貓直線撲擊", "previews/orange_cat_projectile_8dir_192x128.png"],
+          ["8向", "黑貓整貓範圍撲擊", "previews/black_cat_projectile_8dir_192x128.png"],
+          ["8向", "奶牛貓迴旋掃場彈", "previews/cow_cat_spin_8dir_192x128.png"],
+          ["8向", "奶滴遠端彈", "previews/milk_drop_8dir_192x128.png"]
         ]
       }
     ];
 
     const directions = [
-      ["e", "东"],
-      ["se", "东南"],
+      ["e", "東"],
+      ["se", "東南"],
       ["s", "南"],
       ["sw", "西南"],
       ["w", "西"],
       ["nw", "西北"],
       ["n", "北"],
-      ["ne", "东北"]
+      ["ne", "東北"]
     ];
 
     const directionalAssets = [
       ["花子 8 向", "huazi_8dir_192x192.png", 192, 192, 768, 1536, 0.42],
       ["普通奶牛 8 向", "cow_normal_8dir_256x192.png", 256, 192, 1024, 1536, 0.46],
-      ["疯跑小牛 8 向", "cow_calf_8dir_192x144.png", 192, 144, 768, 1152, 0.54],
+      ["瘋跑小牛 8 向", "cow_calf_8dir_192x144.png", 192, 144, 768, 1152, 0.54],
       ["厚皮大奶牛 8 向", "cow_tank_8dir_320x224.png", 320, 224, 1280, 1792, 0.4],
-      ["吐奶远程牛 8 向（不含奶滴）", "cow_ranged_8dir_288x192.png", 288, 192, 1152, 1536, 0.42],
-      ["橘猫扑击 8 向", "orange_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
-      ["黑猫扑击 8 向", "black_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
-      ["奶牛猫回旋弹 8 向", "cow_cat_spin_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
-      ["奶滴弹 8 向", "milk_drop_8dir_192x128.png", 192, 128, 768, 1024, 0.58]
+      ["吐奶遠端牛 8 向（不含奶滴）", "cow_ranged_8dir_288x192.png", 288, 192, 1152, 1536, 0.42],
+      ["橘貓撲擊 8 向", "orange_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["黑貓撲擊 8 向", "black_cat_projectile_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["奶牛貓迴旋彈 8 向", "cow_cat_spin_8dir_192x128.png", 192, 128, 768, 1024, 0.58],
+      ["奶滴彈 8 向", "milk_drop_8dir_192x128.png", 192, 128, 768, 1024, 0.58]
     ];
 
     const filterRoot = document.getElementById("filters");
@@ -483,7 +483,7 @@
       sectionRoot.innerHTML = overview + directionalAssets.map(renderDirectionalAsset).join("");
 
       const total = sections.reduce((sum, section) => sum + section.items.length, 0) + directionalAssets.length;
-      count.textContent = `${total} 个预览`;
+      count.textContent = `${total} 個預覽`;
     }
 
     function setFilter(filter) {

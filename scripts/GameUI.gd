@@ -33,7 +33,8 @@ var current_screen := ""
 var hud_visible := true
 
 const START_BUTTONS := ["开始游戏", "成绩", "开发团队"]
-const DEVELOPER_NAMES := ["aya", "HexBlank"]
+const DEVELOPER_NAMES := ["LegendaryAni"]
+const ORIGINAL_PROJECT_CREDIT := "原始项目：mewamew/huaizi-de-cows\n原作者：HexBlank"
 const SCORES_EMPTY_PLACEHOLDER := "？？?"
 const POPUP_CONTENT_TOP := 265.0
 const POPUP_SIDE_PAD := 84.0
@@ -49,9 +50,9 @@ const HP_BAR_SIZE := Vector2(354, 12)
 const XP_BAR_SIZE := Vector2(354, 8)
 
 var icon_paths := {
-	"orange": "res://assets/sprites/ui/runtime/small_icon_orange_cat.png",
-	"black": "res://assets/sprites/ui/runtime/small_icon_black_cat.png",
-	"cow": "res://assets/sprites/ui/runtime/small_icon_cow_cat.png"
+	"orange": "res://assets/sprites/ui/runtime/legendaryani/small_icon_orange_cat.png",
+	"black": "res://assets/sprites/ui/runtime/legendaryani/small_icon_black_cat.png",
+	"cow": "res://assets/sprites/ui/runtime/legendaryani/small_icon_cow_cat.png"
 }
 
 func _ready() -> void:
@@ -64,7 +65,7 @@ func _ready() -> void:
 
 func _build_hud() -> void:
 	var left_back := NinePatchRect.new()
-	left_back.texture = load("res://assets/sprites/ui/runtime/notice_panel_wide.9.png")
+	left_back.texture = load("res://assets/sprites/ui/runtime/legendaryani/notice_panel_wide.9.png")
 	left_back.position = Vector2(22, 18)
 	left_back.size = Vector2(560, 205)
 	left_back.patch_margin_left = 32
@@ -74,7 +75,7 @@ func _build_hud() -> void:
 	left_back.modulate.a = 1.0
 	root.add_child(left_back)
 	var wave_back := NinePatchRect.new()
-	wave_back.texture = load("res://assets/sprites/ui/runtime/notice_panel_wide.9.png")
+	wave_back.texture = load("res://assets/sprites/ui/runtime/legendaryani/notice_panel_wide.9.png")
 	wave_back.position = Vector2(720, 18)
 	wave_back.size = Vector2(480, 92)
 	wave_back.patch_margin_left = 32
@@ -84,7 +85,7 @@ func _build_hud() -> void:
 	wave_back.modulate.a = 1.0
 	root.add_child(wave_back)
 	var stats_back := NinePatchRect.new()
-	stats_back.texture = load("res://assets/sprites/ui/runtime/notice_panel_wide.9.png")
+	stats_back.texture = load("res://assets/sprites/ui/runtime/legendaryani/notice_panel_wide.9.png")
 	stats_back.position = Vector2(1488, 20)
 	stats_back.size = Vector2(390, 130)
 	stats_back.patch_margin_left = 32
@@ -94,13 +95,13 @@ func _build_hud() -> void:
 	stats_back.modulate.a = 1.0
 	root.add_child(stats_back)
 	var avatar := TextureRect.new()
-	avatar.texture = load("res://assets/sprites/ui/runtime/hud_avatar_frame.png")
+	avatar.texture = load("res://assets/sprites/ui/runtime/legendaryani/hud_avatar_frame.png")
 	avatar.position = Vector2(36, 30)
 	avatar.custom_minimum_size = Vector2(116, 116)
 	avatar.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
 	root.add_child(avatar)
 	var face := AnimatedSprite2D.new()
-	face.sprite_frames = load("res://assets/sprites/huazi_8dir_192x192.spriteframes.tres")
+	face.sprite_frames = load("res://assets/sprites/legendaryani/huazi_8dir_192x192.spriteframes.tres")
 	face.animation = "idle_s"
 	face.play()
 	face.position = Vector2(94, 88)
@@ -114,7 +115,7 @@ func _build_hud() -> void:
 	root.add_child(hp_label)
 
 	var hp_frame := NinePatchRect.new()
-	hp_frame.texture = load("res://assets/sprites/ui/runtime/hud_bar_frame.9.png")
+	hp_frame.texture = load("res://assets/sprites/ui/runtime/legendaryani/hud_bar_frame.9.png")
 	hp_frame.position = Vector2(166, 68)
 	hp_frame.size = Vector2(390, 36)
 	hp_frame.patch_margin_left = 16
@@ -124,7 +125,7 @@ func _build_hud() -> void:
 	hp_frame.z_index = 2
 	root.add_child(hp_frame)
 	var hp_empty := TextureRect.new()
-	hp_empty.texture = load("res://assets/sprites/ui/runtime/bar_empty.png")
+	hp_empty.texture = load("res://assets/sprites/ui/runtime/legendaryani/bar_empty.png")
 	hp_empty.position = HP_BAR_POS
 	hp_empty.size = HP_BAR_SIZE
 	hp_empty.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -139,7 +140,7 @@ func _build_hud() -> void:
 	hp_fill_clip.z_index = 1
 	root.add_child(hp_fill_clip)
 	hp_fill = TextureRect.new()
-	hp_fill.texture = load("res://assets/sprites/ui/runtime/bar_fill_health.png")
+	hp_fill.texture = load("res://assets/sprites/ui/runtime/legendaryani/bar_fill_health.png")
 	hp_fill.position = Vector2.ZERO
 	hp_fill.size = HP_BAR_SIZE
 	hp_fill.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -147,7 +148,7 @@ func _build_hud() -> void:
 	hp_fill_clip.add_child(hp_fill)
 
 	var xp_frame := NinePatchRect.new()
-	xp_frame.texture = load("res://assets/sprites/ui/runtime/hud_bar_frame.9.png")
+	xp_frame.texture = load("res://assets/sprites/ui/runtime/legendaryani/hud_bar_frame.9.png")
 	xp_frame.position = Vector2(166, 111)
 	xp_frame.size = Vector2(390, 28)
 	xp_frame.patch_margin_left = 16
@@ -157,7 +158,7 @@ func _build_hud() -> void:
 	xp_frame.z_index = 2
 	root.add_child(xp_frame)
 	var xp_empty := TextureRect.new()
-	xp_empty.texture = load("res://assets/sprites/ui/runtime/bar_empty.png")
+	xp_empty.texture = load("res://assets/sprites/ui/runtime/legendaryani/bar_empty.png")
 	xp_empty.position = XP_BAR_POS
 	xp_empty.size = XP_BAR_SIZE
 	xp_empty.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -172,7 +173,7 @@ func _build_hud() -> void:
 	xp_fill_clip.z_index = 1
 	root.add_child(xp_fill_clip)
 	xp_fill = TextureRect.new()
-	xp_fill.texture = load("res://assets/sprites/ui/runtime/bar_fill_xp.png")
+	xp_fill.texture = load("res://assets/sprites/ui/runtime/legendaryani/bar_fill_xp.png")
 	xp_fill.position = Vector2.ZERO
 	xp_fill.size = XP_BAR_SIZE
 	xp_fill.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -266,7 +267,7 @@ func show_main_menu() -> void:
 	var content := _content_rect(panel_pos, panel_size)
 	_add_panel(menu_panel, panel_pos, panel_size, "warm")
 	var title := Label.new()
-	title.text = "花子的奶牛关"
+	title.text = String(ProjectSettings.get_setting("application/config/name"))
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	title.position = content.position
@@ -351,20 +352,29 @@ func show_developers() -> void:
 	title.add_theme_font_size_override("font_size", 40)
 	developer_panel.add_child(title)
 	var names := Label.new()
-	names.text = "%s\n%s" % [DEVELOPER_NAMES[0], DEVELOPER_NAMES[1]]
+	names.text = "\n".join(DEVELOPER_NAMES)
 	names.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	names.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	names.position = Vector2(content.position.x, content.position.y + 78)
 	names.size = Vector2(content.size.x, 112)
 	names.add_theme_font_size_override("font_size", 32)
 	developer_panel.add_child(names)
+	var source_credit := Label.new()
+	source_credit.text = ORIGINAL_PROJECT_CREDIT
+	source_credit.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	source_credit.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	source_credit.position = Vector2(content.position.x, content.position.y + 214)
+	source_credit.size = Vector2(content.size.x, 92)
+	source_credit.add_theme_font_size_override("font_size", 18)
+	source_credit.modulate = Color(0.86, 0.82, 0.72)
+	developer_panel.add_child(source_credit)
 	var button_size := Vector2(250, 68)
 	var button_pos := Vector2(content.position.x + (content.size.x - button_size.x) * 0.5, content.end.y - button_size.y)
 	_add_textured_button(developer_panel, "返回", button_pos, button_size, func() -> void: show_main_menu())
 
 func _add_panel(parent: Control, pos: Vector2, panel_size: Vector2, style: String) -> NinePatchRect:
 	var panel := NinePatchRect.new()
-	panel.texture = load("res://assets/sprites/ui/runtime/panel_result_dark.9.png" if style == "dark" else "res://assets/sprites/ui/runtime/panel_result_warm.9.png")
+	panel.texture = load("res://assets/sprites/ui/runtime/legendaryani/panel_result_dark.9.png" if style == "dark" else "res://assets/sprites/ui/runtime/legendaryani/panel_result_warm.9.png")
 	panel.position = pos
 	panel.size = panel_size
 	panel.patch_margin_left = 42
@@ -376,7 +386,7 @@ func _add_panel(parent: Control, pos: Vector2, panel_size: Vector2, style: Strin
 
 func _add_textured_button(parent: Control, text: String, pos: Vector2, button_size: Vector2, pressed: Callable) -> Button:
 	var button_bg := NinePatchRect.new()
-	button_bg.texture = load("res://assets/sprites/ui/runtime/button_primary.9.png")
+	button_bg.texture = load("res://assets/sprites/ui/runtime/legendaryani/button_primary.9.png")
 	button_bg.position = pos
 	button_bg.size = button_size
 	button_bg.patch_margin_left = 24
@@ -487,7 +497,7 @@ func _make_upgrade_card(id: String, data: Dictionary, level: int, pos: Vector2, 
 	card.position = pos
 	card.size = Vector2(320, 520)
 	var bg := NinePatchRect.new()
-	bg.texture = load(["res://assets/sprites/ui/runtime/upgrade_card_gold.9.png", "res://assets/sprites/ui/runtime/upgrade_card_normal.9.png", "res://assets/sprites/ui/runtime/upgrade_card_red.9.png"][index % 3])
+	bg.texture = load(["res://assets/sprites/ui/runtime/legendaryani/upgrade_card_gold.9.png", "res://assets/sprites/ui/runtime/legendaryani/upgrade_card_normal.9.png", "res://assets/sprites/ui/runtime/legendaryani/upgrade_card_red.9.png"][index % 3])
 	bg.size = card.size
 	bg.patch_margin_left = 32
 	bg.patch_margin_right = 32
@@ -517,7 +527,7 @@ func _make_upgrade_card(id: String, data: Dictionary, level: int, pos: Vector2, 
 	desc.add_theme_font_size_override("font_size", 22)
 	card.add_child(desc)
 	var medal := TextureRect.new()
-	medal.texture = load("res://assets/sprites/ui/runtime/medal_cow_cat.png" if id == "U04" else "res://assets/sprites/ui/runtime/medal_orange_cat.png")
+	medal.texture = load("res://assets/sprites/ui/runtime/legendaryani/medal_cow_cat.png" if id == "U04" else "res://assets/sprites/ui/runtime/legendaryani/medal_orange_cat.png")
 	medal.position = Vector2(126, 432)
 	medal.size = Vector2(68, 68)
 	medal.expand_mode = TextureRect.EXPAND_FIT_WIDTH_PROPORTIONAL
@@ -606,7 +616,7 @@ func show_pause() -> void:
 	var panel_size := Vector2(500, 250)
 	var panel_pos := _center_pos(panel_size)
 	var panel := NinePatchRect.new()
-	panel.texture = load("res://assets/sprites/ui/runtime/notice_panel_wide.9.png")
+	panel.texture = load("res://assets/sprites/ui/runtime/legendaryani/notice_panel_wide.9.png")
 	panel.position = panel_pos
 	panel.size = panel_size
 	panel.patch_margin_left = 32

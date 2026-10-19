@@ -14,3 +14,17 @@ assets/sprites/previews/*.import
 spec/*.png.import
 /tools/
 /Tools/
+
+# v0.2 reproducible asset processing and independent acceptance runner.
+!/tools/
+/tools/*
+!/tools/prepare_scifi_art.py
+!/tools/run_scifi_tests.ps1
+!/tools/build_1103_mech_layers.py
+!/tools/build_scifi_world.py
+
+# Local validation, restore points, and exported previews must never be committed.
+/.codex/builds/
+/.codex/restorepoints/
+/.codex/validation/
+/.codex/*.png

@@ -1,0 +1,53 @@
+{
+  "canvas": [
+    1200,
+    1400
+  ],
+  "pivot": {
+    "torso": [
+      593,
+      715
+    ],
+    "head": [
+      592,
+      349
+    ],
+    "left_arm": [
+      405,
+      424
+    ],
+    "right_arm": [
+      811,
+      420
+    ],
+    "weapon": [
+      915,
+      505
+    ],
+    "backpack": [
+      590,
+      540
+    ],
+    "legs": [
+      590,
+      915
+    ],
+    "effects": [
+      590,
+      540
+    ]
+  },
+  "order": [
+    "backpack",
+    "legs",
+    "torso",
+    "left_arm",
+    "right_arm",
+    "weapon",
+    "head",
+    "effects"
+  ],
+  "generated_by": "tools/build_1103_mech_layers.py",
+  "original_vector_raster": true,
+  "not_upscaled_96px": true
+}

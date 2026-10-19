@@ -16,7 +16,7 @@ var camera: Camera2D
 
 func _ready() -> void:
 	sprite = AnimatedSprite2D.new()
-	sprite.sprite_frames = load("res://assets/sprites/huazi_8dir_192x192.spriteframes.tres")
+	sprite.sprite_frames = load("res://assets/sprites/legendaryani/huazi_8dir_192x192.spriteframes.tres")
 	sprite.scale = Vector2(0.78, 0.78)
 	add_child(sprite)
 	camera = Camera2D.new()

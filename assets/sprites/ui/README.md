@@ -1,5 +1,7 @@
 # UI 资源拆分说明
 
+> v0.2使用科幻像素主題：`reference_crops/scifi/` 為處理後參考，`runtime/scifi/` 為正式資產，生成原圖保留 `assets/source/scifi/`。舊手繪crop不再是新版材質目標；三張並排大卡、字區與正式資產等原則保留。HUD/卡片/按鈕以生成panel裁切與ninepatch整理，不以預設單色控件代替。
+
 本文说明 `ui_assets_painted.png` 被拆成哪些控件级参考图，以及后续运行时 UI 资产应该怎样生成和接入。
 
 ## 目录职责

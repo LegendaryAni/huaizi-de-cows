@@ -101,7 +101,7 @@ func _setup_world() -> void:
 	add_child(world)
 	var map := Sprite2D.new()
 	map.name = "FullOutdoorMap"
-	map.texture = load("res://assets/sprites/full_outdoor_map_painted_4096x2305.png")
+	map.texture = load("res://assets/sprites/legendaryani/full_outdoor_map_painted_4096x2305.png")
 	map.centered = false
 	world.add_child(map)
 	decor_layer = Node2D.new()
@@ -130,7 +130,7 @@ func _setup_world() -> void:
 func _build_environment_decor() -> void:
 	var rng_decor := RandomNumberGenerator.new()
 	rng_decor.seed = 20260614
-	var sheet = load("res://assets/sprites/environment_assets_painted.png")
+	var sheet = load("res://assets/sprites/legendaryani/environment_assets_painted.png")
 	var small_regions := [
 		Rect2(0, 298, 82, 114),
 		Rect2(88, 292, 82, 118),
@@ -177,7 +177,7 @@ func _add_boundary_decor(pos: Vector2, region_rect: Rect2, scale_value: float) -
 func _add_sheet_decor(pos: Vector2, region_rect: Rect2, scale_value: float, alpha := 0.94) -> void:
 	var sprite := Sprite2D.new()
 	var region := AtlasTexture.new()
-	region.atlas = load("res://assets/sprites/environment_assets_painted.png")
+	region.atlas = load("res://assets/sprites/legendaryani/environment_assets_painted.png")
 	region.region = region_rect
 	sprite.texture = region
 	sprite.position = pos
@@ -595,7 +595,7 @@ func _handle_collisions() -> void:
 			if cat.global_position.distance_to(enemy.global_position) <= float(enemy.stats["radius"]) + float(cat.stats["radius"]):
 				_damage_enemy(enemy, cat.damage, cat.cat_type)
 				sfx.play_event("hit")
-				_spawn_texture_vfx(enemy.global_position, "res://assets/sprites/vfx/runtime/impact_hit_96.png", 0.22, Vector2(0.72, 0.72))
+				_spawn_texture_vfx(enemy.global_position, "res://assets/sprites/vfx/runtime/legendaryani/impact_hit_96.png", 0.22, Vector2(0.72, 0.72))
 				if cat.cat_type == "orange":
 					cat.deactivate()
 					break
@@ -616,7 +616,7 @@ func _black_cat_explode(cat) -> void:
 		"position": _point(cat.global_position),
 		"radius": radius
 	})
-	_spawn_texture_vfx(cat.global_position, "res://assets/sprites/vfx/runtime/black_cat_explosion_256.png", 0.35, Vector2(1.25, 1.25))
+	_spawn_texture_vfx(cat.global_position, "res://assets/sprites/vfx/runtime/legendaryani/black_cat_explosion_256.png", 0.35, Vector2(1.25, 1.25))
 	shake_left = 0.08
 	cat.deactivate()
 
@@ -639,7 +639,7 @@ func _kill_enemy(enemy) -> void:
 		"kills": kills
 	})
 	_spawn_xp(enemy.global_position, int(enemy.stats["xp"]))
-	_spawn_texture_vfx(enemy.global_position, "res://assets/sprites/vfx/runtime/death_smoke_128.png", 0.38, Vector2(0.85, 0.85))
+	_spawn_texture_vfx(enemy.global_position, "res://assets/sprites/vfx/runtime/legendaryani/death_smoke_128.png", 0.38, Vector2(0.85, 0.85))
 	enemy.deactivate()
 	sfx.play_event("enemy_die")
 
@@ -858,6 +858,7 @@ func _run_menu_probe() -> void:
 		},
 		"developers": {
 			"names": GameUIScene.DEVELOPER_NAMES.duplicate(),
+			"original_project_credit": GameUIScene.ORIGINAL_PROJECT_CREDIT,
 			"display_mode": "developer_team_screen",
 			"button": "开发团队",
 			"names_layout": "one_per_line",

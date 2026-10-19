@@ -1,11 +1,16 @@
 # Godot 素材说明
 
-这版主素材已按参考图重做为高对比暗色漫画街机风。固定户外大地图是全图正常亮度的清晰连续手绘底图，不预烘焙暗角或角色中心光照，不再使用方块 tile 拼接；泥地、草地、深浅地块、草丛、石头、土堆、落叶、围栏、树墙、石墙、水面等环境层由 Godot 叠加。
+> v0.2有效規格為 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md`。目前科幻角色/地圖用 `scifi/`、UI/VFX用對應runtime/scifi目錄，像素Nearest；舊手繪圖與Linear規則只適用v0.1。新UI參考在 `ui/reference_crops/scifi/`，保持HUD資訊、三卡結構與真實畫面證據要求。
+
+仓库保留原始的高对比暗色漫画街机素材作为基线；当前运行时已切换到 `legendaryani/` 的明亮手绘贴纸 / 绘本风主题。新版仍维持原有图集格数、地图尺寸、环境 atlas 版位与 UI 结构，因此玩法、碰撞与方向动画语义不变。固定户外大地图仍是全图正常亮度的连续手绘底图，不预烘焙暗角或角色中心光照；环境层由 Godot 叠加。
 
 ## 主文件
 
 | 文件 | 用途 |
 | --- | --- |
+| `legendaryani/` | 当前运行时角色、猫、奶牛、奶滴、地图与环境主题；来源与生成方式见 `legendaryani/README.md` |
+| `ui/runtime/legendaryani/` | 当前运行时 HUD、按钮、升级卡、图标与结算面板主题 |
+| `vfx/runtime/legendaryani/` | 当前运行时命中、爆炸、死亡烟尘与经验视觉主题 |
 | `full_outdoor_map_painted_4096x2305.png` | 固定户外清晰底图，直接作为背景使用，全图正常亮度，不内置隔挡/环境装饰/暗角 |
 | `environment_assets_painted.png` | 地图素材表：泥地、草地、深浅地块、草丛、石头、小土堆、落叶、围栏、树墙、石墙、水面边界 |
 | `ui_assets_painted.png` | UI 与图标风格参考素材表：血量条、升级三选一卡片、胜利/失败结算页、暂停界面、4 个升级图标、HUD 武器图标、波次/新猫提示。控件级参考 crop 和运行时资产规则见 `ui/README.md` |

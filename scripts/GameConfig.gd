@@ -28,7 +28,7 @@ const CAT_STATS := {
 		"cooldown": 0.75,
 		"limit": 18,
 		"radius": 34.0,
-		"spriteframes": "res://assets/sprites/orange_cat_projectile_8dir_192x128.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/orange_cat_projectile_8dir_192x128.spriteframes.tres",
 		"sfx": "cat_orange_launch"
 	},
 	"black": {
@@ -41,7 +41,7 @@ const CAT_STATS := {
 		"radius": 36.0,
 		"explosion_radius": 150.0,
 		"explosion_damage": 24.0,
-		"spriteframes": "res://assets/sprites/black_cat_projectile_8dir_192x128.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/black_cat_projectile_8dir_192x128.spriteframes.tres",
 		"sfx": "cat_black_launch"
 	},
 	"cow": {
@@ -54,7 +54,7 @@ const CAT_STATS := {
 		"radius": 38.0,
 		"max_hits": 5,
 		"sweep_range": 360.0,
-		"spriteframes": "res://assets/sprites/cow_cat_spin_8dir_192x128.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/cow_cat_spin_8dir_192x128.spriteframes.tres",
 		"sfx": "cat_cow_spin"
 	}
 }
@@ -68,7 +68,7 @@ const ENEMY_STATS := {
 		"xp": 8,
 		"active_range": 1500.0,
 		"radius": 48.0,
-		"spriteframes": "res://assets/sprites/cow_normal_8dir_256x192.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/cow_normal_8dir_256x192.spriteframes.tres",
 		"anim_prefix": "walk"
 	},
 	"calf": {
@@ -79,7 +79,7 @@ const ENEMY_STATS := {
 		"xp": 7,
 		"active_range": 1500.0,
 		"radius": 38.0,
-		"spriteframes": "res://assets/sprites/cow_calf_8dir_192x144.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/cow_calf_8dir_192x144.spriteframes.tres",
 		"anim_prefix": "run"
 	},
 	"tank": {
@@ -90,7 +90,7 @@ const ENEMY_STATS := {
 		"xp": 18,
 		"active_range": 1500.0,
 		"radius": 64.0,
-		"spriteframes": "res://assets/sprites/cow_tank_8dir_320x224.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/cow_tank_8dir_320x224.spriteframes.tres",
 		"anim_prefix": "walk"
 	},
 	"ranged": {
@@ -104,7 +104,7 @@ const ENEMY_STATS := {
 		"keep_distance": 430.0,
 		"shoot_interval": 2.4,
 		"max_milk": 2,
-		"spriteframes": "res://assets/sprites/cow_ranged_8dir_288x192.spriteframes.tres",
+		"spriteframes": "res://assets/sprites/legendaryani/cow_ranged_8dir_288x192.spriteframes.tres",
 		"anim_prefix": "walk"
 	}
 }
@@ -114,14 +114,14 @@ const MILK := {
 	"speed": 360.0,
 	"life": 2.2,
 	"radius": 22.0,
-	"spriteframes": "res://assets/sprites/milk_drop_8dir_192x128.spriteframes.tres"
+	"spriteframes": "res://assets/sprites/legendaryani/milk_drop_8dir_192x128.spriteframes.tres"
 }
 
 const XP := {
 	"pickup_range": 300.0,
 	"speed": 650.0,
 	"radius": 18.0,
-	"sprite": "res://assets/sprites/vfx/runtime/xp_pickup_64.png"
+	"sprite": "res://assets/sprites/vfx/runtime/legendaryani/xp_pickup_64.png"
 }
 
 const XP_REQUIREMENTS := [40, 80, 130, 190, 260, 280, 1000]
@@ -143,7 +143,7 @@ const UPGRADES := {
 		"max": 4,
 		"stat": "cooldown",
 		"factor": 0.85,
-		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_cat_swarm.png"
+		"icon": "res://assets/sprites/ui/runtime/legendaryani/upgrade_icon_cat_swarm.png"
 	},
 	"U02": {
 		"name": "猫爪变锋利",
@@ -151,7 +151,7 @@ const UPGRADES := {
 		"max": 4,
 		"stat": "damage",
 		"factor": 1.2,
-		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_damage.png"
+		"icon": "res://assets/sprites/ui/runtime/legendaryani/upgrade_icon_damage.png"
 	},
 	"U03": {
 		"name": "猫群加速",
@@ -159,7 +159,7 @@ const UPGRADES := {
 		"max": 3,
 		"stat": "cat_speed",
 		"factor": 1.15,
-		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_black_burst.png"
+		"icon": "res://assets/sprites/ui/runtime/legendaryani/upgrade_icon_black_burst.png"
 	},
 	"U04": {
 		"name": "跑快一点",
@@ -167,7 +167,7 @@ const UPGRADES := {
 		"max": 3,
 		"stat": "player_speed",
 		"factor": 1.12,
-		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_player_speed.png"
+		"icon": "res://assets/sprites/ui/runtime/legendaryani/upgrade_icon_player_speed.png"
 	}
 }
 
@@ -220,26 +220,48 @@ const WAVES := [
 ]
 
 const SFX := {
-	"cat_orange_launch": "res://assets/audio/sfx/cat_orange_launch_01.ogg",
-	"cat_black_launch": "res://assets/audio/sfx/cat_black_launch_01.ogg",
-	"cat_cow_spin": "res://assets/audio/sfx/cat_cow_spin_01.ogg",
-	"milk_launch": "res://assets/audio/sfx/milk_launch_01.ogg",
-	"hit": "res://assets/audio/sfx/cow_hit_01.ogg",
-	"cat_black_explode": "res://assets/audio/sfx/cat_black_explode_01.ogg",
-	"enemy_die": "res://assets/audio/sfx/enemy_die_01.ogg",
-	"player_hurt": "res://assets/audio/sfx/player_hurt_01.ogg",
-	"xp_pickup": "res://assets/audio/sfx/xp_pickup_01.ogg",
-	"level_up": "res://assets/audio/sfx/level_up_01.ogg",
-	"ui_select": "res://assets/audio/sfx/ui_select_01.ogg",
-	"wave_start": "res://assets/audio/sfx/wave_start_01.ogg",
-	"weapon_unlock": "res://assets/audio/sfx/weapon_unlock_01.ogg",
-	"victory": "res://assets/audio/sfx/victory_01.ogg",
-	"defeat": "res://assets/audio/sfx/defeat_01.ogg"
+	"cat_orange_launch": "res://assets/audio/scifi/rail_fire.wav",
+	"cat_black_launch": "res://assets/audio/scifi/grenade_fire.wav",
+	"cat_cow_spin": "res://assets/audio/scifi/blade_fire.wav",
+	"milk_launch": "res://assets/audio/scifi/enemy_shot.wav",
+	"hit": "res://assets/audio/scifi/hit_metal.wav",
+	"cat_black_explode": "res://assets/audio/scifi/explosion.wav",
+	"enemy_die": "res://assets/audio/scifi/enemy_die.wav",
+	"player_hurt": "res://assets/audio/scifi/player_hurt.wav",
+	"xp_pickup": "res://assets/audio/scifi/xp_pickup.wav",
+	"level_up": "res://assets/audio/scifi/level_up.wav",
+	"ui_select": "res://assets/audio/scifi/ui_select.wav",
+	"wave_start": "res://assets/audio/scifi/wave_start.wav",
+	"weapon_unlock": "res://assets/audio/scifi/weapon_unlock.wav",
+	"victory": "res://assets/audio/scifi/victory.wav",
+	"defeat": "res://assets/audio/scifi/defeat.wav",
+	"rail_fire": "res://assets/audio/scifi/rail_fire.wav",
+	"rail_hit": "res://assets/audio/scifi/rail_hit.wav",
+	"grenade_fire": "res://assets/audio/scifi/grenade_fire.wav",
+	"grenade_hit": "res://assets/audio/scifi/grenade_hit.wav",
+	"blade_fire": "res://assets/audio/scifi/blade_fire.wav",
+	"blade_hit": "res://assets/audio/scifi/blade_hit.wav",
+	"arc_fire": "res://assets/audio/scifi/arc_fire.wav",
+	"arc_hit": "res://assets/audio/scifi/arc_hit.wav",
+	"thermal_fire": "res://assets/audio/scifi/thermal_fire.wav",
+	"thermal_hit": "res://assets/audio/scifi/thermal_hit.wav",
+	"frost_fire": "res://assets/audio/scifi/frost_fire.wav",
+	"frost_hit": "res://assets/audio/scifi/frost_hit.wav",
+	"hit_metal": "res://assets/audio/scifi/hit_metal.wav",
+	"hit_heavy": "res://assets/audio/scifi/hit_heavy.wav",
+	"boss_die": "res://assets/audio/scifi/boss_die.wav",
+	"explosion": "res://assets/audio/scifi/explosion.wav",
+	"dash": "res://assets/audio/scifi/dash.wav",
+	"pulse": "res://assets/audio/scifi/pulse.wav",
+	"shield": "res://assets/audio/scifi/shield.wav",
+	"repair": "res://assets/audio/scifi/repair.wav",
+	"evolve": "res://assets/audio/scifi/evolve.wav",
+	"enemy_shot": "res://assets/audio/scifi/enemy_shot.wav"
 }
 
 const BGM := {
-	"source_input_path": "/Users/wawa/Downloads/39995331_da2-1-16.mp4",
-	"runtime_path": "res://assets/audio/sfx/background_bgm_01.ogg"
+	"source_input_path": "Original deterministic synthesis; assets/audio/scifi/manifest.json",
+	"runtime_path": "res://assets/audio/scifi/industrial_bgm_loop.ogg"
 }
 
 static func xp_needed(level_index: int) -> int:

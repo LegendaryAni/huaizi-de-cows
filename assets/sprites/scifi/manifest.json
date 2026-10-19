@@ -1,0 +1,1404 @@
+{
+  "version": "0.2",
+  "source_project": "C:\\Users\\legendaryAni\\Documents\\ChatGPT\\New project",
+  "direction_rows": {
+    "e": 2,
+    "se": 1,
+    "s": 0,
+    "sw": 7,
+    "w": 6,
+    "nw": 5,
+    "n": 4,
+    "ne": 3
+  },
+  "files": [
+    {
+      "source": "external-original-project/units/1103/portrait.png",
+      "runtime": "assets/sprites/scifi/units/1103/portrait.png",
+      "source_sha256": "3d80724f6f8c332cf8eccc65f3f6a9c4af9b44401a136df7f5aab7d5d6db6376",
+      "sha256": "3d80724f6f8c332cf8eccc65f3f6a9c4af9b44401a136df7f5aab7d5d6db6376"
+    },
+    {
+      "source": "external-original-project/units/1103/Idle.png",
+      "runtime": "assets/sprites/scifi/units/1103/Idle.png",
+      "source_sha256": "11a8ea5b0a546956bb8c9ec0c168130f4ee8d352ced0592e788d5d20f8869036",
+      "sha256": "11a8ea5b0a546956bb8c9ec0c168130f4ee8d352ced0592e788d5d20f8869036"
+    },
+    {
+      "source": "external-original-project/units/1103/Walk.png",
+      "runtime": "assets/sprites/scifi/units/1103/Walk.png",
+      "source_sha256": "f17f4eb903558aa68de33f7720094e6f5a6fe1dd2d3394556b4aca18be0b38e4",
+      "sha256": "f17f4eb903558aa68de33f7720094e6f5a6fe1dd2d3394556b4aca18be0b38e4"
+    },
+    {
+      "source": "external-original-project/units/1103/Attack.png",
+      "runtime": "assets/sprites/scifi/units/1103/Attack.png",
+      "source_sha256": "e769fa1ff5fea9aac29391483f839c3f8ee69868635eb5f9a7f6263f06c87223",
+      "sha256": "e769fa1ff5fea9aac29391483f839c3f8ee69868635eb5f9a7f6263f06c87223"
+    },
+    {
+      "source": "external-original-project/units/1103/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/1103/Hurt.png",
+      "source_sha256": "196c12572bf62604132bf9342c3cf7928fe5336f8c6a5530bc08afc65ecaaa85",
+      "sha256": "196c12572bf62604132bf9342c3cf7928fe5336f8c6a5530bc08afc65ecaaa85"
+    },
+    {
+      "source": "external-original-project/units/1103/Faint.png",
+      "runtime": "assets/sprites/scifi/units/1103/Faint.png",
+      "source_sha256": "8acd634bfa2e91688e53c7e19e2ae5515a75030fb4a163d6a68f5d5467e99475",
+      "sha256": "8acd634bfa2e91688e53c7e19e2ae5515a75030fb4a163d6a68f5d5467e99475"
+    },
+    {
+      "source": "external-original-project/units/1103/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/1103/Shoot.png",
+      "source_sha256": "4df295e7f679398b6b872a7444c68e1d61f877bd045e041e72322efd9d18366d",
+      "sha256": "4df295e7f679398b6b872a7444c68e1d61f877bd045e041e72322efd9d18366d"
+    },
+    {
+      "source": "external-original-project/units/1103/Charge.png",
+      "runtime": "assets/sprites/scifi/units/1103/Charge.png",
+      "source_sha256": "331d2def25033e70758f65bc630922f97a43de9a44906b51be6969298f1f207a",
+      "sha256": "331d2def25033e70758f65bc630922f97a43de9a44906b51be6969298f1f207a"
+    },
+    {
+      "source": "external-original-project/units/2101/portrait.png",
+      "runtime": "assets/sprites/scifi/units/2101/portrait.png",
+      "source_sha256": "4def2298c4d03eecc2539f93db8d0219e13cd017019dddcb20ad9d08d288b344",
+      "sha256": "4def2298c4d03eecc2539f93db8d0219e13cd017019dddcb20ad9d08d288b344"
+    },
+    {
+      "source": "external-original-project/units/2101/Idle.png",
+      "runtime": "assets/sprites/scifi/units/2101/Idle.png",
+      "source_sha256": "6cb95269638668bc79233b417aba7c5cf871e60bd2a4264cbb8bab3e2e3031fc",
+      "sha256": "6cb95269638668bc79233b417aba7c5cf871e60bd2a4264cbb8bab3e2e3031fc"
+    },
+    {
+      "source": "external-original-project/units/2101/Walk.png",
+      "runtime": "assets/sprites/scifi/units/2101/Walk.png",
+      "source_sha256": "1730e37c20c9ff7a82ed865515b11051cb2947f89cb8d88b27ecc3b1aa7562fb",
+      "sha256": "1730e37c20c9ff7a82ed865515b11051cb2947f89cb8d88b27ecc3b1aa7562fb"
+    },
+    {
+      "source": "external-original-project/units/2101/Attack.png",
+      "runtime": "assets/sprites/scifi/units/2101/Attack.png",
+      "source_sha256": "513a2fb6785ae55ac8b6892c90a103e0577c6744a6d5cdb808e7f2735c590b1a",
+      "sha256": "513a2fb6785ae55ac8b6892c90a103e0577c6744a6d5cdb808e7f2735c590b1a"
+    },
+    {
+      "source": "external-original-project/units/2101/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/2101/Hurt.png",
+      "source_sha256": "c6cdd8f3ab8dbe3d953d0fd36f3ea0ce4f28a3e3ded84f18e5fe7c54cb34b3e0",
+      "sha256": "c6cdd8f3ab8dbe3d953d0fd36f3ea0ce4f28a3e3ded84f18e5fe7c54cb34b3e0"
+    },
+    {
+      "source": "external-original-project/units/2101/Faint.png",
+      "runtime": "assets/sprites/scifi/units/2101/Faint.png",
+      "source_sha256": "2cce487e160bb4896f4146f2f1b3fd3b05136d4a905feac25cb53bc9633877e2",
+      "sha256": "2cce487e160bb4896f4146f2f1b3fd3b05136d4a905feac25cb53bc9633877e2"
+    },
+    {
+      "source": "external-original-project/units/2101/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/2101/Shoot.png",
+      "source_sha256": "3d069ddd7d5d058c252876cb33d6ef210b8e71dd274125150009deb6bad7f404",
+      "sha256": "3d069ddd7d5d058c252876cb33d6ef210b8e71dd274125150009deb6bad7f404"
+    },
+    {
+      "source": "external-original-project/units/2101/Charge.png",
+      "runtime": "assets/sprites/scifi/units/2101/Charge.png",
+      "source_sha256": "b51dac823a80974a7ba6a8bd92bd4318d6706733a2b0b0bdd703666619b46fa8",
+      "sha256": "b51dac823a80974a7ba6a8bd92bd4318d6706733a2b0b0bdd703666619b46fa8"
+    },
+    {
+      "source": "external-original-project/units/2106/portrait.png",
+      "runtime": "assets/sprites/scifi/units/2106/portrait.png",
+      "source_sha256": "6ea9dbd7fe148b90fbad02dcb432a16a3ebbdc06a150ab0840d93a60c4df4864",
+      "sha256": "6ea9dbd7fe148b90fbad02dcb432a16a3ebbdc06a150ab0840d93a60c4df4864"
+    },
+    {
+      "source": "external-original-project/units/2106/Idle.png",
+      "runtime": "assets/sprites/scifi/units/2106/Idle.png",
+      "source_sha256": "a9655106c8243dc9beb7c0665893c711b19bcc96a8bc032388b5895bb17ac72a",
+      "sha256": "a9655106c8243dc9beb7c0665893c711b19bcc96a8bc032388b5895bb17ac72a"
+    },
+    {
+      "source": "external-original-project/units/2106/Walk.png",
+      "runtime": "assets/sprites/scifi/units/2106/Walk.png",
+      "source_sha256": "4c9e06d05a9d478c205ec269098847880d3ac135a989637270b615457687377c",
+      "sha256": "4c9e06d05a9d478c205ec269098847880d3ac135a989637270b615457687377c"
+    },
+    {
+      "source": "external-original-project/units/2106/Attack.png",
+      "runtime": "assets/sprites/scifi/units/2106/Attack.png",
+      "source_sha256": "0e729eee1aa7451b9c0bebd3c762ee3132838713435ad7d79c25b67fea155725",
+      "sha256": "0e729eee1aa7451b9c0bebd3c762ee3132838713435ad7d79c25b67fea155725"
+    },
+    {
+      "source": "external-original-project/units/2106/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/2106/Hurt.png",
+      "source_sha256": "d6b6ac779a70cd0842009e5e6865a29e50cf5b41c6335361bb27fc0038d8ccd6",
+      "sha256": "d6b6ac779a70cd0842009e5e6865a29e50cf5b41c6335361bb27fc0038d8ccd6"
+    },
+    {
+      "source": "external-original-project/units/2106/Faint.png",
+      "runtime": "assets/sprites/scifi/units/2106/Faint.png",
+      "source_sha256": "f451f6148462793eec095edf0704c2ae4de4f7e33b7e4474f5f5719cdc5ada0a",
+      "sha256": "f451f6148462793eec095edf0704c2ae4de4f7e33b7e4474f5f5719cdc5ada0a"
+    },
+    {
+      "source": "external-original-project/units/2106/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/2106/Shoot.png",
+      "source_sha256": "253683835dffde072c23151007ca16502160600f557526e13554eec408783a74",
+      "sha256": "253683835dffde072c23151007ca16502160600f557526e13554eec408783a74"
+    },
+    {
+      "source": "external-original-project/units/2106/Charge.png",
+      "runtime": "assets/sprites/scifi/units/2106/Charge.png",
+      "source_sha256": "938b3504a1ea5562e7e8cf9569c4e557b944baf8807bc5ff6b779c73319ee259",
+      "sha256": "938b3504a1ea5562e7e8cf9569c4e557b944baf8807bc5ff6b779c73319ee259"
+    },
+    {
+      "source": "external-original-project/units/2103/portrait.png",
+      "runtime": "assets/sprites/scifi/units/2103/portrait.png",
+      "source_sha256": "06aae49e63c3284e75085fd4cbec0c6fd3c016644125930fcae22cb10ffbf20c",
+      "sha256": "06aae49e63c3284e75085fd4cbec0c6fd3c016644125930fcae22cb10ffbf20c"
+    },
+    {
+      "source": "external-original-project/units/2103/Idle.png",
+      "runtime": "assets/sprites/scifi/units/2103/Idle.png",
+      "source_sha256": "6f85dd8df4e86f2987ef845162f52db3cb00b3c154a2bcefccde0c4fb8530134",
+      "sha256": "6f85dd8df4e86f2987ef845162f52db3cb00b3c154a2bcefccde0c4fb8530134"
+    },
+    {
+      "source": "external-original-project/units/2103/Walk.png",
+      "runtime": "assets/sprites/scifi/units/2103/Walk.png",
+      "source_sha256": "e83fec44b61c9bc18c0064793e87d03ccfad50395c2c9091b1aa55f7471d22ee",
+      "sha256": "e83fec44b61c9bc18c0064793e87d03ccfad50395c2c9091b1aa55f7471d22ee"
+    },
+    {
+      "source": "external-original-project/units/2103/Attack.png",
+      "runtime": "assets/sprites/scifi/units/2103/Attack.png",
+      "source_sha256": "7a131c026d57f9a78fbd059595b7f8166abc8594d85bc849dbad7a3a2686cd2e",
+      "sha256": "7a131c026d57f9a78fbd059595b7f8166abc8594d85bc849dbad7a3a2686cd2e"
+    },
+    {
+      "source": "external-original-project/units/2103/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/2103/Hurt.png",
+      "source_sha256": "0c74e4c35004ae3e07dc4b63d05869d73226f7bd8e34d9e9736f2d87ca2dbeb4",
+      "sha256": "0c74e4c35004ae3e07dc4b63d05869d73226f7bd8e34d9e9736f2d87ca2dbeb4"
+    },
+    {
+      "source": "external-original-project/units/2103/Faint.png",
+      "runtime": "assets/sprites/scifi/units/2103/Faint.png",
+      "source_sha256": "3f24e268b2ead6e29ff0b9d7e63382aa9e2c8eb306b7b00f8c457acd1a10d9f0",
+      "sha256": "3f24e268b2ead6e29ff0b9d7e63382aa9e2c8eb306b7b00f8c457acd1a10d9f0"
+    },
+    {
+      "source": "external-original-project/units/2103/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/2103/Shoot.png",
+      "source_sha256": "54147beb696b38e3a91ac4d78e3db17fce1aa165d15cc24113b8fa7fa349259a",
+      "sha256": "54147beb696b38e3a91ac4d78e3db17fce1aa165d15cc24113b8fa7fa349259a"
+    },
+    {
+      "source": "external-original-project/units/2103/Charge.png",
+      "runtime": "assets/sprites/scifi/units/2103/Charge.png",
+      "source_sha256": "f85b7d4c1600c5d6fa59957f904e49576daeba492be19ec9b7f7f324ac3b3e6a",
+      "sha256": "f85b7d4c1600c5d6fa59957f904e49576daeba492be19ec9b7f7f324ac3b3e6a"
+    },
+    {
+      "source": "external-original-project/units/2105/portrait.png",
+      "runtime": "assets/sprites/scifi/units/2105/portrait.png",
+      "source_sha256": "76e20f9bdd7c84ccfc3cac4a9604b800683fdd2bd94fdfde07ad564f2408d428",
+      "sha256": "76e20f9bdd7c84ccfc3cac4a9604b800683fdd2bd94fdfde07ad564f2408d428"
+    },
+    {
+      "source": "external-original-project/units/2105/Idle.png",
+      "runtime": "assets/sprites/scifi/units/2105/Idle.png",
+      "source_sha256": "314f830c5aa2135a9b8ea8e89763ac01b0c3528b27e8e2b5e4ca63b5abc5cff6",
+      "sha256": "314f830c5aa2135a9b8ea8e89763ac01b0c3528b27e8e2b5e4ca63b5abc5cff6"
+    },
+    {
+      "source": "external-original-project/units/2105/Walk.png",
+      "runtime": "assets/sprites/scifi/units/2105/Walk.png",
+      "source_sha256": "f247453873fe8aaa92101283507351906a79f199c1991bae23db816c0f8798af",
+      "sha256": "f247453873fe8aaa92101283507351906a79f199c1991bae23db816c0f8798af"
+    },
+    {
+      "source": "external-original-project/units/2105/Attack.png",
+      "runtime": "assets/sprites/scifi/units/2105/Attack.png",
+      "source_sha256": "1fd03af9dff15855616e3cbf29a454cc9190a882737d4c4af0538a7d11f27ba5",
+      "sha256": "1fd03af9dff15855616e3cbf29a454cc9190a882737d4c4af0538a7d11f27ba5"
+    },
+    {
+      "source": "external-original-project/units/2105/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/2105/Hurt.png",
+      "source_sha256": "12e2f1a51ce91a65ec1a1746b0f2406e596cb9695995c40b0efcca0230818448",
+      "sha256": "12e2f1a51ce91a65ec1a1746b0f2406e596cb9695995c40b0efcca0230818448"
+    },
+    {
+      "source": "external-original-project/units/2105/Faint.png",
+      "runtime": "assets/sprites/scifi/units/2105/Faint.png",
+      "source_sha256": "c42104e35c001d05f00c2b74f51c0fc248650be2f21e2a7e8c6fdb840b2312d6",
+      "sha256": "c42104e35c001d05f00c2b74f51c0fc248650be2f21e2a7e8c6fdb840b2312d6"
+    },
+    {
+      "source": "external-original-project/units/2105/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/2105/Shoot.png",
+      "source_sha256": "11a909e8b563ae7235c447d90355c72b717c04dbef0a3747a8fc6bdb281b461c",
+      "sha256": "11a909e8b563ae7235c447d90355c72b717c04dbef0a3747a8fc6bdb281b461c"
+    },
+    {
+      "source": "external-original-project/units/2105/Charge.png",
+      "runtime": "assets/sprites/scifi/units/2105/Charge.png",
+      "source_sha256": "df7fbbcda7a898b63b5e5b9ebf0ea326aef74e72823a30391eafc2f9fc2ff995",
+      "sha256": "df7fbbcda7a898b63b5e5b9ebf0ea326aef74e72823a30391eafc2f9fc2ff995"
+    },
+    {
+      "source": "external-original-project/units/3101/portrait.png",
+      "runtime": "assets/sprites/scifi/units/3101/portrait.png",
+      "source_sha256": "fcb5d6a0181896e5adb6f6def0be2ff86b57be00000390d01d8c4773afbef64a",
+      "sha256": "fcb5d6a0181896e5adb6f6def0be2ff86b57be00000390d01d8c4773afbef64a"
+    },
+    {
+      "source": "external-original-project/units/3101/Idle.png",
+      "runtime": "assets/sprites/scifi/units/3101/Idle.png",
+      "source_sha256": "1919fa3eedef44c4dd45c0af5373dd1dc62e22d8aea37f3a60a9c6cb2f69f367",
+      "sha256": "1919fa3eedef44c4dd45c0af5373dd1dc62e22d8aea37f3a60a9c6cb2f69f367"
+    },
+    {
+      "source": "external-original-project/units/3101/Walk.png",
+      "runtime": "assets/sprites/scifi/units/3101/Walk.png",
+      "source_sha256": "74f21ce88a773218acc7d257190e8f9d810724f024895016ccf0383faee2de03",
+      "sha256": "74f21ce88a773218acc7d257190e8f9d810724f024895016ccf0383faee2de03"
+    },
+    {
+      "source": "external-original-project/units/3101/Attack.png",
+      "runtime": "assets/sprites/scifi/units/3101/Attack.png",
+      "source_sha256": "8138d77cc6f6f3f58cc20c994fd2a7723f18166402c75df07637e09a5191a5ed",
+      "sha256": "8138d77cc6f6f3f58cc20c994fd2a7723f18166402c75df07637e09a5191a5ed"
+    },
+    {
+      "source": "external-original-project/units/3101/Hurt.png",
+      "runtime": "assets/sprites/scifi/units/3101/Hurt.png",
+      "source_sha256": "e722d31cc77a5975af0a90ad59c5c24407ddd60abb735401580106ed5d71d1e4",
+      "sha256": "e722d31cc77a5975af0a90ad59c5c24407ddd60abb735401580106ed5d71d1e4"
+    },
+    {
+      "source": "external-original-project/units/3101/Faint.png",
+      "runtime": "assets/sprites/scifi/units/3101/Faint.png",
+      "source_sha256": "0f2a50ff68cce0f1939432dd412ad6b33ded92db09996b64e527a53495c36612",
+      "sha256": "0f2a50ff68cce0f1939432dd412ad6b33ded92db09996b64e527a53495c36612"
+    },
+    {
+      "source": "external-original-project/units/3101/Shoot.png",
+      "runtime": "assets/sprites/scifi/units/3101/Shoot.png",
+      "source_sha256": "61d79c9867e9a9fee1038eb43e94e70c5ddfe3de07b5e689b6cea86a9ca7d2d0",
+      "sha256": "61d79c9867e9a9fee1038eb43e94e70c5ddfe3de07b5e689b6cea86a9ca7d2d0"
+    },
+    {
+      "source": "external-original-project/units/3101/Charge.png",
+      "runtime": "assets/sprites/scifi/units/3101/Charge.png",
+      "source_sha256": "f350798e37919cb3207e347d8000605459006cf56991b24d4d236b3c793d6ee0",
+      "sha256": "f350798e37919cb3207e347d8000605459006cf56991b24d4d236b3c793d6ee0"
+    },
+    {
+      "source": "external-generated-image/exec-a811da7c-8663-4848-bc63-ca22cc2c9f2b.png",
+      "runtime": "assets/source/scifi/panel-generated.png",
+      "source_sha256": "b8805c4d80bc9b0734f3ed0db86e7cd20414a476e1ea71b2d2929fc53b992e24",
+      "sha256": "b8805c4d80bc9b0734f3ed0db86e7cd20414a476e1ea71b2d2929fc53b992e24"
+    },
+    {
+      "source": "external-generated-image/exec-d0c79b8f-87ab-417c-802c-5ea13585a286.png",
+      "runtime": "assets/source/scifi/icons-generated.png",
+      "source_sha256": "4e1d85d993f743e3a62b37d2f7ef039ffbfebddb1e25abe70ab9b137a2734d08",
+      "sha256": "4e1d85d993f743e3a62b37d2f7ef039ffbfebddb1e25abe70ab9b137a2734d08"
+    },
+    {
+      "source": "external-original-project/props/prop-0.png",
+      "runtime": "assets/sprites/scifi/props/prop-0.png",
+      "source_sha256": "612f0e4be78457b24a776bdf6c3838e2b037ee0f74deb7bbedebf4d68e4f5747",
+      "sha256": "612f0e4be78457b24a776bdf6c3838e2b037ee0f74deb7bbedebf4d68e4f5747"
+    },
+    {
+      "source": "external-original-project/props/prop-1.png",
+      "runtime": "assets/sprites/scifi/props/prop-1.png",
+      "source_sha256": "8696ddd9bce3eb94aa2892cb0b02e92dcc8103b32d43b2cc81cff08147d5f5c6",
+      "sha256": "8696ddd9bce3eb94aa2892cb0b02e92dcc8103b32d43b2cc81cff08147d5f5c6"
+    },
+    {
+      "source": "external-original-project/props/prop-2.png",
+      "runtime": "assets/sprites/scifi/props/prop-2.png",
+      "source_sha256": "9b489c47f34ed6240857acd2e98879bad5a0bcb6a24f529f2cc716f8b3d56ec6",
+      "sha256": "9b489c47f34ed6240857acd2e98879bad5a0bcb6a24f529f2cc716f8b3d56ec6"
+    },
+    {
+      "source": "external-original-project/props/prop-3.png",
+      "runtime": "assets/sprites/scifi/props/prop-3.png",
+      "source_sha256": "d63508cfaa1b104fb7b33c370e064810db4b138bcf39828876daa131dedea238",
+      "sha256": "d63508cfaa1b104fb7b33c370e064810db4b138bcf39828876daa131dedea238"
+    },
+    {
+      "source": "external-original-project/props/prop-4.png",
+      "runtime": "assets/sprites/scifi/props/prop-4.png",
+      "source_sha256": "a3e7f27f991490a1f8ceee421ef9a843a43028f83753d11d3f3e2fe5496d8f80",
+      "sha256": "a3e7f27f991490a1f8ceee421ef9a843a43028f83753d11d3f3e2fe5496d8f80"
+    },
+    {
+      "source": "external-original-project/props/prop-5.png",
+      "runtime": "assets/sprites/scifi/props/prop-5.png",
+      "source_sha256": "540aadff7379ece788dbb35992e25b27a3651bea63b04814e40e80fc3998b737",
+      "sha256": "540aadff7379ece788dbb35992e25b27a3651bea63b04814e40e80fc3998b737"
+    },
+    {
+      "source": "external-original-project/props/prop-6.png",
+      "runtime": "assets/sprites/scifi/props/prop-6.png",
+      "source_sha256": "207076be77a3e03b1ca3321cb780ac8c29ed17148345cfee2790e7b675877c48",
+      "sha256": "207076be77a3e03b1ca3321cb780ac8c29ed17148345cfee2790e7b675877c48"
+    },
+    {
+      "source": "external-original-project/props/prop-7.png",
+      "runtime": "assets/sprites/scifi/props/prop-7.png",
+      "source_sha256": "fa3e812d83a63334b8344dcf3a757db40bdbd84d20af0a98d31155f9ad6736fe",
+      "sha256": "fa3e812d83a63334b8344dcf3a757db40bdbd84d20af0a98d31155f9ad6736fe"
+    },
+    {
+      "source": "external-original-project/props/prop-8.png",
+      "runtime": "assets/sprites/scifi/props/prop-8.png",
+      "source_sha256": "6bb8b4e36ddb7d6aa566f9399cafa97750607ee17f0e6d68d5fcb337720bfa58",
+      "sha256": "6bb8b4e36ddb7d6aa566f9399cafa97750607ee17f0e6d68d5fcb337720bfa58"
+    },
+    {
+      "source": "external-original-project/props/prop-9.png",
+      "runtime": "assets/sprites/scifi/props/prop-9.png",
+      "source_sha256": "d6b8ad0bcfd08dfd65a92fc5462f84e5125205591ecbc2e73dbc1016f36cc143",
+      "sha256": "d6b8ad0bcfd08dfd65a92fc5462f84e5125205591ecbc2e73dbc1016f36cc143"
+    },
+    {
+      "source": "external-original-project/props/prop-10.png",
+      "runtime": "assets/sprites/scifi/props/prop-10.png",
+      "source_sha256": "8e267a3367f1d4b05f61bb2c54eda4139e5378669bb948bbf54d26b1cbe3c6de",
+      "sha256": "8e267a3367f1d4b05f61bb2c54eda4139e5378669bb948bbf54d26b1cbe3c6de"
+    },
+    {
+      "source": "external-original-project/props/prop-11.png",
+      "runtime": "assets/sprites/scifi/props/prop-11.png",
+      "source_sha256": "ebbbf0b349bd54269d5213868520a8bdb9f317b7885768fd57ecc4d5f49ab005",
+      "sha256": "ebbbf0b349bd54269d5213868520a8bdb9f317b7885768fd57ecc4d5f49ab005"
+    }
+  ],
+  "actors": {
+    "1103": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Walk": {
+          "w": 64,
+          "h": 64,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Attack": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Hurt": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Faint": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Shoot": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Charge": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 32,
+          "ay": 59
+        }
+      }
+    },
+    "2101": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Walk": {
+          "w": 48,
+          "h": 48,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Attack": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Hurt": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Faint": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Shoot": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Charge": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        }
+      }
+    },
+    "2106": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Walk": {
+          "w": 48,
+          "h": 48,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Attack": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Hurt": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Faint": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Shoot": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Charge": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        }
+      }
+    },
+    "2103": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Walk": {
+          "w": 48,
+          "h": 48,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Attack": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Hurt": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Faint": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Shoot": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Charge": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        }
+      }
+    },
+    "2105": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Walk": {
+          "w": 48,
+          "h": 48,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Attack": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Hurt": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Faint": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Shoot": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 24,
+          "ay": 43
+        },
+        "Charge": {
+          "w": 48,
+          "h": 48,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 24,
+          "ay": 43
+        }
+      }
+    },
+    "3101": {
+      "s": 1,
+      "sh": true,
+      "a": {
+        "Idle": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Walk": {
+          "w": 64,
+          "h": 64,
+          "n": 4,
+          "r": 8,
+          "d": [
+            9,
+            9,
+            9,
+            9
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Attack": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Hurt": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            6,
+            6
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Faint": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            12,
+            12
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Shoot": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            7,
+            7
+          ],
+          "ax": 32,
+          "ay": 59
+        },
+        "Charge": {
+          "w": 64,
+          "h": 64,
+          "n": 2,
+          "r": 8,
+          "d": [
+            9,
+            9
+          ],
+          "ax": 32,
+          "ay": 59
+        }
+      }
+    }
+  },
+  "derived_assets": [
+    {
+      "path": "assets/sprites/scifi/map.png",
+      "sha256": "44d4cdbae0526be7cf5d7c752d94032852b06c1542ffa69cfc8a19b57bbe0035"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-0.png",
+      "sha256": "612f0e4be78457b24a776bdf6c3838e2b037ee0f74deb7bbedebf4d68e4f5747"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-1.png",
+      "sha256": "8696ddd9bce3eb94aa2892cb0b02e92dcc8103b32d43b2cc81cff08147d5f5c6"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-10.png",
+      "sha256": "8e267a3367f1d4b05f61bb2c54eda4139e5378669bb948bbf54d26b1cbe3c6de"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-11.png",
+      "sha256": "ebbbf0b349bd54269d5213868520a8bdb9f317b7885768fd57ecc4d5f49ab005"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-2.png",
+      "sha256": "9b489c47f34ed6240857acd2e98879bad5a0bcb6a24f529f2cc716f8b3d56ec6"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-3.png",
+      "sha256": "d63508cfaa1b104fb7b33c370e064810db4b138bcf39828876daa131dedea238"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-4.png",
+      "sha256": "a3e7f27f991490a1f8ceee421ef9a843a43028f83753d11d3f3e2fe5496d8f80"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-5.png",
+      "sha256": "540aadff7379ece788dbb35992e25b27a3651bea63b04814e40e80fc3998b737"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-6.png",
+      "sha256": "207076be77a3e03b1ca3321cb780ac8c29ed17148345cfee2790e7b675877c48"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-7.png",
+      "sha256": "fa3e812d83a63334b8344dcf3a757db40bdbd84d20af0a98d31155f9ad6736fe"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-8.png",
+      "sha256": "6bb8b4e36ddb7d6aa566f9399cafa97750607ee17f0e6d68d5fcb337720bfa58"
+    },
+    {
+      "path": "assets/sprites/scifi/props/prop-9.png",
+      "sha256": "d6b8ad0bcfd08dfd65a92fc5462f84e5125205591ecbc2e73dbc1016f36cc143"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Attack.png",
+      "sha256": "e769fa1ff5fea9aac29391483f839c3f8ee69868635eb5f9a7f6263f06c87223"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Charge.png",
+      "sha256": "331d2def25033e70758f65bc630922f97a43de9a44906b51be6969298f1f207a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Faint.png",
+      "sha256": "8acd634bfa2e91688e53c7e19e2ae5515a75030fb4a163d6a68f5d5467e99475"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/frames.tres",
+      "sha256": "d503a5f48c9bb4831a7ec3336d898a960eebbf6e90d6d4fe2e2448887f8a632b"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Hurt.png",
+      "sha256": "196c12572bf62604132bf9342c3cf7928fe5336f8c6a5530bc08afc65ecaaa85"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Idle.png",
+      "sha256": "11a8ea5b0a546956bb8c9ec0c168130f4ee8d352ced0592e788d5d20f8869036"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Idle.spriteframes.tres",
+      "sha256": "d503a5f48c9bb4831a7ec3336d898a960eebbf6e90d6d4fe2e2448887f8a632b"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/portrait.png",
+      "sha256": "3d80724f6f8c332cf8eccc65f3f6a9c4af9b44401a136df7f5aab7d5d6db6376"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Shoot.png",
+      "sha256": "4df295e7f679398b6b872a7444c68e1d61f877bd045e041e72322efd9d18366d"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Walk.png",
+      "sha256": "f17f4eb903558aa68de33f7720094e6f5a6fe1dd2d3394556b4aca18be0b38e4"
+    },
+    {
+      "path": "assets/sprites/scifi/units/1103/Walk.spriteframes.tres",
+      "sha256": "d503a5f48c9bb4831a7ec3336d898a960eebbf6e90d6d4fe2e2448887f8a632b"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Attack.png",
+      "sha256": "513a2fb6785ae55ac8b6892c90a103e0577c6744a6d5cdb808e7f2735c590b1a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Charge.png",
+      "sha256": "b51dac823a80974a7ba6a8bd92bd4318d6706733a2b0b0bdd703666619b46fa8"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Faint.png",
+      "sha256": "2cce487e160bb4896f4146f2f1b3fd3b05136d4a905feac25cb53bc9633877e2"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/frames.tres",
+      "sha256": "204b896ebe64a7499fdbd7c3760a503b5603231957d445eb4162cce77d0359f2"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Hurt.png",
+      "sha256": "c6cdd8f3ab8dbe3d953d0fd36f3ea0ce4f28a3e3ded84f18e5fe7c54cb34b3e0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Idle.png",
+      "sha256": "6cb95269638668bc79233b417aba7c5cf871e60bd2a4264cbb8bab3e2e3031fc"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Idle.spriteframes.tres",
+      "sha256": "204b896ebe64a7499fdbd7c3760a503b5603231957d445eb4162cce77d0359f2"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/portrait.png",
+      "sha256": "4def2298c4d03eecc2539f93db8d0219e13cd017019dddcb20ad9d08d288b344"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Shoot.png",
+      "sha256": "3d069ddd7d5d058c252876cb33d6ef210b8e71dd274125150009deb6bad7f404"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Walk.png",
+      "sha256": "1730e37c20c9ff7a82ed865515b11051cb2947f89cb8d88b27ecc3b1aa7562fb"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2101/Walk.spriteframes.tres",
+      "sha256": "204b896ebe64a7499fdbd7c3760a503b5603231957d445eb4162cce77d0359f2"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Attack.png",
+      "sha256": "7a131c026d57f9a78fbd059595b7f8166abc8594d85bc849dbad7a3a2686cd2e"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Charge.png",
+      "sha256": "f85b7d4c1600c5d6fa59957f904e49576daeba492be19ec9b7f7f324ac3b3e6a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Faint.png",
+      "sha256": "3f24e268b2ead6e29ff0b9d7e63382aa9e2c8eb306b7b00f8c457acd1a10d9f0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/frames.tres",
+      "sha256": "4ba2e442a8913aefe162cbcd2a07d110be92e2790fd0bb30ec9fe213d8f9ab30"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Hurt.png",
+      "sha256": "0c74e4c35004ae3e07dc4b63d05869d73226f7bd8e34d9e9736f2d87ca2dbeb4"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Idle.png",
+      "sha256": "6f85dd8df4e86f2987ef845162f52db3cb00b3c154a2bcefccde0c4fb8530134"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Idle.spriteframes.tres",
+      "sha256": "4ba2e442a8913aefe162cbcd2a07d110be92e2790fd0bb30ec9fe213d8f9ab30"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/portrait.png",
+      "sha256": "06aae49e63c3284e75085fd4cbec0c6fd3c016644125930fcae22cb10ffbf20c"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Shoot.png",
+      "sha256": "54147beb696b38e3a91ac4d78e3db17fce1aa165d15cc24113b8fa7fa349259a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Walk.png",
+      "sha256": "e83fec44b61c9bc18c0064793e87d03ccfad50395c2c9091b1aa55f7471d22ee"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2103/Walk.spriteframes.tres",
+      "sha256": "4ba2e442a8913aefe162cbcd2a07d110be92e2790fd0bb30ec9fe213d8f9ab30"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Attack.png",
+      "sha256": "1fd03af9dff15855616e3cbf29a454cc9190a882737d4c4af0538a7d11f27ba5"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Charge.png",
+      "sha256": "df7fbbcda7a898b63b5e5b9ebf0ea326aef74e72823a30391eafc2f9fc2ff995"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Faint.png",
+      "sha256": "c42104e35c001d05f00c2b74f51c0fc248650be2f21e2a7e8c6fdb840b2312d6"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/frames.tres",
+      "sha256": "de6bb85f5335fa3dd28074c589169bc623dd13af304636e68886423e4a28eff0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Hurt.png",
+      "sha256": "12e2f1a51ce91a65ec1a1746b0f2406e596cb9695995c40b0efcca0230818448"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Idle.png",
+      "sha256": "314f830c5aa2135a9b8ea8e89763ac01b0c3528b27e8e2b5e4ca63b5abc5cff6"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Idle.spriteframes.tres",
+      "sha256": "de6bb85f5335fa3dd28074c589169bc623dd13af304636e68886423e4a28eff0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/portrait.png",
+      "sha256": "76e20f9bdd7c84ccfc3cac4a9604b800683fdd2bd94fdfde07ad564f2408d428"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Shoot.png",
+      "sha256": "11a909e8b563ae7235c447d90355c72b717c04dbef0a3747a8fc6bdb281b461c"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Walk.png",
+      "sha256": "f247453873fe8aaa92101283507351906a79f199c1991bae23db816c0f8798af"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2105/Walk.spriteframes.tres",
+      "sha256": "de6bb85f5335fa3dd28074c589169bc623dd13af304636e68886423e4a28eff0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Attack.png",
+      "sha256": "0e729eee1aa7451b9c0bebd3c762ee3132838713435ad7d79c25b67fea155725"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Charge.png",
+      "sha256": "938b3504a1ea5562e7e8cf9569c4e557b944baf8807bc5ff6b779c73319ee259"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Faint.png",
+      "sha256": "f451f6148462793eec095edf0704c2ae4de4f7e33b7e4474f5f5719cdc5ada0a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/frames.tres",
+      "sha256": "e4cf5d010a3af6bb43d7c4c4ea600f0070968166779ad28350a09b549eeddd53"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Hurt.png",
+      "sha256": "d6b6ac779a70cd0842009e5e6865a29e50cf5b41c6335361bb27fc0038d8ccd6"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Idle.png",
+      "sha256": "a9655106c8243dc9beb7c0665893c711b19bcc96a8bc032388b5895bb17ac72a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Idle.spriteframes.tres",
+      "sha256": "e4cf5d010a3af6bb43d7c4c4ea600f0070968166779ad28350a09b549eeddd53"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/portrait.png",
+      "sha256": "6ea9dbd7fe148b90fbad02dcb432a16a3ebbdc06a150ab0840d93a60c4df4864"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Shoot.png",
+      "sha256": "253683835dffde072c23151007ca16502160600f557526e13554eec408783a74"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Walk.png",
+      "sha256": "4c9e06d05a9d478c205ec269098847880d3ac135a989637270b615457687377c"
+    },
+    {
+      "path": "assets/sprites/scifi/units/2106/Walk.spriteframes.tres",
+      "sha256": "e4cf5d010a3af6bb43d7c4c4ea600f0070968166779ad28350a09b549eeddd53"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Attack.png",
+      "sha256": "8138d77cc6f6f3f58cc20c994fd2a7723f18166402c75df07637e09a5191a5ed"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Charge.png",
+      "sha256": "f350798e37919cb3207e347d8000605459006cf56991b24d4d236b3c793d6ee0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Faint.png",
+      "sha256": "0f2a50ff68cce0f1939432dd412ad6b33ded92db09996b64e527a53495c36612"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/frames.tres",
+      "sha256": "0bd8ba48899093b1c35cbdb9862786dbd7fb04174971cde61f3983a6e86724a8"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Hurt.png",
+      "sha256": "e722d31cc77a5975af0a90ad59c5c24407ddd60abb735401580106ed5d71d1e4"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Idle.png",
+      "sha256": "1919fa3eedef44c4dd45c0af5373dd1dc62e22d8aea37f3a60a9c6cb2f69f367"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Idle.spriteframes.tres",
+      "sha256": "0bd8ba48899093b1c35cbdb9862786dbd7fb04174971cde61f3983a6e86724a8"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/portrait.png",
+      "sha256": "fcb5d6a0181896e5adb6f6def0be2ff86b57be00000390d01d8c4773afbef64a"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Shoot.png",
+      "sha256": "61d79c9867e9a9fee1038eb43e94e70c5ddfe3de07b5e689b6cea86a9ca7d2d0"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Walk.png",
+      "sha256": "74f21ce88a773218acc7d257190e8f9d810724f024895016ccf0383faee2de03"
+    },
+    {
+      "path": "assets/sprites/scifi/units/3101/Walk.spriteframes.tres",
+      "sha256": "0bd8ba48899093b1c35cbdb9862786dbd7fb04174971cde61f3983a6e86724a8"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/bar_fill.png",
+      "sha256": "b1053f89bb82a79f8d33fe961fb79364943688d6fa733b1de98be88f04359cbb"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/bar_frame.png",
+      "sha256": "8ee057da12aa755a03e35ccf65bf979e1ebb60a3e582b148d88e35be26fc859c"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/button.png",
+      "sha256": "37ce0700bd7c0b5592219c542c852402337436587600e0b91f0082d63a545951"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/card.png",
+      "sha256": "addb4575a1a5a8b5bc963ff024efca817de68a70db90ecb27a503f5deb831fa9"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_arc.png",
+      "sha256": "2656ea2bc8b686bd57852a07b4ebdbea58515d365bfb46cf3ff72a96115704ff"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_blade.png",
+      "sha256": "f9575905c9f0a974db92fb9446795fd8f85059570f1d46c5342536af00c7353e"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_credits.png",
+      "sha256": "e2aaa54e6512a2c9a741c3bc69fa1f3974a2f0b3e2f435c9a15d3e69e9287bae"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_dash.png",
+      "sha256": "7042366e7e425f15cb78a5c02c3b9c4b633907cfe35e348285c17fb2e1053e68"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_explosion.png",
+      "sha256": "f0288900dfe4b27f9a83d7cbcde5fe97e795d59c4a2f7d9905942e5e5382d6e3"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_frost.png",
+      "sha256": "520514f61d961f5e65d1b34c221e6cb2bc530d8f166ba8c1d30333112cfcb2c7"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_grenade.png",
+      "sha256": "43036372ab3d0ab75bd4eb45fa56954004ba1c8f986398a64386df4a3579c778"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_impact.png",
+      "sha256": "f4c068cbbc54fb261a20c6e0c007329479375d587b03d6595b831b01efc1bb4d"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_pulse.png",
+      "sha256": "8e7a9198916134122445e6c87cb7b17902c718de24c586ce8a863263af31a22e"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_rail.png",
+      "sha256": "7c906b975e78b73d0f7894fb5411c8ab5c2ccf0fe01f8cc047c2aa542d5e3e8b"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_repair.png",
+      "sha256": "777334b59421b94a6004f76e70705fd1b205bfeb823fd1ee9673c007bb039eed"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_repair_fx.png",
+      "sha256": "87ffaffe415a3f5f148a2d3cd60c8005cf1654594e6529b3c0cec674d0394f01"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_shield.png",
+      "sha256": "db7882dbff094264f5cd01e6f915eeab128342ee86cf93102e4f001119a3019a"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_smoke.png",
+      "sha256": "5e5a89a7274ad817988edf0f203cbbe396d835771940b494e160b1cd90376b2d"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_thermal.png",
+      "sha256": "064fe61ad4635bf6be0d958de199c4496c1db381a1bf04aacbbbfd9f62c90d97"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/icon_xp.png",
+      "sha256": "67886d58fecee5f00b20fdaa88ec36b6d1df62f47f2e90672c0756d5b837055d"
+    },
+    {
+      "path": "assets/sprites/ui/runtime/scifi/panel.png",
+      "sha256": "c558e91fd16658c89a89bf592d4e035a48ab533d3ada67d7fba8a7132684d9a5"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/arc.png",
+      "sha256": "b34f41a51f2a1df6351229065e4a70cf1bca74956198be7d7215fc2671e94d9e"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/blade.png",
+      "sha256": "f9575905c9f0a974db92fb9446795fd8f85059570f1d46c5342536af00c7353e"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/dash.png",
+      "sha256": "49cc08e657a4c5290003b72375cda3ae42de38a7cd07691a477c7265ce92fcfc"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/enemy.png",
+      "sha256": "42c4e7b475692a0accd291e82d95a647ced68fcfe5d70f7fb7aa343700f96cff"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/explosion.png",
+      "sha256": "f0288900dfe4b27f9a83d7cbcde5fe97e795d59c4a2f7d9905942e5e5382d6e3"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/frost.png",
+      "sha256": "c7c10fa553903a3d2eda1e03605bd3c417a40e074ed78e6bd86523760593e5ea"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/grenade.png",
+      "sha256": "b5d9a803dcf8369829de90cec77988a3f33c82e3fcdbc278376c3b556e0f78d4"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/impact.png",
+      "sha256": "f4c068cbbc54fb261a20c6e0c007329479375d587b03d6595b831b01efc1bb4d"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/pulse.png",
+      "sha256": "a575bb918d902d06685434a804e6d8b542c4d9b128d85a2c61e7e2c0a34d65d5"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/rail.png",
+      "sha256": "ebd7023af057954a8da18f6c76034e3fdc40cddb021539cbe9f268c81f8a829e"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/repair.png",
+      "sha256": "87ffaffe415a3f5f148a2d3cd60c8005cf1654594e6529b3c0cec674d0394f01"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/shield.png",
+      "sha256": "6f9381ee0f1bcf827e4a414a86d9c3f57736b16e1e92f0c21874886855702532"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/smoke.png",
+      "sha256": "5e5a89a7274ad817988edf0f203cbbe396d835771940b494e160b1cd90376b2d"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/thermal.png",
+      "sha256": "8a96ce73f68e98251dab48dfc94044fcc6ab1196f94dc3a0b299c70a4a3d90d7"
+    },
+    {
+      "path": "assets/sprites/vfx/runtime/scifi/xp.png",
+      "sha256": "67886d58fecee5f00b20fdaa88ec36b6d1df62f47f2e90672c0756d5b837055d"
+    }
+  ]
+}

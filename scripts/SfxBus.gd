@@ -6,13 +6,60 @@ var players := {}
 var missing := []
 var verified_events := []
 var trigger_counts := {}
+var impact_voices: Array[AudioStreamPlayer] = []
+var impact_by_event: Dictionary = {}
+var impact_voice_index := 0
+var last_impact_audio_ms := -1000
 var bgm_player: AudioStreamPlayer
 var bgm_stream: AudioStream
 var bgm_missing := false
 var bgm_play_requested := false
 var bgm_loaded := false
+var music_level := 0.65
+var sfx_level := 0.8
+var shake_level := 0.8
+var reduce_motion := false
+const PREFERENCES_PATH := "user://scifi_preferences_v1.cfg"
+
+func _load_preferences() -> void:
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--scifi-test="): return # Test runs never depend on player volume settings.
+	var config := ConfigFile.new()
+	if config.load(PREFERENCES_PATH) != OK: return
+	music_level = clampf(float(config.get_value("sound","music",0.65)),0.0,1.0)
+	sfx_level = clampf(float(config.get_value("sound","effects",0.8)),0.0,1.0)
+	shake_level = clampf(float(config.get_value("display","shake",0.8)),0.0,1.0)
+	reduce_motion = bool(config.get_value("display","reduce_motion",false))
+
+func preferences() -> Dictionary:
+	return {"music":music_level,"effects":sfx_level,"shake":shake_level,"reduce_motion":reduce_motion}
+
+func set_preferences(value: Dictionary) -> void:
+	music_level = clampf(float(value.get("music",music_level)),0.0,1.0)
+	sfx_level = clampf(float(value.get("effects",sfx_level)),0.0,1.0)
+	shake_level = clampf(float(value.get("shake",shake_level)),0.0,1.0)
+	reduce_motion = bool(value.get("reduce_motion",reduce_motion))
+	_apply_levels()
+	var config := ConfigFile.new()
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--scifi-test="): return # Test UI must not touch real user preferences.
+	config.set_value("sound","music",music_level)
+	config.set_value("sound","effects",sfx_level)
+	config.set_value("display","shake",shake_level)
+	config.set_value("display","reduce_motion",reduce_motion)
+	if config.save(PREFERENCES_PATH) != OK:
+		push_warning("Unable to persist audio/display preferences")
+
+func _apply_levels() -> void:
+	if bgm_player != null: bgm_player.volume_db = linear_to_db(maxf(0.0001, music_level)) - 7.0 if music_level > 0 else -80.0
+	for key in players:
+		players[key].volume_db = linear_to_db(maxf(0.0001,sfx_level)) - 3.0 if sfx_level > 0 else -80.0
+	for voice in impact_voices:
+		voice.volume_db = linear_to_db(maxf(0.0001,sfx_level)) - 3.0 if sfx_level > 0 else -80.0
+
 
 func _ready() -> void:
+	_load_preferences()
 	var is_headless := DisplayServer.get_name().to_lower().contains("headless")
 	_load_bgm(is_headless)
 	for event_name in GameConfig.SFX.keys():
@@ -33,6 +80,19 @@ func _ready() -> void:
 		player.bus = "Master"
 		add_child(player)
 		players[event_name] = player
+		if event_name == "hit" or event_name.ends_with("_hit") or event_name in ["hit_heavy","hit_metal"]:
+			impact_by_event[event_name] = [player]
+			# Small fixed voice pool prevents rapid hits from continually cutting each other off.
+			impact_voices.append(player)
+			for index in range(2):
+				var extra := AudioStreamPlayer.new()
+				extra.stream = stream
+				extra.bus = "Master"
+				add_child(extra)
+				impact_voices.append(extra)
+				impact_by_event[event_name].append(extra)
+
+	_apply_levels()
 
 func _load_bgm(is_headless: bool) -> void:
 	if ResourceLoader.exists(String(GameConfig.BGM["runtime_path"])):
@@ -64,8 +124,22 @@ func play_event(event_name: String) -> void:
 		trigger_counts[event_name] = int(trigger_counts[event_name]) + 1
 	if not players.has(event_name):
 		return
+	if (event_name == "hit" or event_name.ends_with("_hit") or event_name in ["hit_heavy","hit_metal"]) and not impact_voices.is_empty():
+		var now := Time.get_ticks_msec()
+		if now - last_impact_audio_ms < 42: return
+		last_impact_audio_ms = now
+		var voices: Array = impact_by_event.get(event_name, [players[event_name]])
+		var voice: AudioStreamPlayer = voices[impact_voice_index % voices.size()]
+		voice.pitch_scale = [0.94, 1.04, 0.99][impact_voice_index % 3]
+		voice.volume_db = linear_to_db(maxf(0.0001,sfx_level)) - 3.0 if sfx_level > 0 else -80.0
+		impact_voice_index += 1
+		voice.stop()
+		voice.play()
+		return
 	var player: AudioStreamPlayer = players[event_name]
 	player.stop()
+	if event_name == "player_hurt": player.pitch_scale = 0.89
+	elif event_name == "enemy_die": player.pitch_scale = 0.94
 	player.play()
 
 func loaded_events() -> Array:
@@ -97,6 +171,13 @@ func shutdown() -> void:
 		bgm_player.stream = null
 		bgm_player.queue_free()
 		bgm_player = null
+	for voice in impact_voices:
+		if not players.values().has(voice):
+			voice.stop()
+			voice.stream = null
+			voice.queue_free()
+	impact_voices.clear()
+	impact_by_event.clear()
 	for event_name in players.keys():
 		var player: AudioStreamPlayer = players[event_name]
 		player.stop()

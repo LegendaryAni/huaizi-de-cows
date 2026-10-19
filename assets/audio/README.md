@@ -1,5 +1,14 @@
 # 音频资源使用说明
 
+## v0.2 科幻版正式音效（2026-10-19）
+
+正式聲音路徑現在是 `assets/audio/scifi/`，包含 **31 個重新合成的科幻 WAV 事件音效** 與 **1 個約 24 秒的原創循環 Ogg 背景配樂**。沒有取樣、剪接或沿用舊貓牛版音檔。六種武器有獨立發射與命中聲、四技能與首領死亡也各有辨識度。SHA-256 與檔名見 `assets/audio/scifi/manifest.json`。
+
+`scripts/GameConfig.gd` 映射所有實際素材；`scripts/scifi/ScifiConfig.gd` 映射遊戲事件；`scripts/SfxBus.gd` 控制播放與音量。音樂／音效／震屏可在「音效與畫面」選單調整，偏好儲存在獨立設定檔，不修改進度存檔。舊 `assets/audio/sfx/` 檔保留作歷史追溯，不再用於 v0.2 科幻執行。
+
+**下方為 v0.1 歷史音訊對應，不是現行 v0.2 執行路徑。**
+
+
 本文说明音频资源的目录、用途和接入要求。授权来源和文件映射见 `assets/audio/LICENSES.md`。
 
 ## 目录

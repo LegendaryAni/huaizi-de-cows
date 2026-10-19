@@ -1274,6 +1274,8 @@ func test_cinematic_menu_v3() -> void:
 		var button: Button = scene.find_child("Command_"+action,true,false) as Button
 		check(button != null,"v3.action."+action)
 		if button != null:
+			var english: Label = button.find_child("EnglishLabel",true,false) as Label
+			check(english != null and not english.text.is_empty(),"v3.bilingual_navigation."+action)
 			var rect: Rect2 = button.get_global_rect()
 			check(rect.position.x >= 0 and rect.position.y >= 0 and rect.end.x <= 1920 and rect.end.y <= 1080,"v3.action_bounds."+action,rect)
 			for old_button in buttons:

@@ -10,7 +10,8 @@ const GOLD := Color("efba70")
 const BLUE := Color("8ad6eb")
 const ACTIONS := ["open_loadout","open_meta","open_scores","open_settings","tutorial","open_credits","quit"]
 const ICONS := ["deploy","workshop","records","settings","tutorial","credits","quit"]
-const NAMES := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","開發與素材來源","離開遊戲"]
+const NAMES := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","製作資訊","離開遊戲"]
+const EN_NAMES := ["DEPLOY","WORKSHOP","RECORDS","SETTINGS","TUTORIAL","CREDITS","EXIT"]
 
 @onready var environment: Control = $Environment
 @onready var hero_display: Control = $HeroDisplay
@@ -152,8 +153,8 @@ func _make_navigation_button(action: String, caption: String, icon: String, kind
 	content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	content.add_theme_constant_override("margin_left",23)
 	content.add_theme_constant_override("margin_right",23)
-	content.add_theme_constant_override("margin_top",9)
-	content.add_theme_constant_override("margin_bottom",9)
+	content.add_theme_constant_override("margin_top",5 if kind=="utility" else 7)
+	content.add_theme_constant_override("margin_bottom",5 if kind=="utility" else 7)
 	content.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	button.add_child(content)
 	var line := HBoxContainer.new()
@@ -178,17 +179,17 @@ func _make_navigation_button(action: String, caption: String, icon: String, kind
 	var title := Label.new()
 	title.text = caption
 	title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size",34 if kind=="primary" else (20 if kind=="utility" else 26))
+	title.add_theme_font_size_override("font_size",32 if kind=="primary" else (18 if kind=="utility" else 26))
 	title.add_theme_color_override("font_color",PAPER)
 	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	title_area.add_child(title)
-	if kind=="primary":
-		var hint := Label.new()
-		hint.text = "選擇主武器與兩項技能"
-		hint.add_theme_font_size_override("font_size",16)
-		hint.add_theme_color_override("font_color",GOLD)
-		hint.mouse_filter=Control.MOUSE_FILTER_IGNORE
-		title_area.add_child(hint)
+	var subtitle := Label.new()
+	subtitle.name = "EnglishLabel"
+	subtitle.text = EN_NAMES[ACTIONS.find(action)]
+	subtitle.add_theme_font_size_override("font_size",14 if kind=="primary" else (10 if kind=="utility" else 13))
+	subtitle.add_theme_color_override("font_color", GOLD if kind=="primary" else BLUE)
+	subtitle.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	title_area.add_child(subtitle)
 	if kind!="utility":
 		var arrow := Label.new()
 		arrow.name="Indicator"
@@ -220,7 +221,7 @@ func _focus_button(button: Button, active: bool) -> void:
 
 func _build_ui() -> void:
 	_label(main_ui,"傳奇倖存者",Vector2(80,53),Vector2(635,102),76,PAPER)
-	_label(main_ui,"工業廢墟行動",Vector2(87,163),Vector2(490,38),22,BLUE)
+	_label(main_ui,"LEGENDARY SURVIVOR / 工業廢墟行動",Vector2(87,163),Vector2(540,38),20,BLUE)
 	var navigation := VBoxContainer.new()
 	navigation.name="Navigation"
 	navigation.position=Vector2(77,265)
@@ -245,9 +246,9 @@ func _build_ui() -> void:
 	# Actual save data is injected by ScifiUI after _ready().
 	_image(main_ui,"ProfileFrame","v3_version_frame.png",Vector2(1500,33),Vector2(344,107),true)
 	_image(main_ui,"ProfileMark","menu_icon_deploy.png",Vector2(1517,58),Vector2(54,54))
-	_label(main_ui,"本機檔案",Vector2(1582,43),Vector2(245,37),25,PAPER)
-	_label(main_ui,"作戰紀錄  0 筆",Vector2(1583,85),Vector2(243,27),17,MUTED).name="HistoryCount"
-	_label(main_ui,"信用點  0",Vector2(1583,111),Vector2(243,25),18,GOLD).name="CreditCount"
+	_label(main_ui,"本機檔案 / LOCAL DATA",Vector2(1582,43),Vector2(245,37),20,PAPER)
+	_label(main_ui,"作戰紀錄 / RUNS  0",Vector2(1583,85),Vector2(243,27),17,MUTED).name="HistoryCount"
+	_label(main_ui,"信用點 / CREDITS  0",Vector2(1583,111),Vector2(243,25),17,GOLD).name="CreditCount"
 	var mission := Button.new()
 	mission.name="MissionBanner"
 	mission.text=""
@@ -261,15 +262,15 @@ func _build_ui() -> void:
 	main_ui.add_child(mission)
 	var backdrop:=_image(mission,"BannerArt","v3_mission_frame.png",Vector2.ZERO,Vector2(650,155),true)
 	_label(mission,"作戰任務 / MAIN OPERATION",Vector2(38,13),Vector2(530,28),17,GOLD)
-	_label(mission,"工業廢墟",Vector2(39,44),Vector2(470,57),37,PAPER)
-	_label(mission,"最終目標：徵收者",Vector2(41,105),Vector2(485,29),21,MUTED)
+	_label(mission,"工業廢墟 / INDUSTRIAL RUINS",Vector2(39,44),Vector2(530,57),27,PAPER)
+	_label(mission,"最終目標：徵收者 / TARGET: COLLECTOR",Vector2(41,105),Vector2(540,29),18,MUTED)
 	mission.pressed.connect(func() -> void: _request_action("open_loadout"))
 	mission.mouse_entered.connect(func() -> void: backdrop.modulate=Color(1.17,1.10,1.0))
 	mission.mouse_exited.connect(func() -> void: backdrop.modulate=Color.WHITE)
 	_image(main_ui,"VersionFrame","v3_version_frame.png",Vector2(1382,861),Vector2(462,144),true)
-	_label(main_ui,"本機版本資訊",Vector2(1417,876),Vector2(390,34),24,PAPER)
-	_label(main_ui,"工業廢墟  ·  單人作戰",Vector2(1418,915),Vector2(393,30),19,MUTED)
-	_label(main_ui,"開發預覽 v0.2",Vector2(1418,954),Vector2(395,30),17,BLUE)
+	_label(main_ui,"版本資訊 / BUILD INFO",Vector2(1417,876),Vector2(390,34),22,PAPER)
+	_label(main_ui,"工業廢墟 · 單人作戰 / SOLO RUN",Vector2(1418,915),Vector2(393,30),18,MUTED)
+	_label(main_ui,"開發預覽 / PREVIEW v0.2",Vector2(1418,954),Vector2(395,30),17,BLUE)
 	_label(main_ui,"",Vector2(744,1006),Vector2(550,41),21,GOLD).name="SaveError"
 
 func _populate_data() -> void:
@@ -277,14 +278,14 @@ func _populate_data() -> void:
 	var history: Label = main_ui.get_node_or_null("HistoryCount") as Label
 	var credits: Label = main_ui.get_node_or_null("CreditCount") as Label
 	var errors: Label = main_ui.get_node_or_null("SaveError") as Label
-	if history: history.text = "作戰紀錄  %d 筆" % scores.size()
-	if credits: credits.text = "信用點  %d" % int(progress.get("credits",0))
+	if history: history.text = "作戰紀錄 / RUNS  %d" % scores.size()
+	if credits: credits.text = "信用點 / CREDITS  %d" % int(progress.get("credits",0))
 	if errors: errors.text = String(progress.get("save_error",""))
 	var pending: Dictionary=progress.get("pending",{})
 	if not pending.is_empty() and main_ui.get_node_or_null("RetrySave")==null:
 		var retry:=Button.new()
 		retry.name="RetrySave"
-		retry.text="重試保存結算"
+		retry.text="重試保存 / RETRY SAVE"
 		retry.position=Vector2(768,944)
 		retry.size=Vector2(330,60)
 		retry.add_theme_font_size_override("font_size",23)

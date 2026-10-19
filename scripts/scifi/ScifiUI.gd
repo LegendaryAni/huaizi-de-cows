@@ -22,7 +22,11 @@ const RED := Color("f19076")
 const WEAPON_ORDER := ["rail", "grenade", "blade", "arc", "thermal", "frost"]
 const SKILL_ORDER := ["dash", "pulse", "shield", "repair"]
 const META_ORDER := ["hp", "damage", "weapon_cd", "skill_cd"]
-const META_NAMES := {"hp":"結構補強", "damage":"火控升級", "weapon_cd":"供彈優化", "skill_cd":"戰術運算"}
+const META_NAMES := {"hp":"結構補強 / ARMOR", "damage":"火控升級 / FIREPOWER", "weapon_cd":"供彈優化 / RELOAD", "skill_cd":"戰術運算 / TACTICS"}
+const SCREEN_EN := {"loadout":"LOADOUT", "meta":"PERMANENT UPGRADES", "scores":"RECORDS", "credits":"CREDITS", "upgrade":"COMBAT UPGRADES", "pause":"PAUSED", "settings":"SETTINGS", "tutorial":"TUTORIAL", "result":"RUN RESULTS", "confirm":"CONFIRM"}
+const WEAPON_EN := {"rail":"RAILGUN","grenade":"GRENADE","blade":"BLADE","arc":"ARC","thermal":"THERMAL","frost":"FROST"}
+const SKILL_EN := {"dash":"DASH","pulse":"EMP","shield":"SHIELD","repair":"REPAIR"}
+const BUTTON_EN := {"返回":"BACK","返回整備":"BACK TO HANGAR","開始出擊":"DEPLOY","離開遊戲":"EXIT","繼續作戰":"RESUME","選擇改裝":"SELECT","下一步":"NEXT","開始整備":"LOADOUT","跳過引導":"SKIP","確認離開":"LEAVE","重試保存":"RETRY SAVE","關閉動態":"REDUCE MOTION","正常動態":"FULL MOTION","音效與畫面":"SETTINGS","已滿級":"MAXED"}
 const META_EFFECTS := {"hp":"每級最大耐久 +12%", "damage":"每級武器傷害 +10%", "weapon_cd":"每級武器冷卻 −5%", "skill_cd":"每級技能冷卻 −5%"}
 const WEAPON_INFO := {"rail":"精準直射最近目標\n進化後可貫穿敵陣", "grenade":"自動轟擊密集敵群\n進化後散出集束子彈", "blade":"弧線迴旋，多次命中\n進化後以雙刃掃場", "arc":"連鎖打擊相鄰敵人\n進化後增加連鎖數", "thermal":"向近敵噴出短程火焰\n進化後延伸並熔穿敵陣", "frost":"光束命中並緩速\n進化後加寬並強化緩速"}
 const SKILL_INFO := {"dash":"短距衝刺，期間無敵", "pulse":"癱瘓附近敵人，緩速首領", "shield":"限時吸收傷害", "repair":"恢復 25% 最大耐久"}
@@ -153,9 +157,14 @@ func _button_hover(button: Button, hovered: bool) -> void:
 	motion.tween_property(button, "modulate", Color(1.08, 1.06, 0.98) if hovered else Color.WHITE, 0.14)
 	button.set_meta("hover_motion", motion)
 
+func _button_label(value: String) -> String:
+	if BUTTON_EN.has(value): return value + " / " + String(BUTTON_EN[value])
+	if value.begins_with("購買  "): return value + " / BUY"
+	return value
+
 func _button(parent: Node, text: String, pos: Vector2, extent: Vector2, callback: Callable, action := "", value: Variant = null) -> Button:
 	var button := Button.new()
-	button.text = text
+	button.text = _button_label(text)
 	button.position = pos
 	button.size = extent
 	button.clip_text = true
@@ -177,7 +186,7 @@ func _button(parent: Node, text: String, pos: Vector2, extent: Vector2, callback
 	button.add_theme_color_override("font_color", PAPER)
 	button.add_theme_color_override("font_hover_color", GOLD)
 	button.add_theme_color_override("font_disabled_color", MUTED.darkened(0.3))
-	button.add_theme_font_size_override("font_size", 25)
+	button.add_theme_font_size_override("font_size", 20 if button.text != text else 25)
 	button.pressed.connect(callback)
 	button.pivot_offset = extent * 0.5
 	button.mouse_entered.connect(func() -> void: _button_hover(button, true))
@@ -204,15 +213,15 @@ func _build_hud() -> void:
 	_panel(hud, Vector2(28, 24), Vector2(590, 205))
 	_image(hud, "res://assets/sprites/scifi/units/1103/portrait.png", Vector2(48, 46), Vector2(138, 138))
 	_label(hud, "壁壘  /  重裝型", Vector2(205, 43), Vector2(365, 35), 27, GOLD)
-	hp_value = _label(hud, "耐久", Vector2(205, 82), Vector2(350, 27), 21)
+	hp_value = _label(hud, "耐久 / HP", Vector2(205, 82), Vector2(350, 27), 21)
 	hp_bar = _bar(hud, Vector2(205, 118), Vector2(350, 17), RED)
-	xp_value = _label(hud, "作戰經驗", Vector2(205, 142), Vector2(350, 28), 20, MUTED)
+	xp_value = _label(hud, "作戰經驗 / XP", Vector2(205, 142), Vector2(350, 28), 20, MUTED)
 	xp_bar = _bar(hud, Vector2(205, 178), Vector2(350, 10), CYAN)
 	_panel(hud, Vector2(722, 24), Vector2(476, 82))
-	stage_label = _label(hud, "工業廢墟", Vector2(742, 43), Vector2(436, 40), 27, GOLD, HORIZONTAL_ALIGNMENT_CENTER)
+	stage_label = _label(hud, "工業廢墟 / INDUSTRIAL RUINS", Vector2(742, 43), Vector2(436, 40), 27, GOLD, HORIZONTAL_ALIGNMENT_CENTER)
 	_panel(hud, Vector2(1475, 24), Vector2(415, 132))
 	timer_label = _label(hud, "00:00", Vector2(1505, 42), Vector2(350, 46), 36, PAPER, HORIZONTAL_ALIGNMENT_RIGHT)
-	kills_label = _label(hud, "擊破 0", Vector2(1505, 96), Vector2(350, 33), 23, GOLD, HORIZONTAL_ALIGNMENT_RIGHT)
+	kills_label = _label(hud, "擊破 / KILLS 0", Vector2(1505, 96), Vector2(350, 33), 23, GOLD, HORIZONTAL_ALIGNMENT_RIGHT)
 	weapon_tray = HBoxContainer.new()
 	weapon_tray.position = Vector2(34, 242)
 	weapon_tray.size = Vector2(585, 86)
@@ -222,10 +231,10 @@ func _build_hud() -> void:
 		var button := _button(hud, "", Vector2(667 + slot * 296, 942), Vector2(282, 104), func() -> void: skill_requested.emit(slot), "skill", slot)
 		skill_buttons.append(button)
 	boss_panel = _panel(hud, Vector2(650, 117), Vector2(620, 96))
-	_label(boss_panel, "徵收者  /  六足破碎機", Vector2(30, 15), Vector2(560, 32), 23, RED, HORIZONTAL_ALIGNMENT_CENTER)
+	_label(boss_panel, "徵收者 / THE COLLECTOR", Vector2(30, 15), Vector2(560, 32), 23, RED, HORIZONTAL_ALIGNMENT_CENTER)
 	boss_bar = _bar(boss_panel, Vector2(32, 56), Vector2(556, 14), RED)
 	boss_panel.visible = false
-	_label(hud, "WASD 移動    Space / E 技能    Esc 暫停", Vector2(1240, 1003), Vector2(650, 45), 20, MUTED, HORIZONTAL_ALIGNMENT_RIGHT)
+	_label(hud, "WASD 移動 MOVE   Space / E 技能 SKILLS   Esc 暫停 PAUSE", Vector2(1240, 1003), Vector2(650, 45), 20, MUTED, HORIZONTAL_ALIGNMENT_RIGHT)
 
 func _clear() -> void:
 	for child in popup.get_children():
@@ -246,7 +255,7 @@ func _screen(title: String, subtitle: String, extent: Vector2, screen: String) -
 	dim.size = Vector2(1920, 1080)
 	popup.add_child(dim)
 	var panel := _panel(popup, (Vector2(1920,1080)-extent)/2, extent)
-	_label(panel, title, Vector2(52, 36), Vector2(extent.x-104, 65), 42, GOLD)
+	_label(panel, title + "  /  " + String(SCREEN_EN.get(screen,"")), Vector2(52, 36), Vector2(extent.x-104, 65), 35, GOLD)
 	_label(panel, subtitle, Vector2(52, 110), Vector2(extent.x-104, 42), 22, MUTED)
 	return panel
 
@@ -294,9 +303,9 @@ func show_loadout(loadout: Dictionary) -> void:
 			show_loadout({"weapon":key,"skills":selected_skills}), "select_weapon", key)
 		if key == selected_weapon: b.modulate = Color(1.2, 1.12, 0.76)
 		_image(b, ART+"icon_"+key+".png", Vector2(20,35), Vector2(90,90))
-		_label(b, ("◆ " if key==selected_weapon else "")+String(C.WEAPONS[key].name), Vector2(128,21), Vector2(350,40), 27, GOLD if key==selected_weapon else PAPER)
+		_label(b, ("◆ " if key==selected_weapon else "")+String(C.WEAPONS[key].name) + " / " + String(WEAPON_EN[key]), Vector2(128,21), Vector2(350,40), 22, GOLD if key==selected_weapon else PAPER)
 		_label(b, WEAPON_INFO[key], Vector2(128,67), Vector2(350,72), 21, MUTED)
-	_label(panel, "主動技能  /  選擇兩項", Vector2(52, 560), Vector2(700, 40), 28, CYAN)
+	_label(panel, "主動技能 / ACTIVE SKILLS · 選擇兩項", Vector2(52, 560), Vector2(700, 40), 28, CYAN)
 	for index in range(4):
 		var key: String = SKILL_ORDER[index]
 		var b := _button(panel, "", Vector2(52+index*390,619), Vector2(372,160), func() -> void:
@@ -311,7 +320,7 @@ func show_loadout(loadout: Dictionary) -> void:
 		_image(b, ART+"icon_"+key+".png", Vector2(16,24), Vector2(72,72))
 		var prefix := ""
 		if selected_skills.has(key): prefix = ("Space  " if selected_skills.find(key)==0 else "E  ")
-		_label(b, prefix+String(C.SKILLS[key].name), Vector2(102,23), Vector2(250,35), 25, CYAN if selected_skills.has(key) else PAPER)
+		_label(b, prefix+String(C.SKILLS[key].name) + " / " + String(SKILL_EN[key]), Vector2(102,23), Vector2(250,35), 21, CYAN if selected_skills.has(key) else PAPER)
 		_label(b, SKILL_INFO[key], Vector2(18,110), Vector2(340,29), 19, MUTED)
 	_label(panel, "8 分鐘迎戰最終首領，擊敗後通關。死亡也能帶回本局信用點。", Vector2(52, 801), Vector2(1040,55), 24, MUTED)
 	_button(panel, "返回", Vector2(52,865), Vector2(260,58), func() -> void: menu_requested.emit(), "menu")
@@ -322,7 +331,7 @@ func show_loadout(loadout: Dictionary) -> void:
 func show_meta(progress: Dictionary) -> void:
 	cached_progress = progress.duplicate(true)
 	var panel := _screen("永久改裝", "改裝效果保留至下次出擊；四項各有五級上限。", Vector2(1360, 900), "meta")
-	_label(panel, "信用點  %d" % int(progress.get("credits",0)), Vector2(905,55), Vector2(390,50), 30, GOLD, HORIZONTAL_ALIGNMENT_RIGHT)
+	_label(panel, "信用點 / CREDITS  %d" % int(progress.get("credits",0)), Vector2(905,55), Vector2(390,50), 30, GOLD, HORIZONTAL_ALIGNMENT_RIGHT)
 	var upgrades: Dictionary = progress.get("upgrades", {})
 	for index in range(4):
 		var key: String = META_ORDER[index]
@@ -350,9 +359,13 @@ func show_scores() -> void:
 	_button(panel,"返回",Vector2(70,733),Vector2(300,70),func() -> void: menu_requested.emit(),"menu")
 
 func show_credits() -> void:
-	var panel := _screen("開發與素材來源", "傳奇倖存者  /  科幻改造 v0.2", Vector2(1250, 800), "credits")
-	_label(panel,"開發與改造：LegendaryAni\n\n原始專案：mewamew/huaizi-de-cows\n原作者：HexBlank\n\n科幻角色、地形與物件：殖星鐵衛現有原創素材\n科幻 UI 與裝備圖示：既有專案資產
-主選單機庫：1103 原創像素素材＋程式生成背景\n音樂與音效：2026 原創科幻合成音訊\n詳細來源：assets/audio/scifi/manifest.json",Vector2(70,190),Vector2(1110,460),27,PAPER)
+	var panel := _screen("製作資訊", "傳奇倖存者 / LEGENDARY SURVIVOR · v0.2", Vector2(1250, 800), "credits")
+	_label(panel,"傳奇倖存者  /  LEGENDARY SURVIVOR",Vector2(70,186),Vector2(1090,65),33,GOLD)
+	_label(panel,"本版開發與整合 / DEVELOPMENT & INTEGRATION",Vector2(70,267),Vector2(1090,35),23,MUTED)
+	_label(panel,"LegendaryAni",Vector2(70,306),Vector2(1060,51),33,PAPER)
+	_label(panel,"科幻戰鬥系統、機庫 UI、機甲待機動畫、作戰流程與音效設計\nCOMBAT SYSTEMS · HANGAR UI · MECH ANIMATION · AUDIO",Vector2(70,377),Vector2(1110,93),21,PAPER)
+	_label(panel,"授權與素材來源  /  LICENSES & ACKNOWLEDGMENTS",Vector2(70,497),Vector2(1110,38),22,GOLD)
+	_label(panel,"部分基礎程式源自 mewamew/huaizi-de-cows（原始 Git 作者：HexBlank）\nSome project foundations are adapted from mewamew/huaizi-de-cows.\n詳細來源 / Details: assets/sprites/scifi/README.md · assets/audio/LICENSES.md",Vector2(70,544),Vector2(1100,107),19,MUTED)
 	_button(panel,"返回",Vector2(70,695),Vector2(300,65),func() -> void: menu_requested.emit(),"menu")
 
 func update_hud(snapshot: Dictionary) -> void:
@@ -367,16 +380,16 @@ func update_hud(snapshot: Dictionary) -> void:
 		hp_hit_tween = hp_bar.create_tween()
 		hp_hit_tween.tween_property(hp_bar, "modulate", Color.WHITE, 0.42).set_trans(Tween.TRANS_SINE)
 	previous_hp = health
-	hp_value.text = "耐久  %d / %d"%[ceili(health),ceili(maximum)]
+	hp_value.text = "耐久 / HP  %d / %d"%[ceili(health),ceili(maximum)]
 	hp_bar.value = clampf(100*health/maximum,0,100)
 	var experience := int(snapshot.get("xp",0))
 	var needed := maxi(1,int(snapshot.get("xp_needed",snapshot.get("xp_required",25))))
-	xp_value.text = "等級 %d    經驗 %d / %d"%[int(snapshot.get("level",1)),experience,needed]
+	xp_value.text = "等級 / LV %d    經驗 / XP %d / %d"%[int(snapshot.get("level",1)),experience,needed]
 	xp_bar.value = clampf(100.0*experience/needed,0,100)
 	timer_label.text = format_time(float(snapshot.get("time",0)))
-	kills_label.text = "擊破 %d    信用點 %d"%[int(snapshot.get("kills",0)),int(snapshot.get("credits",snapshot.get("run_credits",0)))]
+	kills_label.text = "擊破 / KILLS %d    信用點 / CREDITS %d"%[int(snapshot.get("kills",0)),int(snapshot.get("credits",snapshot.get("run_credits",0)))]
 	var phase := int(snapshot.get("stage",0))
-	stage_label.text = "最終交戰  /  徵收者" if phase>=4 else "工業廢墟  /  階段 %d"%(phase+1)
+	stage_label.text = "最終交戰 / BOSS: COLLECTOR" if phase>=4 else "工業廢墟 / PHASE %d"%(phase+1)
 	var weapons: Dictionary = snapshot.get("weapons",{})
 	# Cooldowns vary every tick; tray changes only when levels or evolutions change.
 	var stable := ""
@@ -463,7 +476,7 @@ func show_pause() -> void:
 func show_settings(origin: String = "menu") -> void:
 	settings_return_screen = origin
 	var panel := _screen("音效與畫面", "調整背景音樂、音效、震屏與選單動態效果。", Vector2(1010,740), "settings")
-	var labels := {"music":"背景音樂","effects":"音效音量","shake":"畫面震動"}
+	var labels := {"music":"背景音樂 / MUSIC","effects":"音效音量 / SFX","shake":"畫面震動 / SHAKE"}
 	for index in range(3):
 		var key: String = ["music","effects","shake"][index]
 		var y := 206.0 + index * 109
@@ -471,7 +484,7 @@ func show_settings(origin: String = "menu") -> void:
 		_button(panel,"−",Vector2(510,y-4),Vector2(92,62),func() -> void: _adjust_option(key,-0.1), "adjust_"+key+"_down")
 		_label(panel,"%d%%" % roundi(100*float(audio_options[key])),Vector2(621,y-4),Vector2(128,62),29,CYAN,HORIZONTAL_ALIGNMENT_CENTER)
 		_button(panel,"＋",Vector2(785,y-4),Vector2(92,62),func() -> void: _adjust_option(key,0.1), "adjust_"+key+"_up")
-	_label(panel,"減少動態效果",Vector2(65,533),Vector2(420,55),28,PAPER)
+	_label(panel,"減少動態效果 / REDUCE MOTION",Vector2(65,533),Vector2(445,55),23,PAPER)
 	_button(panel,"關閉動態" if bool(audio_options.get("reduce_motion",false)) else "正常動態",Vector2(510,532),Vector2(367,61),func() -> void: _toggle_reduced_motion(),"toggle_reduce_motion")
 	_label(panel,"只影響主選單動畫，不改戰鬥判定或數值。",Vector2(65,613),Vector2(860,33),20,MUTED)
 	_button(panel,"返回",Vector2(65,654),Vector2(270,65),func() -> void:
@@ -490,8 +503,8 @@ func _adjust_option(key: String, amount: float) -> void:
 
 func show_tutorial(page: int = 0) -> void:
 	tutorial_page = clampi(page,0,2)
-	var panel := _screen("行動指引  /  %d of 3" % (tutorial_page+1), "每一步都可以重新從主選單查看。",Vector2(1060,790),"tutorial")
-	var title: String = ["01  出擊整備","02  自動交戰","03  升級與成長"][tutorial_page]
+	var panel := _screen("行動指引 / TUTORIAL  %d / 3" % (tutorial_page+1), "每一步都可以重新從主選單查看。",Vector2(1060,790),"tutorial")
+	var title: String = ["01  出擊整備 / DEPLOY","02  自動交戰 / COMBAT","03  升級與成長 / UPGRADES"][tutorial_page]
 	var copy: String = ["選擇一把起始武器，再挑選兩個主動技能。\n六把武器有不同攻擊方式，出擊後仍會獲得新武器。","用 WASD 或方向鍵閃避敵人。武器自動尋找目標。\nSpace 和 E 是已選技能；下方按鈕會顯示冷卻時間。","收集藍色經驗晶體以提升等級。戰鬥暫停時選擇改裝卡。\n被擊敗也能保留信用點，再到「永久改裝」升級。"][tutorial_page]
 	var icon: String = ["rail","dash","shield"][tutorial_page]
 	_image(panel,ART+"icon_"+icon+".png",Vector2(70,190),Vector2(240,240))
@@ -515,11 +528,11 @@ func show_result(summary: Dictionary) -> void:
 	if saved: show_notice("")
 	var panel:=_screen("任務完成" if won else "機體失聯","收益已帶回。調整配裝與永久改裝，再次出擊。" if saved else "收益尚未保存，請保留視窗並重試。",Vector2(1100,850),"result")
 	var lines: Array = [
-		["存活時間",format_time(float(summary.get("time",summary.get("game_time",0))))],
-		["擊破敵人",str(summary.get("kills",0))],
-		["作戰等級",str(summary.get("level",1))],
-		["本局信用點",str(summary.get("credits",summary.get("reward",summary.get("run_credits",0))))],
-		["保存狀態","等待重試" if not String(summary.get("save_error","")).is_empty() or summary.get("saved",true)==false else "已保存"]]
+		["存活時間 / SURVIVAL",format_time(float(summary.get("time",summary.get("game_time",0))))],
+		["擊破敵人 / KILLS",str(summary.get("kills",0))],
+		["作戰等級 / LEVEL",str(summary.get("level",1))],
+		["本局信用點 / CREDITS",str(summary.get("credits",summary.get("reward",summary.get("run_credits",0))))],
+		["保存狀態 / SAVED","等待重試" if not String(summary.get("save_error","")).is_empty() or summary.get("saved",true)==false else "已保存"]]
 	for index in range(lines.size()):
 		_label(panel,String(lines[index][0]),Vector2(75,205+index*77),Vector2(480,52),28,MUTED)
 		_label(panel,String(lines[index][1]),Vector2(560,205+index*77),Vector2(465,52),30,GOLD,HORIZONTAL_ALIGNMENT_RIGHT)

@@ -1,66 +1,84 @@
-## 2026-10-19 Main Menu Goal implementation
+# 傳奇倖存者 | Legendary Survivor
 
-Goal ID: wc_goal_MXBwdHzPm7MiFYqS. The main menu was refactored into
-scenes/ui/ScifiMainMenu.tscn and scripts/scifi/ScifiMainMenu.gd.
-It presents seven clickable navigation actions, a full 1920x1080 industrial
-hangar/mech backdrop, a local (offline) status module, mission briefing,
-local project update notes and real save credits.
-Art source: assets/sprites/ui/runtime/scifi/menu_backdrop.jpg,
-menu_icon_*.png. The hangar is procedural imagery composed with existing
-low-resolution unit 1103 portrait; it remains a replacement-ready placeholder,
-NOT a final high-definition mech illustration. See
-docs/20261019_LegendarySurvivor_MainMenu_UI_Goal_v1.md.
-Original saves, combat logic and non-menu screens are unchanged.
+**科幻機甲生存動作遊戲 / Sci-Fi Mecha Survival Action**
 
-# 傳奇倖存者
+《傳奇倖存者》是以 Godot 4.7.2 和 GDScript 開發的俯視角生存動作遊戲。駕駛重裝機甲「壁壘 1103」，探索工業廢墟，搭配武器、主動技能與局內改裝，抵禦敵軍並迎戰首領。
 
-## 目前版本：v0.2 科幻改造（驗收中）
+Legendary Survivor is a top-down mecha survival action game made with Godot 4.7.2 and GDScript. Pilot Bulwark 1103 through industrial ruins, combine weapons and active abilities, and survive escalating enemy waves.
 
-Godot 4.7.2／GDScript 桌面科幻像素倖存者。主場景 `scenes/Main.tscn` 已接新版，從主選單進「出擊整備」，選一把起始武器與兩個主動技能，再開始作戰。
+> **開發版本 / Development Build:** v0.2
+> **開發分支 / Development Branch:** `feature/cinematic-menu-v3`
+> **狀態 / Status:** 可遊玩，正式平衡與視覺驗收尚未全部完成。 / Playable; final balance and visual acceptance are pending.
 
-- 主角：壁壘重裝機甲；四種一般敵人與徵收者首領。
-- 六種自動武器，每局最多三把，各五級；搭配三級改裝後可選專屬進化。
-- 主動技能：衝刺、電磁脈衝、護盾、維修，出擊前四選二。
-- 第8分鐘迎戰首領，擊敗才通關；信用點可購買四項永久升級，敗局保留收益。
-- 舊成績檔與原使用者資料目錄保留；新版成長另存 `scifi_progress.json`，不做中途續局。
+## 遊戲特色 / Game Features
 
-操作：WASD／方向鍵移動、Space／E技能、Esc／P暫停、滑鼠選牌與配裝。首次執行有三步驟引導；音效與畫面選單可獨立調整新音樂、音效及震屏。科幻原創音訊來源見 assets/audio/scifi/manifest.json。本機 Windows 預覽位於 .codex/builds/LegendarySurvivor_v0.2_preview.exe（搭配同名 .pck）。目前仍未通過 SF-16/SF-17 最終驗收。
+| 系統 / System | 繁體中文 | English |
+| --- | --- | --- |
+| 機甲作戰 / Mecha Combat | 操作「壁壘 1103」進行走位、閃避與技能戰鬥。 | Pilot Bulwark 1103 in a movement-driven combat system. |
+| 自動武器 / Automatic Weapons | 六種武器，每局最多三把，具備強化與專屬進化。 | Six weapons; equip up to three per run, with upgrades and evolutions. |
+| 主動技能 / Active Skills | 衝刺、電磁脈衝、護盾、維修；出擊前選擇兩項。 | Dash, EMP Pulse, Shield, and Repair; choose two before deployment. |
+| 局內成長 / Run Progression | 擊破敵人、收集經驗、選擇改裝卡。 | Defeat enemies, collect XP, and select upgrade cards. |
+| 永久改裝 / Permanent Upgrades | 利用信用點強化機體與戰鬥系統。 | Spend credits on persistent enhancements. |
+| 首領戰 / Boss Battle | 第八分鐘迎戰「徵收者」。 | Face the Collector at eight minutes. |
+| 動態機庫 / Animated Hangar | v3 獨立預覽包含分層機甲與機庫環境動畫。 | The isolated v3 preview includes an articulated mech and animated hangar. |
 
-```powershell
+## 操作方式 / Controls
+
+| 操作 / Action | 按鍵 / Input |
+| --- | --- |
+| 移動 / Move | WASD／方向鍵 / Arrow Keys |
+| 主動技能 / Skills | Space、E |
+| 暫停 / Pause | Esc、P |
+| 配裝與選牌 / Loadout & Upgrades | 滑鼠 / Mouse |
+
+## 啟動遊戲 / Getting Started
+
+以 **Godot 4.7.2** 開啟 `project.godot`，執行 `scenes/Main.tscn`。
+Open `project.godot` in **Godot 4.7.2** and run `scenes/Main.tscn`.
+
+```bash
 godot --path .
 ```
 
-本版的玩法、初值與授權範圍見 [科幻規格](spec/20261017_LegendarySurvivor_Scifi_v0.2.md)，[驗收標準](docs/development/acceptance-standard.md) 與 [測試案例](docs/20261017_LegendarySurvivor_ScifiTestCases_v0.2.md) 分開維護。尚未完成的正常成長／真人難度與最終複核依 `current_status.md` 標示，不能以本入口存在推定驗收通過。
+**v3 電影式主選單 / Cinematic Menu Preview**
 
-驗證：`tools/run_scifi_tests.ps1 -Scenario all -GodotPath <Godot console exe> -Headless`；三種子正常時鐘成長使用 `-Scenario growth -ParallelGrowth -Headless`。所有測試由工具建立隔離存檔，禁止指向玩家正式資料。UI／動畫證據必須另以可渲染入口執行，headless不證明畫面合格。
+v3 主選單保留為獨立預覽，不覆蓋一般遊戲入口。
+The v3 menu is available as a separate preview without replacing the default menu.
 
-美術由使用者指定的《殖星鐵衛》既有原創素材複製接入，科幻面板/裝備圖示由OpenAI image_gen補製；來源、處理與雜湊見 [素材入口](assets/sprites/scifi/README.md)。來源專案保持不變。
+```bash
+godot --path . -- --menu-v3-preview
+```
 
-## 歷史版本：v0.1
+Windows 預覽執行檔是本機建置產物，不包含在 GitHub 原始碼提交中。
+Windows preview executables are local build artifacts, not included in the source commit.
 
-《傳奇倖存者》是一款 2D 俯视角幸存者类小游戏。你控制花子在户外大地图里走位，花子会不断放出猫猫攻击从四面八方冲来的奶牛。你要一边躲开敌人，一边选择升级，让猫群越打越强，撑过最后一波就能获胜。
+## 專案內容 / Project Overview
 
-## 游戏内容
+此版本包含機甲戰鬥、六種武器、四種技能、敵人行為、碰撞、關卡流程、改裝、永久成長、存檔、音效與主畫面動畫。
 
-- 固定户外大地图，镜头跟随花子移动。
-- 花子自动放猫攻击敌人，玩家不用手动瞄准。
-- 橘猫、黑猫、奶牛猫三种猫有不同攻击方式。
-- 普通奶牛、疯跑小牛、厚皮大奶牛、吐奶远程牛会按波次出现。
-- 战斗中会出现三选一升级，可以强化伤害、发射频率、移动速度或攻击范围。
-- 花子血量归零会失败，撑过最后一波会胜利。
+The current build includes mecha combat, six weapons, four skills, enemy AI, collisions, run progression, upgrades, saves, audio, and animated menu presentation.
 
-## 操作方式
+- **引擎 / Engine:** Godot 4.7.2
+- **語言 / Language:** GDScript
+- **主場景 / Main Scene:** `scenes/Main.tscn`
+- **v3 機甲動畫 / Mech Rig:** `scripts/scifi/MechIdleController.gd`
+- **玩法規格 / Gameplay Specification:** [v0.2 科幻玩法](spec/20261017_LegendarySurvivor_Scifi_v0.2.md)
+- **開發文件 / Documentation:** [文件索引 / Documentation Index](docs/index.md)
 
-- 移动：WASD / 方向键
-- 选择升级：鼠标点击
-- 暂停：Esc / P
+## 測試 / Testing
 
-## 技术栈
+```powershell
+./tools/run_scifi_tests.ps1 -Scenario all -Headless -GodotPath "<Godot Console Executable>"
+```
 
-本游戏使用 Godot 4.x 和 GDScript 开发，目标是做成一个轻量、完整、能直接游玩的一局制 2D 小游戏。
+測試涵蓋固定重播及功能回歸。Headless 測試不代表畫面驗收通過；SF-16／SF-17 仍有待驗項目。
 
-## 制作信息
+Tests include deterministic replay and functional regression. Headless tests do not replace visual acceptance; SF-16 and SF-17 remain pending.
 
-- 本版本开发：LegendaryAni
-- 原始项目：`mewamew/huaizi-de-cows`
-- 原始仓库 Git 作者：HexBlank
+## 製作與授權 / Development & Credits
+
+**本版開發與整合 / Development & Integration:** LegendaryAni
+
+本儲存庫包含既有專案基礎與本版新增的科幻玩法、美術及動畫；相關來源及權利紀錄見 [素材說明 / Art Notes](assets/sprites/scifi/README.md) 與 [音訊授權 / Audio Licenses](assets/audio/LICENSES.md)。基礎專案：[mewamew/huaizi-de-cows](https://github.com/mewamew/huaizi-de-cows)（原始 Git 作者記載為 HexBlank）。
+
+This version builds upon an existing project foundation while adding sci-fi gameplay, art, and animation. Original project attribution and third-party licensing remain documented in the linked records.

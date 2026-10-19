@@ -1,8 +1,8 @@
-# docs 文档索引
+# 文件索引 / Documentation Index
 
-这个文件只记录 `docs/` 目录下面有哪些文档。
+本頁整理專案規格、測試案例、開發紀錄與技術說明。 / This page indexes project specifications, test cases, development notes, and technical references.
 
-| 文档 | 作用 |
+| 文件 / Document | 內容 / Description |
 | --- | --- |
 | [v0.2科幻規格](../spec/20261017_LegendarySurvivor_Scifi_v0.2.md) | 使用者確認的目前玩法、美術、資料與校準契約。 |
 | [v0.2科幻測試案例](./20261017_LegendarySurvivor_ScifiTestCases_v0.2.md) | SF-01～17測試步驟、觀測契約、固定正常成長策略與覆蓋矩陣；尚未執行。 |

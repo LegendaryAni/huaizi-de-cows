@@ -9,7 +9,8 @@ const AMBER := Color("dfb075")
 const TEAL := Color("789fa3")
 const ACTIONS := ["open_loadout", "open_meta", "open_scores", "open_settings", "tutorial", "open_credits", "quit"]
 const GLYPHS := ["deploy", "workshop", "records", "settings", "tutorial", "credits", "quit"]
-const LABELS := ["出擊整備", "永久改裝", "歷次成績", "音效與畫面", "操作教學", "開發與素材來源", "離開遊戲"]
+const LABELS := ["出擊整備", "永久改裝", "歷次成績", "音效與畫面", "操作教學", "製作資訊", "離開遊戲"]
+const EN_LABELS := ["DEPLOY","WORKSHOP","RECORDS","SETTINGS","TUTORIAL","CREDITS","EXIT"]
 
 const LEFT := 96.0
 const NAV_WIDTH := 540.0
@@ -123,9 +124,10 @@ func _navigation(index: int, pos: Vector2, dimensions: Vector2, kind: int) -> vo
 	var heading_size := 23 if kind == 2 else (33 if kind == 0 else 26)
 	if kind == 0:
 		_label(button, LABELS[index], Vector2(text_x, 10), Vector2(text_width, 48), heading_size)
-		_label(button, "選擇武器與技能", Vector2(text_x, 60), Vector2(text_width, 28), 17, Color("dfc6a0"))
+		_label(button, "DEPLOY / 選擇武器與技能", Vector2(text_x, 60), Vector2(text_width, 28), 17, Color("dfc6a0"))
 	else:
-		_label(button, LABELS[index], Vector2(text_x, 0), Vector2(text_width, dimensions.y), heading_size, WHITE if kind == 1 else MUTED)
+		_label(button, LABELS[index], Vector2(text_x, 4), Vector2(text_width, dimensions.y*0.54), heading_size-2, WHITE if kind == 1 else MUTED)
+		_label(button, EN_LABELS[index], Vector2(text_x, dimensions.y*0.55), Vector2(text_width, dimensions.y*0.34), 12, AMBER if kind==1 else MUTED)
 	if kind != 2:
 		_label(button, "›", Vector2(dimensions.x - 43, 0), Vector2(29, dimensions.y), 32, AMBER if kind == 0 else MUTED, HORIZONTAL_ALIGNMENT_CENTER)
 	button.mouse_entered.connect(func() -> void: _set_highlight(button, true))
@@ -161,7 +163,7 @@ func _rebuild() -> void:
 	# The entire command column uses a single left edge and a fixed baseline rhythm.
 	_bar(self, Vector2(LEFT, HEADER_TOP + 4), Vector2(5, 97), AMBER)
 	_label(self, "傳奇倖存者", Vector2(LEFT + 23, HEADER_TOP), Vector2(630, 91), 65)
-	_label(self, "前線終端  /  工業廢墟行動", Vector2(LEFT + 25, HEADER_TOP + 103), Vector2(555, 38), 21, MUTED)
+	_label(self, "LEGENDARY SURVIVOR / 工業廢墟行動", Vector2(LEFT + 25, HEADER_TOP + 103), Vector2(555, 38), 20, MUTED)
 	_bar(self, Vector2(LEFT + 21, 210), Vector2(NAV_WIDTH - 21, 1), Color("68706b"))
 	_label(self, "出擊任務", Vector2(LEFT + 5, 240), Vector2(300, 33), 19, AMBER)
 	_navigation(0, Vector2(LEFT, MAIN_TOP), Vector2(NAV_WIDTH, 105), 0)
@@ -180,9 +182,9 @@ func _rebuild() -> void:
 	# Game progress is real local state, not an invented online profile.
 	_bar(self, Vector2(1486, 47), Vector2(370, 150), Color(0.035, 0.060, 0.069, 0.92))
 	_bar(self, Vector2(1507, 65), Vector2(4, 100), AMBER)
-	_label(self, "本機檔案", Vector2(1529, 60), Vector2(299, 39), 25)
-	_label(self, "作戰紀錄  %d 筆" % scores.size(), Vector2(1530, 103), Vector2(299, 31), 18, MUTED)
-	_label(self, "信用點  %d" % int(progress.get("credits", 0)), Vector2(1530, 141), Vector2(299, 32), 21, AMBER)
+	_label(self, "本機檔案 / LOCAL DATA", Vector2(1529, 60), Vector2(299, 39), 21)
+	_label(self, "作戰紀錄 / RUNS  %d" % scores.size(), Vector2(1530, 103), Vector2(299, 31), 17, MUTED)
+	_label(self, "信用點 / CREDITS  %d" % int(progress.get("credits", 0)), Vector2(1530, 141), Vector2(299, 32), 19, AMBER)
 
 	_bar(self, Vector2(1475, 702), Vector2(65, 2), AMBER)
 	_label(self, "壁壘 / 1103", Vector2(1460, 711), Vector2(375, 46), 29)
@@ -198,7 +200,7 @@ func _rebuild() -> void:
 	_label(self, "擊敗徵收者", Vector2(614, 980), Vector2(359, 50), 28)
 	_bar(self, Vector2(1030, 950), Vector2(1, 87), Color("526064"))
 	_label(self, "出擊前請選擇主武器與兩項技能", Vector2(1061, 960), Vector2(740, 48), 23, MUTED)
-	_label(self, "開發預覽 v0.2", Vector2(1595, 1027), Vector2(265, 28), 17, Color("819392"), HORIZONTAL_ALIGNMENT_RIGHT)
+	_label(self, "開發預覽 / PREVIEW v0.2", Vector2(1550, 1027), Vector2(310, 28), 17, Color("819392"), HORIZONTAL_ALIGNMENT_RIGHT)
 
 	if not String(progress.get("save_error", "")).is_empty():
 		_label(self, String(progress.get("save_error", "")), Vector2(742, 868), Vector2(870, 43), 21, Color("f0ab88"))

@@ -5,7 +5,7 @@ signal action_requested(action: String)
 const ART := "res://assets/sprites/ui/runtime/scifi/"
 const MENU := ["open_loadout","open_meta","open_scores","open_settings","tutorial","open_credits","quit"]
 const ICONS := ["deploy","workshop","records","settings","tutorial","credits","quit"]
-const NAMES := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","開發與素材來源","離開遊戲"]
+const NAMES := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","製作資訊","離開遊戲"]
 const SUBTITLES := ["DEPLOY","WORKSHOP","RECORDS","OPTIONS","TUTORIAL","CREDITS","EXIT"]
 const GOLD := Color("f5bc66")
 const PAPER := Color("f2f5f3")

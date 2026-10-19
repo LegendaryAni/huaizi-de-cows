@@ -10,7 +10,7 @@ const AMBER := Color("d5a56e")
 const TEAL := Color("739a9b")
 const ACTIONS := ["open_loadout","open_meta","open_scores","open_settings","tutorial","open_credits","quit"]
 const GLYPHS := ["deploy","workshop","records","settings","tutorial","credits","quit"]
-const LABELS := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","開發與素材來源","離開遊戲"]
+const LABELS := ["出擊整備","永久改裝","歷次成績","音效與畫面","操作教學","製作資訊","離開遊戲"]
 
 var progress: Dictionary = {}
 var scores: Array = []

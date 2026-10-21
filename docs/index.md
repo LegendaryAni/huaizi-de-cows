@@ -4,6 +4,7 @@
 
 | 檔案 / Document | 內容 / Description |
 | --- | --- |
+| [SF-16／SF-17 待驗與三種子診斷](./20261021_LegendarySurvivor_SF16_SF17_Status.md) | 最新真實時鐘診斷、失敗原因、獨立審查缺口與固定種子執行方法。 |
 | [GitHub 資產與 Knowledge 同步稽核](./20261021_LegendarySurvivor_ResourceKnowledgeAudit.md) | 音效／早期資產追蹤完整性、檢查腳本、SF-01～17 與 Experience Library 合併界線。 |
 | [《傳奇倖存者》名稱及版本範圍](./20261021_LegendarySurvivor_ProjectIdentity.md) | 專案名稱、現行 v0.2 與早期原型、存檔和授權保護。 |
 | [《傳奇倖存者》v0.2 科幻規格](../spec/20261017_LegendarySurvivor_Scifi_v0.2.md) | 使用者確認的目前玩法、美術、資料與校準契約。 |

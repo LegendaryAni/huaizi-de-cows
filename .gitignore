@@ -5,6 +5,7 @@ __pycache__/
 *.uid
 
 # Ignore generated/local validation output.
+/assets/audio/scifi/*.import
 reports/*
 
 assets/source/*.import
@@ -22,6 +23,8 @@ spec/*.png.import
 !/tools/run_scifi_tests.ps1
 !/tools/build_1103_mech_layers.py
 !/tools/build_scifi_world.py
+!/tools/build_legendaryani_art.py
+!/tools/verify_runtime_assets.py
 
 # Local validation, restore points, and exported previews must never be committed.
 /.codex/builds/

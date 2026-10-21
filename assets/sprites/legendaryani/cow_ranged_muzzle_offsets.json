@@ -1,0 +1,43 @@
+{
+  "sprite": "cow_ranged_8dir_288x192.png",
+  "origin": "cell_center",
+  "cell_size": [
+    288,
+    192
+  ],
+  "projectile": "milk_drop_8dir_192x128.png",
+  "offsets_px": {
+    "e": [
+      72,
+      8
+    ],
+    "se": [
+      52,
+      44
+    ],
+    "s": [
+      8,
+      60
+    ],
+    "sw": [
+      -52,
+      44
+    ],
+    "w": [
+      -72,
+      8
+    ],
+    "nw": [
+      -52,
+      -38
+    ],
+    "n": [
+      8,
+      -58
+    ],
+    "ne": [
+      52,
+      -38
+    ]
+  }
+}

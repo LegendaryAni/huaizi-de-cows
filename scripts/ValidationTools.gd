@@ -51,7 +51,7 @@ static func write_json(path: String, data: Dictionary) -> void:
 		DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(dir) if dir.begins_with("res://") or dir.begins_with("user://") else dir)
 	var file := FileAccess.open(path, FileAccess.WRITE)
 	if file == null:
-		push_warning("无法写出验证快照：%s" % path)
+		push_warning("無法寫出驗證快照：%s" % path)
 		return
 	file.store_string(JSON.stringify(data, "\t"))
 	file.close()

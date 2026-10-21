@@ -1,10 +1,10 @@
 {
   "regenerated_at": "2026-06-09",
-  "style": "高对比暗色漫画街机风，清晰连续手绘地表底图，全图正常亮度，不预烘焙暗角/角色中心光照；可隔挡环境物件由 Godot 叠加",
+  "style": "高對比暗色漫畫街機風，清晰連續手繪地表底圖，全圖正常亮度，不預烘焙暗角/角色中心光照；可隔擋環境物件由 Godot 疊加",
   "full_map": {
     "file": "full_outdoor_map_painted_4096x2305.png",
     "source": "../source/style_reference_full_map_painted.png",
-    "description": "清晰户外底图，全图正常亮度且不预烘焙暗角/角色光照；环境层和隔挡由 Godot 叠加",
+    "description": "清晰戶外底圖，全圖正常亮度且不預烘焙暗角/角色光照；環境層和隔擋由 Godot 疊加",
     "size": [
       4096,
       2305
@@ -74,17 +74,17 @@
     {
       "file": "environment_assets_painted.png",
       "source": "../source/style_reference_environment_assets_painted.png",
-      "description": "有机地图地块、草丛、石头、围栏、树墙、石墙、水边等素材表"
+      "description": "有機地圖地塊、草叢、石頭、圍欄、樹牆、石牆、水邊等素材表"
     },
     {
       "file": "ui_assets_painted.png",
       "source": "../source/style_reference_ui_assets_painted.png",
-      "description": "血量条、升级卡、结算/暂停/提示面板、升级与武器图标素材表"
+      "description": "血量條、升級卡、結算/暫停/提示面板、升級與武器圖標素材表"
     },
     {
       "file": "combat_assets_painted.png",
       "source": "../source/style_reference_combat_assets_painted.png",
-      "description": "花子、猫弹、奶牛敌人、战斗/死亡/拾取特效素材表"
+      "description": "花子、貓彈、奶牛敵人、戰鬥/死亡/拾取特效素材表"
     }
   ],
   "directional_supplements": "directional_asset_manifest.json"

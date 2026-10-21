@@ -21,7 +21,7 @@ const LIMITS := {
 
 const CAT_STATS := {
 	"orange": {
-		"name": "橘猫",
+		"name": "橘貓",
 		"damage": 16.0,
 		"speed": 760.0,
 		"life": 1.25,
@@ -32,7 +32,7 @@ const CAT_STATS := {
 		"sfx": "cat_orange_launch"
 	},
 	"black": {
-		"name": "黑猫",
+		"name": "黑貓",
 		"damage": 12.0,
 		"speed": 620.0,
 		"life": 1.4,
@@ -45,7 +45,7 @@ const CAT_STATS := {
 		"sfx": "cat_black_launch"
 	},
 	"cow": {
-		"name": "奶牛猫",
+		"name": "奶牛貓",
 		"damage": 10.0,
 		"speed": 520.0,
 		"life": 1.6,
@@ -72,7 +72,7 @@ const ENEMY_STATS := {
 		"anim_prefix": "walk"
 	},
 	"calf": {
-		"name": "疯跑小牛",
+		"name": "瘋跑小牛",
 		"hp": 18.0,
 		"speed": 210.0,
 		"contact_damage": 5.0,
@@ -94,7 +94,7 @@ const ENEMY_STATS := {
 		"anim_prefix": "walk"
 	},
 	"ranged": {
-		"name": "吐奶远程牛",
+		"name": "吐奶遠程牛",
 		"hp": 42.0,
 		"speed": 105.0,
 		"contact_damage": 5.0,
@@ -138,32 +138,32 @@ const SCORE := {
 
 const UPGRADES := {
 	"U01": {
-		"name": "猫猫连发",
-		"desc": "所有猫发射冷却 -15%",
+		"name": "貓貓連發",
+		"desc": "所有貓發射冷卻 -15%",
 		"max": 4,
 		"stat": "cooldown",
 		"factor": 0.85,
 		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_cat_swarm.png"
 	},
 	"U02": {
-		"name": "猫爪变锋利",
-		"desc": "所有猫伤害 +20%",
+		"name": "貓爪變鋒利",
+		"desc": "所有貓傷害 +20%",
 		"max": 4,
 		"stat": "damage",
 		"factor": 1.2,
 		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_damage.png"
 	},
 	"U03": {
-		"name": "猫群加速",
-		"desc": "所有猫飞行速度 +15%",
+		"name": "貓群加速",
+		"desc": "所有貓飛行速度 +15%",
 		"max": 3,
 		"stat": "cat_speed",
 		"factor": 1.15,
 		"icon": "res://assets/sprites/ui/runtime/upgrade_icon_black_burst.png"
 	},
 	"U04": {
-		"name": "跑快一点",
-		"desc": "花子移动速度 +12%",
+		"name": "跑快一點",
+		"desc": "花子移動速度 +12%",
 		"max": 3,
 		"stat": "player_speed",
 		"factor": 1.12,

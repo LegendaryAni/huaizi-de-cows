@@ -1,7 +1,7 @@
 config_version=5
 
 [application]
-config/name="花子的奶牛关"
+config/name="傳奇倖存者"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://assets/sprites/ui/runtime/medal_orange_cat.png"

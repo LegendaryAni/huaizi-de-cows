@@ -129,7 +129,7 @@ func _build_hero() -> void:
 	_image(hero_display,"HeroGlow","v3_light_rays.png",Vector2(870,90),Vector2(870,830),true).modulate.a = 0.10
 	near_layer = _image(hero_display,"ForegroundRails","v3_hangar_fore.png",Vector2.ZERO,Vector2(1920,1080),true)
 	_label(hero_display,"壁壘  /  1103",Vector2(1518,747),Vector2(315,43),30,PAPER)
-	_label(hero_display,"重灌型 · 前線待命",Vector2(1520,788),Vector2(315,31),18,MUTED)
+	_label(hero_display,"重裝型 · 前線待命",Vector2(1520,788),Vector2(315,31),18,MUTED)
 
 func _make_navigation_button(action: String, caption: String, icon: String, kind: String, width: float, height: float) -> Button:
 	var button := Button.new()

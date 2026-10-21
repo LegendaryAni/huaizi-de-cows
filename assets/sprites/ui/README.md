@@ -2,6 +2,8 @@
 
 > v0.2使用科幻畫素主題：`reference_crops/scifi/` 為處理後參考，`runtime/scifi/` 為正式資產，生成原圖保留 `assets/source/scifi/`。舊手繪crop不再是新版材質目標；三張並排大卡、字區與正式資產等原則保留。HUD/卡片/按鈕以生成panel裁切與ninepatch整理，不以預設單色控制元件代替。
 
+以下主要記錄 v0.1 歷史 UI 素材；現行《傳奇倖存者》v0.2 優先參考 `runtime/scifi/` 與 `reference_crops/scifi/`，不要以早期卡片材質取代現行科幻版 UI。
+
 本文說明 `ui_assets_painted.png` 被拆成哪些控制元件級參考圖，以及後續執行時 UI 資產應該怎樣生成和接入。
 
 ## 目錄職責

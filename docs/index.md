@@ -1,12 +1,13 @@
 # 檔案索引 / Documentation Index
 
-本頁整理專案規格、測試案例、開發紀錄與技術說明。 / This page indexes project specifications, test cases, development notes, and technical references.
+本頁整理《傳奇倖存者》的現行科幻機甲規格、歷史 v0.1 原型、驗收測試及開發紀錄。 / This page indexes project specifications, test cases, development notes, and technical references.
 
 | 檔案 / Document | 內容 / Description |
 | --- | --- |
-| [v0.2科幻規格](../spec/20261017_LegendarySurvivor_Scifi_v0.2.md) | 使用者確認的目前玩法、美術、資料與校準契約。 |
-| [v0.2科幻測試案例](./20261017_LegendarySurvivor_ScifiTestCases_v0.2.md) | SF-01～17測試步驟、觀測契約、固定正常成長策略與覆蓋矩陣；尚未執行。 |
-| [v0.2回歸測試補充](./20261018_LegendarySurvivor_RegressionTestCases_v0.2.md) | 榴彈六方向外圍命中、HUD/儲存通知及正常成長的完整快照、事件、操作、存檔與時鐘證據。實際結果見 current_status.md。 |
+| [《傳奇倖存者》名稱及版本範圍](./20261021_LegendarySurvivor_ProjectIdentity.md) | 專案名稱、現行 v0.2 與早期原型、存檔和授權保護。 |
+| [《傳奇倖存者》v0.2 科幻規格](../spec/20261017_LegendarySurvivor_Scifi_v0.2.md) | 使用者確認的目前玩法、美術、資料與校準契約。 |
+| [《傳奇倖存者》v0.2 科幻測試案例](./20261017_LegendarySurvivor_ScifiTestCases_v0.2.md) | SF-01～17測試步驟、觀測契約、固定正常成長策略與覆蓋矩陣；尚未執行。 |
+| [《傳奇倖存者》v0.2 回歸測試補充](./20261018_LegendarySurvivor_RegressionTestCases_v0.2.md) | 榴彈六方向外圍命中、HUD/儲存通知及正常成長的完整快照、事件、操作、存檔與時鐘證據。歷史測試結果以相關回歸報告及開發紀錄為準。 |
 | [電影式主選單 v3：分層機甲／動態設定／效能與驗收紀錄](./20261019_LegendarySurvivor_CinematicMenuV3_CompletionLog.md) | 1200×1400 原創關節資產、動態減量、實測 75FPS、Windows 完成版與正式待驗項。 |
 | [電影式主選單 v3：實作與測試紀錄](./20261019_LegendarySurvivor_CinematicMenuV3_Implementation.md) | 隔離場景、素材、動畫、Windows 預覽和實際測試證據；清楚標示未完成的分層機甲／獨立驗收。 |
 | [電影式主選單 v3 驗證案例](./20261019_LegendarySurvivor_CinematicMenuV3_TestCases.md) | 隔離預覽、動畫、七功能、GPU 截圖與回歸測試，保留 SF-17 獨立複核。 |

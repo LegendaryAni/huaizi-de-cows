@@ -183,7 +183,7 @@ func _rebuild() -> void:
 	var unit_card := _panel(self,Vector2(1410,653),Vector2(435,175),Color(0.012,0.025,0.039,0.91),CYAN.darkened(0.45))
 	_rect(unit_card,Vector2(19,20),Vector2(4,130),GOLD)
 	_label(unit_card,"UNIT // 1103",Vector2(40,14),Vector2(368,27),19,GOLD)
-	_label(unit_card,"壁壘  ·  重灌型",Vector2(40,47),Vector2(365,52),29,PAPER,true)
+	_label(unit_card,"壁壘  ·  重裝型",Vector2(40,47),Vector2(365,52),29,PAPER,true)
 	_label(unit_card,"重型裝甲 / 現役機體",Vector2(40,109),Vector2(370,32),19,MUTED)
 	# Event card: actual currently available map, not a fictitious online promotion.
 	var event_card := _panel(self,Vector2(78,866),Vector2(660,144),Color(0.024,0.048,0.067,0.93),GOLD.darkened(0.25))

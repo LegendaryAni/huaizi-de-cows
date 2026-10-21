@@ -101,7 +101,7 @@
 任務：實現升級卡片彈窗的執行時 UI。
 
 背景：
-- spec 在 `spec/v0.1-花子的奶牛關.md`。
+- spec 在 `spec/v0.1-傳奇倖存者-歷史原型.md`。
 - 驗收標準在 `docs/development/acceptance-standard.md`。
 - 測試用例在 `docs/v0.1-test-cases.md`。
 
@@ -129,7 +129,7 @@
 任務：對照基準圖複核升級三選一介面。
 
 背景：
-- spec 在 `spec/v0.1-花子的奶牛關.md`。
+- spec 在 `spec/v0.1-傳奇倖存者-歷史原型.md`。
 - 驗收標準在 `docs/development/acceptance-standard.md`。
 - 畫面基準是 `docs/references/upgrade-baseline.png`。
 - 真實執行截圖是 `reports/visual/upgrade-current.png`。

@@ -2,14 +2,18 @@
 
 > v0.2有效規格為 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md`。目前科幻角色/地圖用 `scifi/`、UI/VFX用對應runtime/scifi目錄，畫素Nearest；舊手繪圖與Linear規則只適用v0.1。新UI參考在 `ui/reference_crops/scifi/`，保持HUD資訊、三卡結構與真實畫面證據要求。
 
-倉庫保留原始的高對比暗色漫畫街機素材作為基線；當前執行時已切換到 `legendaryani/` 的明亮手繪貼紙 / 繪本風主題。新版仍維持原有圖集格數、地圖尺寸、環境 atlas 版位與 UI 結構，因此玩法、碰撞與方向動畫語義不變。固定戶外大地圖仍是全圖正常亮度的連續手繪底圖，不預烘焙暗角或角色中心光照；環境層由 Godot 疊加。
+## v0.1 歷史美術素材（非現行執行路徑）
+
+以下手繪角色與戶外素材是早期原型留存，與《傳奇倖存者》v0.2 科幻機甲資產不同。
+
+倉庫保留原始的高對比暗色漫畫街機素材作為基線；早期原型曾採用 `legendaryani/` 的明亮手繪貼紙／繪本風主題。新版仍維持原有圖集格數、地圖尺寸、環境 atlas 版位與 UI 結構，因此玩法、碰撞與方向動畫語義不變。固定戶外大地圖仍是全圖正常亮度的連續手繪底圖，不預烘焙暗角或角色中心光照；環境層由 Godot 疊加。
 
 ## 主檔案
 
 | 檔案 | 用途 |
 | --- | --- |
-| `legendaryani/` | 當前執行時角色、貓、奶牛、奶滴、地圖與環境主題；來源與生成方式見 `legendaryani/README.md` |
-| `ui/runtime/legendaryani/` | 當前執行時 HUD、按鈕、升級卡、圖示與結算面板主題 |
+| `legendaryani/` | 歷史原型角色、貓、奶牛、奶滴、地圖與環境主題；來源與生成方式見 `legendaryani/README.md` |
+| `ui/runtime/legendaryani/` | 歷史原型 HUD、按鈕、升級卡、圖示與結算面板主題 |
 | `vfx/runtime/legendaryani/` | 當前執行時命中、爆炸、死亡煙塵與經驗視覺主題 |
 | `full_outdoor_map_painted_4096x2305.png` | 固定戶外清晰底圖，直接作為背景使用，全圖正常亮度，不內建隔擋/環境裝飾/暗角 |
 | `environment_assets_painted.png` | 地圖素材表：泥地、草地、深淺地塊、草叢、石頭、小土堆、落葉、圍欄、樹牆、石牆、水面邊界 |

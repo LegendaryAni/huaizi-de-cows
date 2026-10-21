@@ -7,7 +7,7 @@
 ## 依據
 
 - 當前驗收標準：`docs/development/acceptance-standard.md`
-- v0.1 交付範圍：`spec/v0.1-花子的奶牛關.md`
+- v0.1 交付範圍：`spec/v0.1-傳奇倖存者-歷史原型.md`
 - UI 視覺事實源：`spec/視覺規格.md`
 - 玩法事實源：`spec/遊戲機制.md`
 - 既有選單與成績測試入口：`docs/v0.1-menu-score-bgm-test-cases.md`
@@ -161,7 +161,7 @@ godot --headless --path . -- --debug-mode=scores_probe --validation-report=<repo
 操作步驟：
 
 1. 檢查本輪 diff 或變更清單。
-2. 讀回 README、AGENTS、`spec/v0.1-花子的奶牛關.md`、`spec/視覺規格.md`、`spec/遊戲機制.md`、驗收與既有測試檔案的狀態，確認本輪只替換完整遊戲名稱，未修改玩法事實源、驗收條文或測試步驟。
+2. 讀回 README、AGENTS、`spec/v0.1-傳奇倖存者-歷史原型.md`、`spec/視覺規格.md`、`spec/遊戲機制.md`、驗收與既有測試檔案的狀態，確認本輪只替換完整遊戲名稱，未修改玩法事實源、驗收條文或測試步驟。
 3. 讀回全域 source reference，確認原專案路徑仍指向目前 repo 或既有來源，而不是新建錯誤路徑。
 4. 使用 `menu_probe` 或最小 Godot 載入檢查確認主場景能啟動到選單。
 

@@ -163,7 +163,7 @@ const UPGRADES := {
 	},
 	"U04": {
 		"name": "跑快一點",
-		"desc": "花子移動速度 +12%",
+		"desc": "玩家移動速度 +12%",
 		"max": 3,
 		"stat": "player_speed",
 		"factor": 1.12,

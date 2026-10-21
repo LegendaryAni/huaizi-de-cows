@@ -1,11 +1,13 @@
 # Harness 原則整理
 
-本文整理兩篇 harness 文章中對本倉庫有用的原則，並把它們改寫成《花子的奶牛關》開發時可執行的規則。
+本文整理兩篇 harness 文章中對本倉庫有用的原則，並把它們改寫成《傳奇倖存者》開發時可執行的規則。
 
 來源：
 
 - OpenAI, [Harness engineering: leveraging Codex in an agent-first world](https://openai.com/index/harness-engineering/), 2026-02-11
 - Anthropic, [Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps), 2026-03-24
+
+> **版本適用：** 本文將 Harness 流程套用至現行《傳奇倖存者》v0.2；過往 v0.1 限制若與科幻玩法規格衝突，應以現行規格和適用 SF 驗收條款為準。
 
 ## 核心判斷
 
@@ -98,7 +100,7 @@ Anthropic 文章裡的 planner / generator / evaluator 結構，可以簡化成�
 - 遊戲規則不寫死在 UI、動畫或特效指令碼裡。
 - 輸入、戰鬥、刷怪、升級、結算分開。
 - 不引入後端、資料庫、賬號、排行榜或多人聯機。
-- 不做複雜主選單、劇情、商店、揹包、Boss、多關卡和存檔。
+- 不擅自擴充未獲核准的劇情、商店、背包、多地圖、多人或後端；現行 v0.2 已核准主選單、首領、存檔與永久成長，不可沿用 v0.1 的禁止清單。
 - 素材只能使用當前工作樹內的檔案、素材和程式碼。
 
 架構規則應儘量透過測試、指令碼、資源審計和清晰錯誤資訊執行；不能只靠口頭提醒。

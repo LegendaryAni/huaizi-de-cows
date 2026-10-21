@@ -110,7 +110,7 @@ func _build_hud() -> void:
 
 	hp_label = Label.new()
 	hp_label.position = Vector2(166, 31)
-	hp_label.text = "花子"
+	hp_label.text = "玩家 HP"
 	hp_label.add_theme_font_size_override("font_size", 28)
 	root.add_child(hp_label)
 
@@ -436,7 +436,7 @@ func update_hud(snapshot: Dictionary) -> void:
 	var xp_ratio: float = clamp(float(snapshot.xp) / max(1.0, float(snapshot.xp_needed)), 0.0, 1.0)
 	_set_progress_fill(hp_fill_clip, hp_fill, HP_BAR_SIZE, hp_ratio)
 	_set_progress_fill(xp_fill_clip, xp_fill, XP_BAR_SIZE, xp_ratio)
-	hp_label.text = "花子  %d / %d" % [roundi(snapshot.player_hp), roundi(snapshot.player_max_hp)]
+	hp_label.text = "玩家 HP  %d / %d" % [roundi(snapshot.player_hp), roundi(snapshot.player_max_hp)]
 	wave_label.text = "第 %d 波  %d%%" % [snapshot.current_wave, roundi(snapshot.wave_progress * 100.0)]
 	kills_value_label.text = str(snapshot.kills)
 	time_value_label.text = format_time(snapshot.game_time)

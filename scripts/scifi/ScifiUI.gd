@@ -212,7 +212,7 @@ func _bar(parent: Node, pos: Vector2, extent: Vector2, color: Color) -> TextureP
 func _build_hud() -> void:
 	_panel(hud, Vector2(28, 24), Vector2(590, 205))
 	_image(hud, "res://assets/sprites/scifi/units/1103/portrait.png", Vector2(48, 46), Vector2(138, 138))
-	_label(hud, "壁壘  /  重灌型", Vector2(205, 43), Vector2(365, 35), 27, GOLD)
+	_label(hud, "壁壘  /  重裝型", Vector2(205, 43), Vector2(365, 35), 27, GOLD)
 	hp_value = _label(hud, "耐久 / HP", Vector2(205, 82), Vector2(350, 27), 21)
 	hp_bar = _bar(hud, Vector2(205, 118), Vector2(350, 17), RED)
 	xp_value = _label(hud, "作戰經驗 / XP", Vector2(205, 142), Vector2(350, 28), 20, MUTED)

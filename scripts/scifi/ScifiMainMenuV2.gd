@@ -190,7 +190,7 @@ func _rebuild() -> void:
 	# Short machine identification, no generic stand-alone hero status card.
 	_strip(self,Vector2(1478,697),Vector2(65,2),AMBER)
 	_label(self,"壁壘  /  1103",Vector2(1463,706),Vector2(405,48),30,WHITE)
-	_label(self,"重灌型 · 前線機體",Vector2(1465,755),Vector2(405,31),18,DUST)
+	_label(self,"重裝型 · 前線機體",Vector2(1465,755),Vector2(405,31),18,DUST)
 
 	# One integrated footer, made of real battle terminology instead of faux news.
 	_strip(self,Vector2(0,917),Vector2(1920,163),Color("0b1318cc"))

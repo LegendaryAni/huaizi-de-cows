@@ -1,5 +1,7 @@
 # 源圖說明
 
+> 此為《傳奇倖存者》v0.1 **歷史原型素材紀錄**，不代表現行 v0.2 科幻機甲遊戲的執行時資產。現行素材請依 `assets/sprites/scifi/`、`assets/sprites/ui/runtime/scifi/`、`assets/sprites/vfx/runtime/scifi/` 與 `assets/audio/scifi/` 驗證。
+
 這裡放生成和再打包素材時使用的源圖，不是 Godot 執行時優先接入的素材。
 
 遊戲開發優先使用 `assets/sprites/` 下的 PNG、`.spriteframes.tres` 和 manifest。

@@ -188,7 +188,7 @@ func _rebuild() -> void:
 
 	_bar(self, Vector2(1475, 702), Vector2(65, 2), AMBER)
 	_label(self, "壁壘 / 1103", Vector2(1460, 711), Vector2(375, 46), 29)
-	_label(self, "重灌型・前線機體", Vector2(1460, 758), Vector2(375, 31), 19, MUTED)
+	_label(self, "重裝型・前線機體", Vector2(1460, 758), Vector2(375, 31), 19, MUTED)
 
 	# Baseline-aligned footer columns, with no live-service or placeholder news.
 	_bar(self, Vector2(0, FOOTER_TOP), Vector2(1920, 160), Color(0.043, 0.071, 0.083, 0.94))

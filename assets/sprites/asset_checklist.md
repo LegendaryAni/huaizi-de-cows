@@ -1,5 +1,7 @@
 # 素材需求檢查清單
 
+> 此為《傳奇倖存者》v0.1 **歷史原型素材紀錄**，不代表現行 v0.2 科幻機甲遊戲的執行時資產。現行素材請依 `assets/sprites/scifi/`、`assets/sprites/ui/runtime/scifi/`、`assets/sprites/vfx/runtime/scifi/` 與 `assets/audio/scifi/` 驗證。
+
 依據：`../../spec/遊戲機制.md`
 
 檢查物件：`assets/sprites/`、`assets/audio/`

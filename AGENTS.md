@@ -2,7 +2,14 @@
 
 ## 目標
 
-用Godot 4.x + GDScript 開發2D 小遊戲《花子的奶牛關》。
+使用 Godot 4.7.2 與 GDScript 開發 2D 俯視角科幻機甲生存遊戲《傳奇倖存者》（Legendary Survivor）。正式現行玩法依 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md`；v0.1 原型設計僅為歷史參考，不可當成目前科幻玩法。
+
+## 現行版本及資料保護
+- 現行版本為 v0.2 科幻機甲玩法。`docs/development/acceptance-standard.md` 同時保留歷史 AC 與新 SF 驗收條款；應先辨認版本，只套用現行 SF 標準與經使用者核准的版本對應條款。
+- `scenes/Main.tscn` 為遊戲入口；v3 機庫畫面仍為 `--menu-v3-preview` 隔離預覽，不得未經核准替換正式主畫面。
+- `project.godot` 的 `custom_user_dir_name` 舊路徑為既有玩家資料相容性設定，**禁止只為重新命名而修改**；先設計可驗證的存檔遷移與回復流程。
+- 既有素材、歷史程式、授權來源、Git 作者記錄與可追溯測試結果必須保留真實性；產品名稱改為《傳奇倖存者》不代表所有既有原創內容都由同一人製作。
+- 除非使用者明確授權，GitHub `main` 與遠端部署皆不可修改；保護本機未提交工作與存檔。
 
 ## 倉庫結構
 
@@ -37,7 +44,7 @@
 
 ## 必須嚴格遵守的開發流程
 
-- step 1: 主 Agent 先讀取 `docs/development/acceptance-standard.md`，並把它作為本專案當前驗收標準；驗收標準是外部合格線，AI 不得自行新增、改寫或降低。如果發現標準缺失、衝突或有待定項，必須先停下來請使用者確認。
+- step 1: 主 Agent 先讀取現行 `spec/20261017_LegendarySurvivor_Scifi_v0.2.md` 以及 `docs/development/acceptance-standard.md` 中本版本適用的 SF 驗收條款，並以兩者為現行開發規格與驗收來源；驗收標準是外部合格線，AI 不得自行新增、改寫或降低。如果發現標準缺失、衝突或有待定項，必須先停下來請使用者確認。
 - step 2: 由 `test-author` 根據 `docs/development/acceptance-standard.md` 設計詳細測試用例，同樣輸出到 `docs/` 目錄。
 - step 3: 由 `acceptance-checker` 核對每條驗收標準是否都有真實測試覆蓋；如果沒有覆蓋完整，回到 step 2。
 - step 4: 設計和開發測試所必須依賴的工具，建立充足的觀測手段，包括但不限於日誌、測試介面、截圖、幀序列或可復現執行步驟。

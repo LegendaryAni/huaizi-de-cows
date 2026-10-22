@@ -358,8 +358,24 @@ func _update_enemies(delta:float) -> void:
 		e.node.position = e.node.position.clamp(C.BOUNDS.position,C.BOUNDS.end)
 		e.position = e.node.position
 		e.node.animate(move,"charge" if e.attack_state != "idle" else "")
-		if e.position.distance_to(player.position) <= e.radius+C.PLAYER.radius:
+		if _enemy_touches_player(e):
 			damage_player(e.contact_damage,e.id)
+
+func _enemy_touches_player(e:Dictionary) -> bool:
+	# CharacterBody2D.move_and_slide() keeps bodies apart by safe_margin;
+	# their shapes may collide before center distance is <= sum of radii.
+	# Use the actual physics contacts, not just geometric overlap.
+	if e.position.distance_squared_to(player.position) <= pow(e.radius+C.PLAYER.radius,2.0):
+		return true
+	var enemy_body:CharacterBody2D = e.node as CharacterBody2D
+	for index in range(enemy_body.get_slide_collision_count()):
+		if enemy_body.get_slide_collision(index).get_collider() == player:
+			return true
+	var player_body:CharacterBody2D = player as CharacterBody2D
+	for index in range(player_body.get_slide_collision_count()):
+		if player_body.get_slide_collision(index).get_collider() == enemy_body:
+			return true
+	return false
 
 func _steer_around_obstacles(origin: Vector2, wanted: Vector2) -> Vector2:
 	if wanted.length_squared() <= 0.001: return wanted

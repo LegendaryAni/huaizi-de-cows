@@ -1612,7 +1612,16 @@ func test_collisions() -> void:
 	for frame in range(35): await get_tree().physics_frame
 	check(int(snap().counts.enemy_projectiles)==0,"collision.wall_absorbs_enemy_projectile")
 	check(near(float(snap().hp),120.0,0.01),"collision.no_projectile_damage_through_prop")
-	notes.append("Godot StaticBody2D collision, CharacterBody2D normal movement, dash and enemies tested against baked map geometry. No debug outlines in normal mode.")
+	# An enemy CharacterBody2D is stopped by the player collider before shapes overlap.
+	# Validate physical body contact, not only center-distance overlap.
+	fixture("reset_arena",{"spawning":false})
+	fixture("set_player",{"position":[2048,1152],"hp":120.0,"invulnerable":0.0,"shield":0.0})
+	set_movement(Vector2.ZERO)
+	var contact_id: Variant = fixture("add_enemy",{"kind":"crawler","position":[2180,1152],"hp":100000.0,"speed":180.0,"contact_damage":10.0})
+	for frame in range(110): await get_tree().physics_frame
+	var contact_snapshot := snap()
+	check(float(contact_snapshot.hp) < 120.0,"collision.enemy_physics_contact_damages_player",{"hp":contact_snapshot.hp,"player_pos":contact_snapshot.position,"state":contact_snapshot.state,"invulnerable":game.get("invulnerable"),"dash_remaining":game.get("dash_remaining"),"shield":game.get("shield"),"enemy":entity(contact_snapshot,contact_id)})
+	notes.append("Godot StaticBody2D collision, CharacterBody2D normal movement, dash, enemy/player physical contact and map geometry tested. No debug outlines in normal mode.")
 
 func test_replay() -> void:
 	var traces: Array=[]

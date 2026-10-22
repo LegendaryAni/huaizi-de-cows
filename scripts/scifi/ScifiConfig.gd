@@ -1,6 +1,6 @@
 extends RefCounted
 
-const VERSION = "0.2.1"
+const VERSION = "0.2.2"
 const MAP_SIZE = Vector2(4096, 2305)
 const BOUNDS = Rect2(80, 80, 3936, 2145)
 const PLAYER = {"hp":120.0,"speed":340.0,"radius":30.0,"iframe":0.65}
@@ -14,10 +14,10 @@ const WEAPONS = {
 	"frost":{"name":"寒霜射線","evolution":"極寒光束","damage":18.0,"cooldown":0.7,"mod":"cooling","range":760.0,"width":26.0,"evolved_width":54.0,"slow":0.25,"evolved_slow":0.55,"duration":1.6}}
 const MODS = {"firecontrol":"火控","blast":"爆破","propulsion":"推進","capacitor":"電容","heat":"散熱","cooling":"冷卻"}
 const SKILLS = {"dash":{"name":"衝刺","cooldown":4.0,"duration":0.18,"distance":240.0},"pulse":{"name":"電磁脈衝","cooldown":12.0,"duration":1.5,"range":360.0,"boss_slow":0.3},"shield":{"name":"護盾","cooldown":16.0,"duration":4.0,"ratio":0.35},"repair":{"name":"維修","cooldown":20.0,"duration":0.0,"ratio":0.25}}
-const ENEMIES = {"crawler":{"asset":"2101","radius":22.0,"hp":32.0,"speed":105.0,"damage":10.0,"xp":5,"scale":3},"spider":{"asset":"2106","radius":20.0,"hp":22.0,"speed":230.0,"damage":8.0,"xp":5,"scale":3},"heavy":{"asset":"2103","radius":35.0,"hp":110.0,"speed":65.0,"damage":17.0,"xp":14,"scale":4},"turret":{"asset":"2105","radius":28.0,"hp":55.0,"speed":80.0,"damage":9.0,"xp":9,"scale":3},"boss":{"asset":"3101","radius":50.0,"hp":9000.0,"speed":75.0,"damage":25.0,"xp":0,"scale":5}}
+const ENEMIES = {"crawler":{"asset":"2101","radius":22.0,"hp":32.0,"speed":105.0,"damage":10.0,"xp":5,"scale":3},"spider":{"asset":"2106","radius":20.0,"hp":22.0,"speed":345.0,"damage":8.0,"xp":5,"scale":3},"heavy":{"asset":"2103","radius":35.0,"hp":110.0,"speed":65.0,"damage":17.0,"xp":14,"scale":4},"turret":{"asset":"2105","radius":28.0,"hp":55.0,"speed":80.0,"damage":9.0,"xp":9,"scale":3},"boss":{"asset":"3101","radius":50.0,"hp":9000.0,"speed":285.0,"damage":30.0,"xp":0,"scale":5}}
 const SPAWN_INTERVALS = [1.0,0.65,0.45,0.35,0.55]
-const RANGED = {"range":400.0,"cooldown":2.2,"damage":10.0,"speed":425.0,"life":3.0}
-const BOSS = {"time":480.0,"charge_windup":0.9,"charge_speed":660.0,"charge_duration":0.65,"charge_cd":6.0,"shot_windup":0.65,"shot_cd":3.0,"shot_count":5,"shot_damage":19.0,"shot_speed":480.0,"shot_life":3.0}
+const RANGED = {"range":400.0,"cooldown":1.8,"damage":14.0,"speed":550.0,"life":3.0}
+const BOSS = {"time":480.0,"charge_windup":0.9,"charge_speed":780.0,"charge_duration":0.65,"charge_cd":6.0,"shot_windup":0.65,"shot_cd":2.4,"shot_count":5,"shot_damage":25.0,"shot_speed":650.0,"shot_life":3.0}
 const XP = {"base":25,"per_level":12,"range":260.0,"speed":650.0}
 const ECONOMY = {"kill":1,"milestone_seconds":60.0,"milestone":15,"win":200,"prices":[60,100,160,240,340],"hp":0.12,"damage":0.1,"weapon_cd":0.05,"skill_cd":0.05}
 const LEVEL_DAMAGE = 1.35

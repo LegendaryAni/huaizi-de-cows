@@ -26,6 +26,8 @@ spec/*.png.import
 !/tools/build_legendaryani_art.py
 !/tools/verify_runtime_assets.py
 !/tools/run_sf16_growth.ps1
+!/tools/analyze_sf16_growth.py
+!/tools/test_analyze_sf16_growth.py
 
 # Local validation, restore points, and exported previews must never be committed.
 /.codex/builds/

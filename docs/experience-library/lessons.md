@@ -51,3 +51,14 @@
 - 驗證：獨立coverage_check二次只讀檢查SF-01..17設計通過；這不代表任何實際遊戲測試通過。
 - 下次規則：實作前逐項核對策略依賴的唯讀狀態；控制效果同時驗移動與攻擊，分級效果覆蓋中間層。
 - 關聯文件：docs/20261017_LegendarySurvivor_ScifiTestCases_v0.2.md、spec/20261017_LegendarySurvivor_Scifi_v0.2.md。
+
+### 2026-10-22 | CharacterBody2D 物理接觸不可只靠圓心距離判斷傷害
+
+- 場景：v0.2 SF-16 難度診斷，玩家與敵人皆採 `CharacterBody2D`、`move_and_slide()`、`safe_margin=0.04`；接觸傷害原先只以兩碰撞半徑之和判定。
+- 現象：敵人追近後被玩家實體擋住，中心距離 52.0189，半徑總和 52.0，玩家 HP 120 不變；`collision.enemy_physics_contact_damages_player` 紅燈。
+- 影響：真實接觸可能漏算傷害，SF-16 玩家生存難度與歷史 HP 證據受到扭曲；僅調高敵人速度無法直接解決此判定問題。
+- 原因：物理分離安全邊距使剛好碰撞的兩個 `CharacterBody2D` 不必滿足 `distance <= radius_sum`。
+- 修復：在 `ScifiMain.gd` 增加 `_enemy_touches_player()`，保留幾何重疊判定並納入敵人／玩家 `get_slide_collision_count()` 真正回報的對方碰撞，再交由既有 `damage_player()` 處理無敵及護盾。
+- 驗證：修前 `20261022-164320-collisions-41efd1b6` 新增斷言失敗且 HP120；修後 `20261022-164424-collisions-ff7d5f60` 23/23 成功、HP90，`smoke`／`replay`／`all` 均 `logic_matrix_passed=true`。這僅是接觸修復驗證，SF-16 三種子首次勝利中位數尚未判通過。
+- 下次規則：任何 `CharacterBody2D` 的接觸效果都需檢查引擎碰撞接觸，不能只靠圓心距離重疊；加入「物理碰到但未重疊」的紅綠燈回歸。
+- 關聯檔案 / 提交：`scripts/scifi/ScifiMain.gd`、`scripts/scifi/tests/ScifiTests.gd`、`docs/20261022_LegendarySurvivor_ContactCollisionFix.md`、`d949e1360d5161e9a780268fd65e3309c4e4f34c`。

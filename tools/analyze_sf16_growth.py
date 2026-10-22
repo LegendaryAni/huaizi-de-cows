@@ -16,6 +16,14 @@ import sys
 SEEDS = (17, 41, 73)
 TARGET_MEDIAN = (3, 5)
 
+REQUIRED_ASSERTIONS = {
+    "growth.time_scale_one",
+    "growth.standard_physics_tick",
+    "growth.no_fixture_calls",
+    "growth.win_within_five",
+}
+
+
 
 def read_json(path: Path) -> dict | None:
     if not path.is_file():
@@ -76,6 +84,27 @@ def inspect_seed(folder: Path, seed: int) -> dict:
             if isinstance(observed, list) and len(observed) >= len(runs):
                 runs = observed
     first_win = next((i + 1 for i, run in enumerate(runs) if run.get("victory") is True), None)
+    assertion_ids = {
+        str(a.get("id")) for a in (report or {}).get("assertions", [])
+        if isinstance(a, dict) and a.get("passed") is True
+    }
+    complete_evidence = (
+        report is not None
+        and report.get("scenario") == "growth"
+        and report.get("status") == "logic_passed"
+        and report.get("growth_exit_reason") == "first_win"
+        and report.get("fixture_calls") == 0
+        and report.get("failed") == 0
+        and REQUIRED_ASSERTIONS.issubset(assertion_ids)
+        and any(key.startswith("growth.natural_settlement_cause") for key in assertion_ids)
+        and any(key.startswith("growth.settlement_saved") for key in assertion_ids)
+        and boss_deaths >= 1
+        and events > 0
+        and (folder / f"growth-seed-{seed}.json.inputs.jsonl").is_file()
+        and (folder / f"growth-seed-{seed}.json.inputs.jsonl").stat().st_size > 0
+        and len(runs) >= 1
+    )
+
     if report is not None:
         notes = report.get("notes", [])
         for note in notes if isinstance(notes, list) else []:
@@ -88,6 +117,7 @@ def inspect_seed(folder: Path, seed: int) -> dict:
         "seed": seed,
         "invocation_present": invocation is not None,
         "completed_report": report is not None,
+        "complete_evidence": complete_evidence,
         "report_failed_assertions": report.get("failed", None) if report else None,
         "source_hashes": invocation.get("source_hashes", {}) if invocation else {},
         "input_seed_matches": invocation is not None and invocation.get("seed") == seed,
@@ -114,7 +144,7 @@ def analyze(folder: Path) -> dict:
     hashes = [json.dumps(row["source_hashes"], sort_keys=True) for row in seeds]
     wins = [row["first_win_run"] for row in seeds]
     # Never turn a partial diagnostic, or a run without complete reporting, into PASS.
-    all_complete = all(row["completed_report"] and row["report_failed_assertions"] == 0 for row in seeds)
+    all_complete = all(row["complete_evidence"] for row in seeds)
     all_seeds_proven = all(row["input_seed_matches"] for row in seeds)
     same_sources = all_seeds_proven and len(set(hashes)) == 1 and bool(seeds[0]["source_hashes"])
     within_five = all(v is not None and 1 <= v <= 5 for v in wins)
@@ -127,7 +157,8 @@ def analyze(folder: Path) -> dict:
         "report_dir": str(folder.resolve()),
         "status": status,
         "t16_compliant_full_matrix": passed,
-        "all_reports_completed": all_complete,
+        "all_reports_completed": all(row["completed_report"] for row in seeds),
+        "all_required_evidence_verified": all_complete,
         "source_hashes_match": same_sources,
         "all_invocation_seeds_verified": all_seeds_proven,
         "first_win_median": median,

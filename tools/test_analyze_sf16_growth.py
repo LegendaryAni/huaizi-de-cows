@@ -22,8 +22,16 @@ class SF16AnalyzerTest(unittest.TestCase):
                 json.dumps({"seed": seed, "source_hashes": {"ScifiConfig.gd": "verified"}}),
                 encoding="utf-8",
             )
+            (self.directory / f"{stem}.json.events.jsonl").write_text(
+                json.dumps({"event": {"event": "death", "kind": "boss"}}) + "\n",
+                encoding="utf-8",
+            )
+            (self.directory / f"{stem}.json.inputs.jsonl").write_text(
+                json.dumps({"type": "input"}) + "\n",
+                encoding="utf-8",
+            )
             (self.directory / f"{stem}.json").write_text(
-                json.dumps({"failed": 0, "notes": ["first_win_run=4"]}),
+                json.dumps(self.success_report(4)),
                 encoding="utf-8",
             )
             (self.directory / f"{stem}.json.snapshots.jsonl").write_text(
@@ -44,6 +52,26 @@ class SF16AnalyzerTest(unittest.TestCase):
                 ) + "\n", encoding="utf-8"
             )
 
+    @staticmethod
+    def success_report(win_run):
+        checks = [
+            "growth.time_scale_one",
+            "growth.standard_physics_tick",
+            "growth.no_fixture_calls",
+            "growth.win_within_five",
+            "growth.natural_settlement_cause",
+            "growth.settlement_saved",
+        ]
+        return {
+            "scenario": "growth",
+            "status": "logic_passed",
+            "growth_exit_reason": "first_win",
+            "fixture_calls": 0,
+            "failed": 0,
+            "notes": [f"first_win_run={win_run}"],
+            "assertions": [{"id": item, "passed": True} for item in checks],
+        }
+
     def test_full_matrix_proven(self):
         result = analyzer.analyze(self.directory)
         self.assertEqual("PASS", result["status"])
@@ -58,7 +86,7 @@ class SF16AnalyzerTest(unittest.TestCase):
 
     def test_failed_assertion_cannot_pass(self):
         (self.directory / "growth-seed-73.json").write_text(
-            json.dumps({"failed": 1, "notes": ["first_win_run=4"]}),
+            json.dumps({**self.success_report(4), "failed": 1}),
             encoding="utf-8"
         )
         self.assertEqual("FAIL", analyzer.analyze(self.directory)["status"])
@@ -74,7 +102,7 @@ class SF16AnalyzerTest(unittest.TestCase):
         for seed in (41, 73):
             stem = f"growth-seed-{seed}"
             (self.directory / f"{stem}.json").write_text(
-                json.dumps({"failed": 0, "notes": ["first_win_run=1"]}),
+                json.dumps(self.success_report(1)),
                 encoding="utf-8",
             )
             (self.directory / f"{stem}.json.snapshots.jsonl").write_text(

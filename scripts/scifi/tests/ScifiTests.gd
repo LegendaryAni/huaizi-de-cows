@@ -1621,6 +1621,29 @@ func test_collisions() -> void:
 	for frame in range(110): await get_tree().physics_frame
 	var contact_snapshot := snap()
 	check(float(contact_snapshot.hp) < 120.0,"collision.enemy_physics_contact_damages_player",{"hp":contact_snapshot.hp,"player_pos":contact_snapshot.position,"state":contact_snapshot.state,"invulnerable":game.get("invulnerable"),"dash_remaining":game.get("dash_remaining"),"shield":game.get("shield"),"enemy":entity(contact_snapshot,contact_id)})
+	# Regression: map props create a right/up pinch near (425, 1480).
+	# The boss must route around both solid footprints instead of being pinned
+	# indefinitely while the player remains across the map.
+	fixture("reset_arena",{"spawning":false})
+	fixture("set_player",{"position":[3900,200],"hp":120,"invulnerable":0.0,"shield":0.0})
+	set_movement(Vector2.ZERO)
+	var stuck_boss_id: Variant = fixture("add_enemy",{"kind":"boss","position":[425,1480],"hp":100000.0,"speed":75.0,"contact_damage":0.0})
+	var stuck_boss_start: Dictionary = entity(snap(),stuck_boss_id)
+	check(not stuck_boss_start.is_empty(),"collision.boss_corner_regression_spawn")
+	for frame in range(180): await get_tree().physics_frame
+	var stuck_boss_end: Dictionary = entity(snap(),stuck_boss_id)
+	check(not stuck_boss_end.is_empty(),"collision.boss_corner_regression_alive")
+	if not stuck_boss_start.is_empty() and not stuck_boss_end.is_empty():
+		var travel := vector(stuck_boss_start.position).distance_to(vector(stuck_boss_end.position))
+		check(travel > 32.0,"collision.boss_corner_must_escape_without_teleport",{"origin":stuck_boss_start.position,"current":stuck_boss_end.position,"distance":travel})
+		for frame in range(360): await get_tree().physics_frame
+		var later_boss:Dictionary = entity(snap(),stuck_boss_id)
+		check(not later_boss.is_empty(),"collision.boss_corner_after_escape_still_alive")
+		if not later_boss.is_empty():
+			var player_target := Vector2(3900,200)
+			var initial_distance := vector(stuck_boss_start.position).distance_to(player_target)
+			var final_distance := vector(later_boss.position).distance_to(player_target)
+			check(final_distance < initial_distance - 100.0,"collision.boss_corner_resumes_chasing_player",{"initial_distance":initial_distance,"final_distance":final_distance,"position":later_boss.position})
 	notes.append("Godot StaticBody2D collision, CharacterBody2D normal movement, dash, enemy/player physical contact and map geometry tested. No debug outlines in normal mode.")
 
 func test_replay() -> void:

@@ -327,7 +327,7 @@ func spawn_enemy(kind:String,position:Vector2,extra:Dictionary = {}) -> Dictiona
 	if not C.ENEMIES.has(kind): return {}
 	var cfg = C.ENEMIES[kind]
 	position = world_collision.safe_spawn(position,float(cfg.radius)) if world_collision != null else position
-	var e = acquire("enemies",{"kind":kind,"position":position,"hp":cfg.hp,"max_hp":cfg.hp,"speed":cfg.speed,"contact_damage":cfg.damage,"radius":cfg.radius,"slow":0.0,"slow_time":0.0,"stun":0.0,"shoot_timer":C.RANGED.cooldown,"charge_timer":C.BOSS.charge_cd,"shot_timer":C.BOSS.shot_cd,"windup":0.0,"attack_state":"idle","attack_direction":Vector2.ZERO,"charge_duration":0.0}.merged(extra,true))
+	var e = acquire("enemies",{"kind":kind,"position":position,"hp":cfg.hp,"max_hp":cfg.hp,"speed":cfg.speed,"contact_damage":cfg.damage,"radius":cfg.radius,"slow":0.0,"slow_time":0.0,"stun":0.0,"shoot_timer":C.RANGED.cooldown,"charge_timer":C.BOSS.charge_cd,"shot_timer":C.BOSS.shot_cd,"windup":0.0,"attack_state":"idle","attack_direction":Vector2.ZERO,"escape_time":0.0,"escape_dir":Vector2.ZERO,"charge_duration":0.0}.merged(extra,true))
 	if not e.is_empty():
 		e.node.configure(cfg.asset,cfg.scale)
 		e.node.position = position
@@ -353,13 +353,32 @@ func _update_enemies(delta:float) -> void:
 				enemy_shot(e.position,direction*C.RANGED.speed,C.RANGED.damage,C.RANGED.life,e.id)
 		elif e.kind == "boss":
 			move = _boss_movement(e,move,direction,delta)
-		e.node.velocity = _steer_around_obstacles(e.position,move)
+			if e.get("escape_time",0.0) > 0.0 and e.attack_state == "idle" and e.stun <= 0:
+				e.escape_time = maxf(0,e.escape_time-delta)
+				move = e.escape_dir * e.speed * (1-e.slow)
+		var before_move:Vector2 = e.node.position
+		e.node.velocity = move if e.kind == "boss" and e.get("escape_time",0.0) > 0.0 and e.attack_state == "idle" else _steer_around_obstacles(e.position,move)
 		e.node.move_and_slide()
+		if e.kind == "boss" and move.length_squared() > 1.0 and e.node.position.distance_squared_to(before_move) < 0.25:
+			_escape_boss_corner(e,before_move,move.length())
 		e.node.position = e.node.position.clamp(C.BOUNDS.position,C.BOUNDS.end)
 		e.position = e.node.position
 		e.node.animate(move,"charge" if e.attack_state != "idle" else "")
 		if _enemy_touches_player(e):
 			damage_player(e.contact_damage,e.id)
+
+func _escape_boss_corner(e:Dictionary, origin:Vector2, speed:float) -> void:
+	# Actual slide-collision escape, without teleporting or crossing geometry.
+	# Two adjacent prop footprints can form a right/up pinch at (425,1480);
+	# ray steering may repeatedly push toward both blocked surfaces.
+	# Try deterministic cardinal tangents, reusing CharacterBody2D physics.
+	for direction in [Vector2(-1,1).normalized(),Vector2(1,1).normalized(),Vector2(-1,-1).normalized(),Vector2(1,-1).normalized(),Vector2.DOWN,Vector2.LEFT,Vector2.UP,Vector2.RIGHT]:
+		e.node.velocity = direction * speed
+		e.node.move_and_slide()
+		if e.node.position.distance_squared_to(origin) >= 0.25:
+			e.escape_dir = direction
+			e.escape_time = 1.6
+			return
 
 func _enemy_touches_player(e:Dictionary) -> bool:
 	# CharacterBody2D.move_and_slide() keeps bodies apart by safe_margin;
